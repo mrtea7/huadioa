@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html ng-app="indexModule"  class="app frameset js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios">
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title></title>
+    <base target="mainFrame">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="app/css/bootstrap.css" rel="stylesheet">
+    <link href="app/css/animate.css" rel="stylesheet">
+    <link href="app/css/font-awesome.css" rel="stylesheet">
+    <link href="app/css/style.css" rel="stylesheet">
+    <link href="app/css/iconfont.css" rel="stylesheet">
+    <style type="text/css">
+        .hidden-bsection {
+            display: none;
+        }
+
+        .pageload-overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #fff;
+            z-index: 1000;
+        }
+
+        #loading_done {
+            background: url('app/img/loading2.gif?v=2014110615') no-repeat left top;
+            position: fixed;
+            width: 52px;
+            height: 72px;
+            top: 50%;
+            left: 50%;
+            margin-left: -52px;
+            margin-top: -72px;
+            z-index: 1001;
+        }
+    </style>
+
+</head>
+<body>
+<section class="vbox hidden-bsection" style="display: block;">
+    <header class="bg-dark header navbar navbar-fixed-top-xs">
+        <div class="navbar-header">
+            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                <i class="fa fa-bars"></i>
+            </a>
+            <!-- logo -->
+            <a href="http://www.baidu.com" class="navbar-brand" data-toggle="fullscreen" style="position: relative;">
+                <img src="app/img/website/logo-zl.png" class="m-r-sm" style="position: absolute; bottom: 10px;">
+            </a>
+            <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user">
+                <i class="fa fa-cog"></i>
+            </a>
+        </div>
+        <div class="msgbox"></div>
+        <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user">
+            <li class="hidden-xs">
+                <a href="Companyapplist/AppCenter.html"
+                   class="nav-new-style nav-border-right" title="应用中心">
+                    应用中心
+                </a>
+            </li>
+            <li class="hidden-xs">
+                <a href="http://www.baidu.com" target="_blank"
+                   class="nav-new-style nav-border-right nav-border-left" title="帮助">
+                    帮助
+                </a>
+            </li>
+
+            <!-- 通知中心 @begin -->
+            <li class="hidden-xs hidden">
+                <a href="#" class="dropdown-toggle nav-border-right nav-border-left nav-new-style"
+                   data-toggle="dropdown">
+                    <i class="iconfont icon-newsnotice icon-size30"></i>
+                    <span class="badge badge-sm up bg-danger m-l-n-sm js_msg_count"></span>
+                </a>
+                <section class="dropdown-menu aside-xl ">
+                    <section class="panel bg-white js_msg_content">
+                    </section>
+                    <script type="text/html" id="js_msg_content_footer">
+                        <footer class="panel-footer text-sm no-border">
+                            <a href="System/SetAccountNumber?t=" class="pull-right" title="消息通知设置"><i
+                                    class="iconfont icon-noticeset"></i></a>
+                            <a href="System/NoticeMessageList?t=">查看所有消息</a>
+                            <a href="javascript:;" data-path="System/EmptyNoticeMessage?t="
+                               class="m-l-sm js_msg_empty">清空全部未读</a>
+                        </footer>
+                    </script>
+                </section>
+            </li>
+            <!-- 通知中心 @end -->
+
+            <li class="dropdown">
+                <a href="javascript:void(0);" class="dropdown-toggle h54 nav-border-left" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-left">
+                            <img src="app/img/avatar1.jpg" alt="用户头像">
+                        </span>
+                    &nbsp;&nbsp;张 <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight">
+                    <span class="arrow top"></span>
+                    <li>
+                        <a href="System/SetAccountNumber.html"><i class="iconfont icon-account m-r-xs icon-size20"></i>帐号信息</a>
+                    </li>
+                    <li>
+                        <a href="accountPassword/edit.html"><i class="iconfont icon-pwd m-r-xs icon-size20"></i>修改密码</a>
+                    </li>
+                    <li>
+                        <a href="Main/Binding.html"><i class="iconfont icon-binding m-r-xs icon-size20"></i>帐号绑定</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="http://www.baidu.com" data-toggle="ajaxModal" target="_self"><i
+                                class="iconfont icon-logout m-r-xs icon-size20"></i>退出</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <section>
+        <section class="hbox stretch">
+            <aside class="bg-dark lter aside-md hidden-print hidden-xs nav-xs" id="nav">
+                <section class="vbox">
+                    <section class="w-f scrollable">
+                        <div class="slimScrollDiv"
+                             style="position: relative; overflow: hidden; width: auto; height: 207px;">
+                            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                                 data-size="5px" data-color="#333333"
+                                 style="overflow: hidden; width: auto; height: 207px;">
+                                <nav class="nav-primary hidden-xs">
+                                    <ul class="nav">
+                                        <li class="active">
+                                            <a href="Companyapplist/InstallAppList.html">
+                                                <i class="iconfont icon-mydesktop fa-lg"></i><span>我的桌面</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="Companyapplist/InstallAppList.html">
+                                                <i class="iconfont icon-myapp fa-lg"></i><span>我的应用</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="addressList/list.html">
+                                                <i class="iconfont icon-contacts fa-lg"></i><span>通讯录</span>
+                                            </a>
+                                        </li>
+                                        <!--<li>
+                                            <a href="addressList/mrlist.html">
+                                                <i class="iconfont icon-org fa-lg"></i><span>组织架构</span>
+                                            </a>
+                                        </li>-->
+                                        <!--<li>
+                                            <a href="http://www.baidu.com">
+                                                <i class="iconfont icon-groupsend fa-lg"></i><span>群发消息</span>
+                                            </a>
+                                        </li>-->
+                                        <li>
+                                            <a href="app/modules/privilege/main.html">
+                                                <i class="iconfont icon-permission fa-lg"></i><span>系统管理</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="slimScrollBar"
+                                 style="width: 5px; position: absolute; top: -375px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 0px; height: 117.394520547945px; background: rgb(51, 51, 51);"></div>
+                            <div class="slimScrollRail"
+                                 style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 0px; background: rgb(51, 51, 51);"></div>
+                        </div>
+                    </section>
+                </section>
+            </aside>
+            <section id="content">
+                <section class="vbox">
+                    <iframe id="mainFrame" name="mainFrame" src="Companyapplist/InstallAppList.html" frameborder="0"
+                            height="100%" width="100%"
+                            style="background: url('app/img/loading2.gif') center no-repeat; height: 100%; width: 100%; border: 0px;"></iframe>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+</body>
+</html>
