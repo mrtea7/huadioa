@@ -1,0 +1,18 @@
+[
+  {
+    "appName": "投票",
+    "roleType": [
+      "成员",
+      "管理员"
+    ],
+    "defaultRole": "成员"
+  },
+  {
+    "appName": "收文",
+    "roleType": [
+      "内勤",
+      "局长"
+    ],
+    "defaultRole": "内勤"
+  }
+]
