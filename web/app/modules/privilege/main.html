@@ -18,14 +18,9 @@
         <div class="wrapper b-b header"><b>系统管理</b></div>
         <div class="affix" style="width: 150px;" ng-controller="SidebarCtrl">
             <ul class="nav" style='overflow-y:auto; height:100%'>
-                <li bindonce class="b-b b-light" ng-repeat="page in content" ng-class="isSelected(page)" >
-                    <a ng-click="setPage(page.menucode)"><span bo-text="page.menuname"></span></a>
+                <li bindonce class="b-b b-light" ng-repeat="menuItem in menu" ng-class="isSelected(menuItem)" >
+                    <a ng-click="setPage(menuItem)"><span bo-text="menuItem.menuname"></span></a>
                 </li>
-                <!--
-                <li class="b-b b-light open"><a href="">用户管理</a></li>
-                <li class="b-b b-light"><a href="../privilege/grp-list.html">部门管理</a></li>
-                <li class="b-l b-b b-light "><a href="../privilege/jole-list.html">角色管理</a></li>
-                -->
             </ul>
         </div>
     </aside>

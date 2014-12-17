@@ -6,7 +6,8 @@ angular.module('underscore', [])
 angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce', 'underscore'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/userManage');
+        // 作用：如果是初始化的，那么是动态的
+        //$urlRouterProvider.otherwise('/userManage');
         $stateProvider
             .state('userManage', {
                 url: '/userManage',
@@ -33,14 +34,14 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
                 }
             })
     })
-
 /**
  * 由于整个应用都会和路由打交道，所以这里把$state和$stateParams这两个对象放到$rootScope上，方便其它地方引用和注入。
  */
-    .run(function ($rootScope, $state, $stateParams) {
-        $rootScope.$state = $state;
-        $rootScope.$stateParams = $stateParams;
-    })
+    .run(['$rootScope', '$state', '$stateParams', 'appService',
+        function ($rootScope, $state, $stateParams, appService) {
+            $rootScope.$state = $state;
+            $rootScope.$stateParams = $stateParams;
+        }])
 
     .factory('appService', ['$http', function ($http) {
         var doRequest = function (username, filename) {
@@ -53,7 +54,6 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
             menuList: function (placeholder) {
                 return doRequest(placeholder, 'privilegeMenu.json');
             }
-
         };
     }])
 
@@ -77,10 +77,10 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
     .factory('entityService', ['$http', '$rootScope', function ($http, $rootScope) {
         var service = {
             show: function () {
-                $rootScope.$broadcast('entity.show');
+                $rootScope.$emit('entity.show');
             },
             hide: function (callback) {
-                $rootScope.$broadcast('entity.hide', callback);
+                $rootScope.$emit('entity.hide', callback);
             }
         }
         return service;
@@ -95,24 +95,20 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
             }
         }])
 
-    .controller('SidebarCtrl', ['$scope', '$state', 'appService',
-        function ($scope, $state, appService) {
+    .controller('SidebarCtrl', ['$scope', '$rootScope', '$state', 'appService',
+        function ($scope, $rootScope, $state, appService) {
             appService.menuList().success(function (data, httpStatus) {
-                $scope.content = data;
+                $scope.menu = data; // 注：原来叫 content 会覆盖掉对象原有的属性
+                $state.transitionTo(data[0].menucode);
+                $scope.selected = data[0];
             })
-
-            $scope.setPage = function (page) {
-                $state.transitionTo(page);
-                $scope.selected = page;
+            $scope.setPage = function (menu) {
+                $state.transitionTo(menu.menucode);
+                $scope.selected = menu;
             };
-            $scope.selected = "";
-            $scope.isSelected = function (page) {
-                //console.log("SidebarCtrl isSelected")
-                return $scope.selected === page ? 'open' : '';
+            $scope.isSelected = function (menu) {
+                return $scope.selected === menu ? 'open' : '';
             };
-            //console.log("SidebarCtrl " )
-            //console.log( $scope)
-
         }])
 
     .controller("ListCtrl", ["$scope", "$rootScope", 'userService', '_', 'entityService',
@@ -137,11 +133,8 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
             }
             // 何时调用
             $scope.isSelected = function (user) {
-                //console.log("ListController isSelected")
                 return $scope.selected === user ? "js_entity_selected active" : "";
             }
-            //console.log("ListController " )
-            //console.log( $scope)
         }])
 
 
@@ -149,12 +142,12 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
         return {
             restrict: 'A',
             templateUrl: 'templates/userEntity.html',
-            controller: ['$scope', function ($scope) {
+            controller: ['$scope', '$rootScope', function ($scope, $rootScope) {
                 var $entity = $("#entity-panel");
-                $scope.$on('entity.show', function () {
+                $rootScope.$on('entity.show', function () {
                     $entity.animate({right: "0"}, "fast");
                 })
-                $scope.$on('entity.hide', function (event, callback) {
+                $rootScope.$on('entity.hide', function (event, callback) {
                     $entity.animate({right: "-35%"}, "fast", callback);
                 });
             }],
