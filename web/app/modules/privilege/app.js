@@ -5,38 +5,63 @@ angular.module('underscore', [])
 
 angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce', 'underscore'])
 
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/userManage');
+        $stateProvider
+            .state('userManage', {
+                url: '/userManage',
+                views: {
+                    'content': {
+                        templateUrl: 'templates/userManage.html'
+                    }
+                }
+            })
+            .state('deptManage', {
+                url: '/deptManage',
+                views: {
+                    'content': {
+                        templateUrl: 'templates/deptManage.html'
+                    }
+                }
+            })
+            .state('roleManage', {
+                url: '/roleManage',
+                views: {
+                    'content': {
+                        templateUrl: 'templates/roleManage.html'
+                    }
+                }
+            })
+    })
+
 /**
  * 由于整个应用都会和路由打交道，所以这里把$state和$stateParams这两个对象放到$rootScope上，方便其它地方引用和注入。
- * 这里的run方法只会在angular启动的时候运行一次。
  */
     .run(function ($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
     })
 
-/**
- * 配置路由。
- * 注意这里采用的是ui-router这个路由，而不是ng原生的路由。
- * ng原生的路由不能支持嵌套视图，所以这里必须使用ui-router。
- */
-    .config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/main');
-        $stateProvider
-            .state('main', {
-                url: '/main',
-                views: {
-                    'sidebar': {
-                        templateUrl: 'sidebar.html'
-                    }
-                }
-            })
-    })
+    .factory('appService', ['$http', function ($http) {
+        var doRequest = function (username, filename) {
+            return $http({
+                method: 'GET',
+                url: 'data/' + filename
+            });
+        };
+        return {
+            menuList: function (placeholder) {
+                return doRequest(placeholder, 'privilegeMenu.json');
+            }
+
+        };
+    }])
 
     .factory('userService', ['$http', function ($http) {
         var doRequest = function (username, filename) {
             return $http({
                 method: 'GET',
-                url: filename
+                url: 'data/' + filename
             });
         };
         return {
@@ -61,16 +86,36 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
         return service;
     }])
 
-    .controller("MainController", ["$scope", "$modal", "$rootScope",
-        function ($scope, $modal, $rootScope) {
+    .controller("MainCtrl", ["$scope", "$modal",
+        function ($scope, $modal) {
             $scope.editUser = function () {
                 $modal.open({
-                    templateUrl: "userEdit.html"
+                    templateUrl: "templates/userEdit.html"
                 })
             }
         }])
 
-    .controller("ListController", ["$scope", "$rootScope", 'userService', '_', 'entityService',
+    .controller('SidebarCtrl', ['$scope', '$state', 'appService',
+        function ($scope, $state, appService) {
+            appService.menuList().success(function (data, httpStatus) {
+                $scope.content = data;
+            })
+
+            $scope.setPage = function (page) {
+                $state.transitionTo(page);
+                $scope.selected = page;
+            };
+            $scope.selected = "";
+            $scope.isSelected = function (page) {
+                //console.log("SidebarCtrl isSelected")
+                return $scope.selected === page ? 'open' : '';
+            };
+            //console.log("SidebarCtrl " )
+            //console.log( $scope)
+
+        }])
+
+    .controller("ListCtrl", ["$scope", "$rootScope", 'userService', '_', 'entityService',
         function ($scope, $rootScope, userService, _, entityService) {
             userService.userList().success(function (data, httpStatus) {
                 $scope.userList = data;
@@ -92,16 +137,18 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
             }
             // 何时调用
             $scope.isSelected = function (user) {
+                //console.log("ListController isSelected")
                 return $scope.selected === user ? "js_entity_selected active" : "";
             }
-        }
-    ])
+            //console.log("ListController " )
+            //console.log( $scope)
+        }])
 
 
     .directive("myUserQuickEntity", function () {
         return {
             restrict: 'A',
-            templateUrl: 'userEntity.html',
+            templateUrl: 'templates/userEntity.html',
             controller: ['$scope', function ($scope) {
                 var $entity = $("#entity-panel");
                 $scope.$on('entity.show', function () {

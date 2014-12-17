@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="cn" class="app fadeInUp animated">
+<head>
     <meta charset="UTF-8">
     <title></title>
     <base target="mainFrame">
@@ -9,120 +9,29 @@
     <link href="../../css/bootstrap.css" rel="stylesheet">
     <link href="../../css/animate.css" rel="stylesheet">
     <link href="../../css/font-awesome.css" rel="stylesheet">
-    <link href="../../css/style.css" rel="stylesheet">
     <link href="../../css/iconfont.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
 </head>
-<body ng-app="privilegeModule" ng-controller="MainController">
+<body ng-app="privilegeModule" ng-controller="MainCtrl">
 <section class="hbox stretch">
-    <aside class="aside-sm bg-white b-r" id="subNav" ui-view="sidebar"></aside>
-    <aside>
-        <section class="vbox">
-            <header class="header bg-white b-b clearfix">
-                <form class="talbe-search" method="post" action="">
-                    <div class="row m-t-sm">
-                        <div class="col-sm-7 m-b-xs">
-                            <div class="btn-group">
-                                <button type="button" data-toggle="refresh" class="btn btn-sm btn-default" title="刷新">
-                                    <i class="fa fa-refresh"></i>
-                                </button>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm dropdown-toggle"
-                                        data-toggle="dropdown">
-                                    <i class="fa fa-plus  m-l-xs m-r-xs"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="javascript:;" data-remote="../addressList/editMember.html"
-                                           data-toggle="ajaxModal">新增成员</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;" data-remote="../addressList/import.html"
-                                           data-toggle="ajaxModal">批量导入</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <!--data-path="../attendance/count/getAllDepartment?t="-->
-                            <input type="text" class="form-control input-sm" data-token-limit="1"
-                                   id="tokendemo"
-                                   data-toggle="tokeninputtree" name="department"
-                                   data-selected="[]"
-                                   placeholder="请选择部门"/>
-                        </div>
-                        <div class="col-sm-2 m-b-xs">
-                            <div class="input-group">
-                                <input type="text" class="form-control input-sm" id="employeeTxt" value=""
-                                       name="employee" placeholder="请输入员工"/>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-sm btn-default" type="submit" title="搜索" id="sousuoBut">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" name="pageNumber" id="pageNumber" value="1"/>
-                    <input type="hidden" name="orderBy" id="orderBy" value="desc"/>
-                    <input type="hidden" name="order" id="order" value="time"/>
-                    <script>
-                        var searchTypeTxt = document.getElementById('searchTypeTxt');
-                        var employeeTxt = document.getElementById('employeeTxt');
-                        var sousuoBut = document.getElementById('sousuoBut');
-                        sousuoBut.onmouseover = function () {
-                            if (searchTypeTxt.innerHTML == '按时间段查询') {
-                                employeeTxt.setAttribute("data-rule-required", "true");
-                            } else {
-                                employeeTxt.setAttribute("data-rule-required", "false");
-                            }
-                        }
-                    </script>
-                </form>
-            </header>
-            <section class="scrollable  wrapper">
-                <section class="panel panel-default">
-                    <div class="table-responsive">
-                        <table class="table table-hover m-b-none entity-view" ng-controller="ListController">
-                            <thead>
-                            <tr>
-                                <th>用户账号</th>
-                                <th>用户姓名</th>
-                                <th>所属部门</th>
-                                <th>岗位</th>
-                                <th>状态</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr bindonce ng-repeat="user in userList" ng-class="isSelected(user)"
-                                ng-click="toggleClick(user)" >
-                                <td><span bo-text="user.userno"></span></td>
-                                <td><span bo-text="user.username"></span></td>
-                                <td><span bo-text="user.deptname"></span></td>
-                                <td><span bo-text="user.job"></span></td>
-                                <td><span bo-text="user.userstate"></span></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </section>
-            <footer class="footer bg-white b-t">
-                <div class="row text-center-xs">
-                    <div class="col-md-6 hidden-sm">
-                        <p class="text-muted m-t">总共0条 当前为第1页</p>
-                    </div>
-                    <div class="col-md-6 col-sm-12 text-right text-center-xs">
-                        <ul class="pagination pagination-sm m-t-sm m-b-none" data-pages-total=""
-                            data-page-current=""></ul>
-                    </div>
-                </div>
-            </footer>
-        </section>
+    <aside class="aside-sm bg-white b-r" id="subNav">
+        <div class="wrapper b-b header"><b>系统管理</b></div>
+        <div class="affix" style="width: 150px;" ng-controller="SidebarCtrl">
+            <ul class="nav" style='overflow-y:auto; height:100%'>
+                <li bindonce class="b-b b-light" ng-repeat="page in content" ng-class="isSelected(page)" >
+                    <a ng-click="setPage(page.menucode)"><span bo-text="page.menuname"></span></a>
+                </li>
+                <!--
+                <li class="b-b b-light open"><a href="">用户管理</a></li>
+                <li class="b-b b-light"><a href="../privilege/grp-list.html">部门管理</a></li>
+                <li class="b-l b-b b-light "><a href="../privilege/jole-list.html">角色管理</a></li>
+                -->
+            </ul>
+        </div>
     </aside>
-
+    <aside ui-view="content"></aside>
 </section>
-<section id="entity-panel" class="entity-panel"  my-user-quick-entity ></section>
+<section id="entity-panel" class="entity-panel" my-user-quick-entity></section>
 </body>
 <script src="../../framework/jquery/1.11.1/jquery.js"></script>
 <script src="../../framework/underscore/1.7.0/underscore.js"></script>
@@ -130,5 +39,5 @@
 <script src="../../framework/angularui/ui-router/0.2.13/angular-ui-router.js"></script>
 <script src="../../framework/angularui/ui-bootstrap/0.12.0/ui-bootstrap-tpls.js"></script>
 <script src="../../framework/angular-utils/bindonce.js"></script>
-<script src="app-privilege.js"></script>
+<script src="app.js"></script>
 </html>

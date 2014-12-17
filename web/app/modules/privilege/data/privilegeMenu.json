@@ -1,0 +1,14 @@
+[
+  {
+    "menucode": "userManage",
+    "menuname": "用户管理"
+  },
+  {
+    "menucode": "deptManage",
+    "menuname": "部门管理"
+  },
+  {
+    "menucode": "roleManage",
+    "menuname": "角色管理"
+  }
+]
