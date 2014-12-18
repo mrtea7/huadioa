@@ -36,7 +36,7 @@
         <section class="panel panel-default">
             <div class="table-responsive">
                 <table class="table table-hover m-b-none entity-view"
-                       data-path="../privilege/jole-detail.html?1=1&id={0}">
+                       data-path="../privilege/role-detail.html?1=1&id={0}">
                     <thead>
                     <tr>
                         <!--<th class="with-checkbox">
@@ -70,7 +70,7 @@
                     <tr name="vote_role" class="role">
                         <td class="col-md-3"> </td>
                         <td class="col-md-3"> </td>
-                        <td class="col-md-3">新增角色 <i class="fa fa-plus-square"></i></td>
+                        <td class="col-md-3"><i class="fa fa-plus-square"></i> 新增</td>
                         <td class="col-md-3"></td>
                     </tr>
                     <tr name="shouwen" class="js_app">
@@ -114,3 +114,17 @@
         </div>
     </footer>
 </section>
+<script type="text/javascript">
+    $(".js_app").click(function(){
+        var $app = $(this), roleName;
+        roleName = $app.attr("name") + "_role";
+        if( $app.hasClass("js_open") ){
+            $("[name="+ roleName + "]").hide();
+            $app.removeClass("js_open")
+        }else{
+            $("[name="+ roleName + "]").show();
+            $app.addClass("js_open")
+        }
+
+    })
+</script>
