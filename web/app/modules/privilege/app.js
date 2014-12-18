@@ -34,9 +34,10 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
                 }
             })
     })
-/**
- * 由于整个应用都会和路由打交道，所以这里把$state和$stateParams这两个对象放到$rootScope上，方便其它地方引用和注入。
- */
+
+    /*
+     * 由于整个应用都会和路由打交道，所以这里把$state和$stateParams这两个对象放到$rootScope上，方便其它地方引用和注入。
+     */
     .run(['$rootScope', '$state', '$stateParams', 'appService',
         function ($rootScope, $state, $stateParams, appService) {
             $rootScope.$state = $state;
@@ -74,20 +75,44 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
         };
     }])
 
-    .factory('entityService', ['$http', '$rootScope', function ($http, $rootScope) {
-        var service = {
-            show: function () {
-                $rootScope.$emit('entity.show');
-            },
-            hide: function (callback) {
-                $rootScope.$emit('entity.hide', callback);
+    .factory('entityService', ['$http', '$rootScope', '$parse', 'userService', '$document',
+        function ($http, $rootScope, $parse, userService, $document) {
+            var $entity = $("#entity-panel"),
+                selectedAccessor = $parse("selected"),
+                userAccessor = $parse("$parent.$parent.user")
+                ;
+            var hide = function (scope) {
+                userAccessor.assign(scope, "")
+                selectedAccessor.assign(scope, "")
+                $entity.animate({right: "-35%"}, "fast");
+                if (scope.$root.$$phase != '$apply' && scope.$root.$$phase != '$digest') { // angular hack
+                    scope.$apply(); // for document hide
+                }
             }
-        }
-        return service;
-    }])
+            return {
+                show: function (scope, user) {
+                    userService.user(user.userno).success(function (data, httpStatus) {
+                        selectedAccessor.assign(scope, user)
+                        userAccessor.assign(scope, data)
+                        $entity.animate({right: "0"}, "fast");
+                    })
+                },
+                hide: hide,
+                autoHide: function (scope) {
+                    $document.mousedown(scope, function (event) {
+                        var $target = $(event.target);
+                        if (!($target.parents("#entity-panel").length > 0
+                            || $target.parents("#userList").length > 0)) {
+                            hide(scope)
+                        }
+                    })
+                }
+            };
+        }])
 
     .controller("MainCtrl", ["$scope", "$modal",
         function ($scope, $modal) {
+            //$scope.user = {username:"121eadsf"}
             $scope.editUser = function () {
                 $modal.open({
                     templateUrl: "templates/userEdit.html"
@@ -107,52 +132,39 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
                 $scope.selected = menu;
             };
             $scope.isSelected = function (menu) {
+                //console.log(" isSelected")
                 return $scope.selected === menu ? 'open' : '';
             };
         }])
 
-    .controller("ListCtrl", ["$scope", "$rootScope", 'userService', '_', 'entityService',
-        function ($scope, $rootScope, userService, _, entityService) {
+    .controller("ListCtrl", ["$scope", 'userService', 'entityService',
+        function ($scope, userService, entityService) {
             userService.userList().success(function (data, httpStatus) {
                 $scope.userList = data;
             });
             $scope.selected = "";
-            $scope.toggleClick = function (user) {
-                entityService.hide(function () {
-                    if ($scope.selected === user) {
-                        $scope.selected = "";
-                        $scope.$parent.user = "";
-                    } else {
-                        userService.user(user.userno).success(function (data, httpStatus) {
-                            $scope.$parent.user = data;
-                            $scope.selected = user;
-                            entityService.show();
-                        })
-                    }
-                });
+            $scope.toggle = function (user, $event) {
+                if (!$scope.selected) {
+                    entityService.show($scope, user);
+                } else if ($scope.selected && $scope.selected === user) {
+                    entityService.hide($scope);
+                } else {
+                    entityService.hide($scope);
+                    entityService.show($scope, user);
+                }
+                $event.stopPropagation();
             }
-            // 何时调用
+            entityService.autoHide($scope)
             $scope.isSelected = function (user) {
+                // 自执行，传递 user，与 selected 比较
+                //console.log("isSelectedFn")
                 return $scope.selected === user ? "js_entity_selected active" : "";
             }
         }])
 
-
-    .directive("myUserQuickEntity", function () {
+    .directive("myUserEntity", ["$document", function ($document) {
         return {
             restrict: 'A',
-            templateUrl: 'templates/userEntity.html',
-            controller: ['$scope', '$rootScope', function ($scope, $rootScope) {
-                var $entity = $("#entity-panel");
-                $rootScope.$on('entity.show', function () {
-                    $entity.animate({right: "0"}, "fast");
-                })
-                $rootScope.$on('entity.hide', function (event, callback) {
-                    $entity.animate({right: "-35%"}, "fast", callback);
-                });
-            }],
-            link: function ($scope, element) {
-                // 私有
-            }
+            templateUrl: 'templates/userEntity.html'
         }
-    })
+    }])
