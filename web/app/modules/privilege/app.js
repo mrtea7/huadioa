@@ -79,47 +79,65 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
         function ($http, $rootScope, $parse, userService, $document) {
             var $entity = $("#entity-panel"),
                 selectedAccessor = $parse("selected"),
-                userAccessor = $parse("$parent.$parent.user")
-                ;
-            var hide = function (scope) {
-                userAccessor.assign(scope, "")
-                selectedAccessor.assign(scope, "")
-                $entity.animate({right: "-35%"}, "fast");
-                if (scope.$root && scope.$root.$$phase != '$apply'
-                    && scope.$root.$$phase != '$digest') { // angular hack
-                    scope.$apply(); // for document hide
-                }
-            }
-            return {
-                show: function (scope, user) {
+                userAccessor = $parse("$parent.$parent.user"),
+                userScope,
+                show = function (user) {
                     userService.user(user.userno).success(function (data, httpStatus) {
-                        selectedAccessor.assign(scope, user)
-                        userAccessor.assign(scope, data)
+                        selectedAccessor.assign(userScope, user)
+                        userAccessor.assign(userScope, data)
                         $entity.animate({right: "0"}, "fast");
                     })
                 },
-                hide: hide,
-                autoHide: function (scope) {
-                    $document.mousedown(scope, function (event) {
+                hide = function () {
+                    userAccessor.assign(userScope, "")
+                    selectedAccessor.assign(userScope, "")
+                    $entity.animate({right: "-35%"}, "fast");
+                    if (userScope.$root && userScope.$root.$$phase != '$apply'
+                        && userScope.$root.$$phase != '$digest') { // angular hack
+                        userScope.$apply(); // for document hide
+                    }
+                },
+                startAutoHide = function () {
+                    //!$document.attr("onmousedown") &&
+                    $document.mousedown(userScope, function (event) {
                         var $target = $(event.target);
                         if (!($target.parents("#entity-panel").length > 0
                             || $target.parents("#userList").length > 0)) {
-                            hide(scope)
+                            hide(userScope)
                         }
                     })
+                },
+                stopAutoHide = function () {
+                    //console.log($document.attr("onmousedown"))
+                    //$document.attr("onmousedown") && startAutoHide();
+                    $document.unbind("mousedown")
                 }
+            return {
+                initScope: function (scope) {
+                    userScope = scope;
+                },
+                show: show,
+                hide: hide,
+                startAutoHide: startAutoHide,
+                stopAutoHide: stopAutoHide
             };
         }])
 
-    .controller("MainCtrl", ["$scope", "$modal",
-        function ($scope, $modal) {
-            $scope.editUser = function () {
-                $modal.open({
-                    templateUrl: "templates/userEdit.html",
-                    backdrop: "static",
-                    size: "lg"
-                })
-            }
+    .controller("MainCtrl", ["$scope", "$modal", "userService",
+        function ($scope, $modal, userService) {
+
+        }])
+
+    .controller('ModalInstanceCtrl', ["$scope", "$modalInstance", "user",
+        function ($scope, $modalInstance, user) {
+            $scope.user = user.data;
+            $scope.ok = function () {
+                $modalInstance.close();
+            };
+
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
         }])
 
     .controller('SidebarCtrl', ['$scope', '$rootScope', '$state', 'appService',
@@ -143,33 +161,40 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
         function ($scope, userService, entityService) {
             userService.userList().success(function (data, httpStatus) {
                 $scope.userList = data;
+                entityService.initScope($scope)
+                entityService.startAutoHide()
             });
             $scope.selected = "";
             $scope.toggle = function (user, $event) {
                 if (!$scope.selected) {
-                    entityService.show($scope, user);
+                    entityService.show(user);
                 } else if ($scope.selected && $scope.selected === user) {
-                    entityService.hide($scope);
+                    entityService.hide();
                 } else {
-                    entityService.hide($scope);
-                    entityService.show($scope, user);
+                    entityService.hide();
+                    entityService.show(user);
                 }
                 $event.stopPropagation();
             }
-            entityService.autoHide($scope)
+
             $scope.isSelected = function (user) {
                 // 自执行，传递 user，与 selected 比较
-                //console.log("isSelectedFn")
                 return $scope.selected === user ? "js_entity_selected active" : "";
             }
         }])
 
-    .directive("myUserEntity", ["$document", function ($document) {
-        return {
-            restrict: 'A',
-            templateUrl: 'templates/userEntity.html'
-        }
-    }])
+    .directive("myUserEntity", ["entityService",
+        function (entityService) {
+            return {
+                restrict: 'A',
+                templateUrl: 'templates/userEntity.html',
+                link: function(scope){
+                    scope.colseEntity = function(){
+                        entityService.hide();
+                    }
+                }
+            }
+        }])
 
     .directive("myBtnRefulsh", [function () {
         return {
@@ -186,9 +211,54 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
         }
     }])
 
+    .directive("myUserModal", ["$modal", "userService", "$document", "entityService",
+        function ($modal, userService, $document, entityService) {
+            return {
+                restrict: 'A',
+                scope: {
+                    userno: "@"
+                },
+                link: function (scope, element) {
+                    element.click(function () {
+                        var modalInstance = $modal.open({
+                            backdrop: "static",
+                            size: "lg",
+                            templateUrl: "templates/userEdit.html", // scope is in ModalInstanceCtrl
+                            controller: 'ModalInstanceCtrl',
+                            resolve: {
+                                user: function () {
+                                    var promise = userService.user(scope.userno);
+                                    promise.success(function (data, httpStatus) {
+                                        return {
+                                            data: data
+                                        };
+                                    })
+                                    return promise;
+                                }
+                            }
+                        })
+
+                        modalInstance.result.then(function (selectedItem) {
+                            entityService.startAutoHide();
+
+                        }, function () {
+                            //$document.bind("mousedown", scope,)
+                            //console.log($document)
+                            //event && event["mousedown"] && console.log(event["mousedown"])
+                            //console.log($document.attr("mousedown"))
+                            console.log('Modal dismissed at: ' + new Date());
+                            entityService.startAutoHide();
+                        });
+
+                        modalInstance.opened.then(function () {
+                            entityService.stopAutoHide();
+                        })
+                    })
+                }
+            }
+        }])
+
+/*
 
 
-
-
-
-
+ */

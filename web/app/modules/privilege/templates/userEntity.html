@@ -1,7 +1,7 @@
 <section class="entity-panel-wrapper">
     <header class="entity-panel-header header">
         <p>成员资料</p>
-        <button type="button" class="close m-t" data-dismiss="entity">&times;</button>
+        <button type="button" class="close m-t" ng-click="colseEntity()">&times;</button><!--data-dismiss="entity"-->
     </header>
     <div class="entity-panel-body form-horizontal">
         <div class="col-sm-offset-1  m-t-sm m-b-sm">
@@ -138,6 +138,7 @@
     </div>
     <footer class="entity-panel-footer footer  text-right">
         <!-- 修改详情 -->
-        <button type="button" class="btn btn-default" ng-click="editUser()">修改</button>
+        <!--<my-btn-modal></>-->
+        <button type="button" class="btn btn-default"  my-user-modal data-userno="{{ user.userno }}">修改</button>
     </footer>
 </section>
