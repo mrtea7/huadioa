@@ -38,8 +38,8 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
     /*
      * 由于整个应用都会和路由打交道，所以这里把$state和$stateParams这两个对象放到$rootScope上，方便其它地方引用和注入。
      */
-    .run(['$rootScope', '$state', '$stateParams', 'appService',
-        function ($rootScope, $state, $stateParams, appService) {
+    .run(['$rootScope', '$state', '$stateParams',
+        function ($rootScope, $state, $stateParams) {
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
         }])
@@ -85,7 +85,8 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
                 userAccessor.assign(scope, "")
                 selectedAccessor.assign(scope, "")
                 $entity.animate({right: "-35%"}, "fast");
-                if (scope.$root.$$phase != '$apply' && scope.$root.$$phase != '$digest') { // angular hack
+                if (scope.$root && scope.$root.$$phase != '$apply'
+                    && scope.$root.$$phase != '$digest') { // angular hack
                     scope.$apply(); // for document hide
                 }
             }
@@ -112,10 +113,11 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
 
     .controller("MainCtrl", ["$scope", "$modal",
         function ($scope, $modal) {
-            //$scope.user = {username:"121eadsf"}
             $scope.editUser = function () {
                 $modal.open({
-                    templateUrl: "templates/userEdit.html"
+                    templateUrl: "templates/userEdit.html",
+                    backdrop: "static",
+                    size: "lg"
                 })
             }
         }])
@@ -168,3 +170,25 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
             templateUrl: 'templates/userEntity.html'
         }
     }])
+
+    .directive("myBtnRefulsh", [function () {
+        return {
+            restrict: 'E',
+            replace: true, // 用 template 替换指令
+            template: ['<button type="button" data-toggle="refresh" class="btn btn-sm btn-default" title="刷新">',
+                '<i class="fa fa-refresh"></i>',
+                '</button>'].join(""),
+            link: function (scope, element, attr) {
+                element.click(function () {
+                    window.location.reload()
+                })
+            }
+        }
+    }])
+
+
+
+
+
+
+
