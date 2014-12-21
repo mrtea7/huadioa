@@ -1,0 +1,347 @@
+.select_org_lists {
+    margin-left: 11px;
+    height: 345px;
+    width: 267px;
+}
+
+.select_dest_lists {
+    margin-left: 0px;
+    height: 345px;
+    width: 266px;
+}
+
+.list-letter {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-left: 0;
+}
+
+.list-letter li {
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 12px;
+}
+
+.member-list-div {
+    height: 200px;
+    overflow-y: auto;
+}
+
+.list-member {
+
+}
+
+.list-member li {
+    line-height: 30px;
+    height: 30px;
+    float: left;
+}
+
+.list-member .no {
+    width: 40px;
+}
+
+.list-member .name {
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.list-member .depart {
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.node-item {
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(100, 100, 100, 0.5);
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+}
+
+.node-item.self {
+    background-color: #EDF4FB;
+}
+
+.root .node-item.self {
+    background-color: #FFFFDE;
+}
+
+.node-item span {
+    margin: 0 3px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 47px;
+    min-width: 20px;
+}
+
+.org-nodes {
+    margin-left: 10px;
+}
+
+.node-item span img {
+    width: 24px;
+    height: 24px;
+}
+
+.node-item span i {
+    cursor: pointer;
+}
+
+.org-nodes .tree-expand {
+    width: 13px;
+    height: 13px;
+    overflow: hidden;
+    margin: 14px 2px 0 -1px;
+    background: url(../../images/page/organization/org-tree.png) no-repeat -26px 0;
+}
+
+.org-nodes .tree-expand:hover {
+    background-position: -39px 0;
+}
+
+.org-nodes .tree-expand-close {
+    background-position: 0 0;
+}
+
+.org-nodes .tree-expand-close:hover {
+    background-position: -13px 0;
+}
+
+.org-nodes .vline {
+    background: url(/assets/images/page/organization/vertical_line.png) repeat-y;
+}
+
+.org-nodes .no-tree-expand {
+    width: 13px;
+    height: 13px;
+    overflow: hidden;
+    margin: 13px 2px 0 -1px;
+    background: url(/assets/images/page/organization/node_last_nc.png) -5px -23px no-repeat;
+}
+
+.nodes-item {
+    padding: 10px 0 0 12px;
+    background: url(/assets/images/page/organization/node_line.png) no-repeat;
+}
+
+.node-last {
+    background: url(/assets/images/page/organization/node_last.png) no-repeat;
+}
+
+.nodes-items {
+    padding-left: 37px;
+}
+
+.node-item .m-depart {
+    max-width: 70px;
+}
+
+.node-item .m-name {
+    max-width: 50px;
+}
+
+.node-item .m-profession {
+    max-width: 100px;
+}
+
+.org-menu {
+    padding: 5px 0;
+    box-shadow: 0 0 5px #ccc;
+    position: absolute;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.org-menu .org-menu-item {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 20px;
+    display: block;
+    white-space: nowrap;
+}
+
+.org-menu .org-menu-item:hover {
+    background-color: #0066cc;
+    color: #fff;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+.clearfix {
+    display: block;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: "\0020";
+    clear: both;
+    height: 0;
+}
+
+#listed .searchItem {
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    margin: 2px 0px;
+}
+
+#listed .searchItem div {
+    float: left;
+    padding: 0px 5px;
+    cursor: pointer;
+}
+
+#listed .firstLetter {
+    width: 40px;
+    height: 30px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#listed .avatar {
+    cursor: pointer;
+}
+
+#listed .avatar img {
+    display: block;
+    border-radius: 0;
+}
+
+#listed .fullName {
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#listed .depart {
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#listed .addItem {
+    width: 30px;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+}
+
+#listed .addItem .js_add_member {
+    opacity: 0;
+    font-size: 16px;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-opacity: 0;
+    transition: opacity 0.1s;
+    -webkit-transition: opacity 0.3s;
+}
+
+#listed .searchItem:hover .js_add_member {
+    opacity: 1;
+}
+
+#list {
+    height: 276px;;
+}
+
+#list .member-list-div {
+    height: 276px;
+    padding-top: 8px
+}
+
+div.pull-right .js_member_select_div {
+    height: 280px;
+}
+
+.ThemeColor3 {
+    color: #0066cc !important
+}
+
+.pull-left i.emptyIco {
+    position: absolute;
+    z-index: 10;
+    top: 10px;
+    right: 34px;
+    cursor: pointer;
+}
+
+.js_member_select_div {
+}
+
+.js_member_select_div .searchItem {
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    clear: both;
+    margin: 2px 0px;
+}
+
+.js_member_select_div .avatar {
+    width: 30px;
+    float: left;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.js_member_select_div .avatar img {
+    display: block;
+    border-radius: 0;
+}
+
+.js_member_select_div .fullName {
+    width: 60px;
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.js_member_select_div .depart {
+    width: 80px;
+    float: left;
+}
+
+.js_member_select_div .addItem {
+    height: 30px;
+    cursor: pointer;
+}
+
+div.add-member {
+    cursor: pointer;
+}
+
+.selected {
+    color: #0066cc !important;
+    font-weight: bold;
+}
+
+#ajaxModal .modal-body {
+    padding-bottom: 0px;
+}
+
+#ajaxModea .modal-footer {
+    margin-top: 0px;
+}

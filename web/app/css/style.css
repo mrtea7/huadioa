@@ -329,6 +329,10 @@ a:hover .caret-white {
     border-radius: 2px
 }
 
+.panel.panel-no-l{
+    border-left-width: 0;
+}
+
 .panel.panel-default {
     border-color: #e8e8e8
 }
@@ -4010,6 +4014,9 @@ dl.dl-xs dd {
 }
 
 @media (min-width: 768px) {
+    .modal-dialog{
+        width: 708px;
+    }
     .help-inline {
         padding-left: 5px
     }
