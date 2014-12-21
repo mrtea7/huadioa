@@ -223,7 +223,7 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
                         var modalInstance = $modal.open({
                             backdrop: "static",
                             keyboard: false,
-                            size: "lg",
+                            //size: "lg",
                             templateUrl: "templates/userEdit.html", // scope is in ModalInstanceCtrl
                             controller: 'ModalInstanceCtrl',
                             resolve: {
