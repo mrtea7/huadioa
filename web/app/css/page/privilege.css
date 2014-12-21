@@ -1,13 +1,13 @@
 .select_org_lists {
-    margin-left: 11px;
+    margin-left: 4px;
     height: 345px;
     width: 267px;
 }
 
 .select_dest_lists {
-    margin-left: 0px;
+    margin-left: 0;
     height: 345px;
-    width: 266px;
+    width: 269px;
 }
 
 .list-letter {
@@ -344,4 +344,8 @@ div.add-member {
 
 #ajaxModea .modal-footer {
     margin-top: 0px;
+}
+
+.modal-body.modal-body-offset-right{
+    padding-left: 70px;
 }
