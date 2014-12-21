@@ -273,8 +273,3 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
                 }
             }
         }])
-
-/*
-
-
- */
