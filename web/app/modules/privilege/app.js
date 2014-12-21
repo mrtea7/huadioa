@@ -222,6 +222,7 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
                     element.click(function () {
                         var modalInstance = $modal.open({
                             backdrop: "static",
+                            keyboard: false,
                             size: "lg",
                             templateUrl: "templates/userEdit.html", // scope is in ModalInstanceCtrl
                             controller: 'ModalInstanceCtrl',
