@@ -6,8 +6,8 @@ angular.module('underscore', [])
 angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce', 'underscore'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
-        // 作用：如果是初始化的，那么是动态的
-        //$urlRouterProvider.otherwise('/userManage');
+        // $urlRouterProvider.otherwise('/userManage'); // 此处无须设置默认值，因为要动态确认的
+        // 可动态初始化功能节点
         $stateProvider
             .state('userManage', {
                 url: '/userManage',
@@ -42,35 +42,42 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
         function ($rootScope, $state, $stateParams) {
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
+            //$rootScope.BACKEND_SERVER = "http://192.168.2.115:8080/data/module/privilege/"
+            $rootScope.BACKEND_SERVER = "data/"
         }])
 
-    .factory('appService', ['$http', function ($http) {
-        var doRequest = function (username, filename) {
+    .factory('appService', ['$http', '$rootScope', function ($http, $rootScope) {
+        var BACKEND_SERVER = $rootScope.BACKEND_SERVER;
+
+        var doRequest = function (username, url) {
+            //return $http.jsonp(url)
             return $http({
                 method: 'GET',
-                url: 'data/' + filename
+                url: url
             });
         };
         return {
             menuList: function (placeholder) {
-                return doRequest(placeholder, 'privilegeMenu.json');
+                return doRequest(placeholder, BACKEND_SERVER + 'privilegeMenu.json?callback=JSON_CALLBACK');
             }
         };
     }])
 
-    .factory('userService', ['$http', function ($http) {
-        var doRequest = function (username, filename) {
+    .factory('userService', ['$http', "$rootScope", function ($http, $rootScope) {
+        var BACKEND_SERVER = $rootScope.BACKEND_SERVER;
+        var doRequest = function (username, url) {
+            //return $http.jsonp(url) // 解决跨域问题
             return $http({
                 method: 'GET',
-                url: 'data/' + filename
+                url: url
             });
         };
         return {
             userList: function (userno) {
-                return doRequest(userno, 'userList.json');
+                return doRequest(userno, BACKEND_SERVER + 'userList.json?callback=JSON_CALLBACK');
             }
             , user: function (userno) {
-                return doRequest(userno, 'userDetail_' + userno + '.json');
+                return doRequest(userno, BACKEND_SERVER + 'userDetail_' + userno + '.json?callback=JSON_CALLBACK');
             }
         };
     }])
@@ -157,12 +164,15 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
             };
         }])
 
-    .controller("ListCtrl", ["$scope", 'userService', 'entityService',
-        function ($scope, userService, entityService) {
+    .controller("ListCtrl", ["$scope", 'userService', 'entityService', '$timeout',
+        function ($scope, userService, entityService, $timeout) {
             userService.userList().success(function (data, httpStatus) {
-                $scope.userList = data;
-                entityService.initScope($scope)
-                entityService.startAutoHide()
+                $timeout(function () {
+                    $scope.userList = data;
+                    entityService.initScope($scope)
+                    entityService.startAutoHide()
+                }, 0)
+
             });
             $scope.selected = "";
             $scope.toggle = function (user, $event) {
@@ -183,13 +193,18 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
             }
         }])
 
+    .controller("UerRoleCtrl", ["$scope",
+        function ($scope) {
+
+        }])
+
     .directive("myUserEntity", ["entityService",
         function (entityService) {
             return {
                 restrict: 'A',
                 templateUrl: 'templates/userEntity.html',
-                link: function(scope){
-                    scope.colseEntity = function(){
+                link: function (scope) {
+                    scope.colseEntity = function () {
                         entityService.hide();
                     }
                 }

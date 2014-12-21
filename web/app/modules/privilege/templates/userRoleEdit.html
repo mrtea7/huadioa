@@ -1,0 +1,116 @@
+<div class="pull-left ">
+    <section class="panel panel-default select_org_lists"><!--style="margin-left: 70px;"-->
+        <header class="panel-heading bg-light">
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active switch-li">
+                    <a href="#classify" data-toggle="tab" data-fas="true" data-create="true"
+                       class="js_load_fname">用户角色</a>
+                </li>
+                <!--<li class="switch-li">
+                    <a href="#list" data-toggle="tab" data-fas="false" data-create="false"
+                       class="js_load_depart">按部门筛选</a>
+                </li>-->
+            </ul>
+        </header>
+        <div class="panel-body">
+            <div class="tab-content">
+                <div class="tab-pane active" style="overflow:hidden" id="classify">
+                    <div class="form-group m-r-n">
+                        <div class="col-sm-8">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button"
+                                        id="dropdownMenu1" data-toggle="dropdown">
+                                    选择应用
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"
+                                    style="height: 140px; overflow: auto;">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">投票</a>
+                                    </li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                               href="#">收文管理</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                               href="#">发文管理</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">考勤</a>
+                                    </li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                               href="#">通讯录</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                               href="#">流程审批</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">请假</a>
+                                    </li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">报销</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--<div class="input-group">
+                                <input type="text" onkeypress="if(event.keyCode == 13){return false;}"
+                                       id="js_search" class="input-sm form-control" name="keyword"
+                                       placeholder="选择应用">
+                                &lt;!&ndash;<i class="fa fa-times-circle emptyIco hide" title="清空"></i>&ndash;&gt;
+                                <span class="input-group-btn">
+                                   &lt;!&ndash; <button class="btn btn-sm btn-default" id="search-btn" type="button" title="搜索">
+                                        <i class="fa fa-search"></i>
+                                    </button>&ndash;&gt;
+                                </span>
+                            </div>-->
+                        </div>
+                    </div>
+                    <ul class="list-unstyled list-inline list-letter">
+                        <li class="selected" data-letter="all"><a href="javascript:;">应用角色</a></li>
+                    </ul>
+                    <div class="member-list-div js_member_div">
+                        <div id="listed">
+                            <div class="searchItem clearfix" data-id="31869" data-selected="false">
+                                <div class="fullName ThemeColor3">投票成员</div>
+                                <div class="addItem">
+                                    <i class="fa fa-plus-circle js_add_member" title="添加"></i>
+                                </div>
+                            </div>
+                            <div class="searchItem clearfix" data-id="31868" data-selected="false">
+                                <div class="fullName ThemeColor3">投票管理员</div>
+                                <div class="addItem">
+                                    <i class="fa fa-plus-circle js_add_member" title="添加"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="pull-left">
+    <section class="panel panel-default panel-no-l  select_dest_lists">
+        <!--style="width:240px; margin-right:70px;"-->
+        <header class="panel-heading bg-light">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="javascript:void(0)">已选择</a>
+                </li>
+                <li class="pull-right"><a href="javascript:;" class="js_del_all" title="全部清空"><i
+                        class="fa fa-trash-o"></i></a></li>
+            </ul>
+        </header>
+        <div class="panel-body">
+            <div class="tab-content">
+                <div class="tab-pane active">
+                    <div class="member-list-div js_member_select_div">
+                        <div class="searchItem clearfix" data-id="31869">
+                            <div class="fullName ThemeColor3">投票成员</div>
+                            <div class="addItem">
+                                <i class="fa fa-times-circle js_del_member" title="删除"></i>
+                            </div>
+                            <div class="searchItem clearfix" data-id="31867">
+                                <div class="fullName ThemeColor3">投票管理员</div>
+                                <div class="addItem">
+                                    <i class="fa fa-times-circle js_del_member" title="删除"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
