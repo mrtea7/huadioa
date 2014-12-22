@@ -240,7 +240,8 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
                             keyboard: false,
                             //size: "lg",
                             templateUrl: "templates/userEdit.html", // scope is in ModalInstanceCtrl
-                            controller: 'ModalInstanceCtrl',
+                            controller: 'ModalInstanceCtrl'
+                            ,
                             resolve: {
                                 user: function () {
                                     var promise = userService.user(scope.userno);

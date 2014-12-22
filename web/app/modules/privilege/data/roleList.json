@@ -1,18 +1,52 @@
 [
   {
+    "appcode": "001",
     "appName": "投票",
-    "roleType": [
-      "成员",
-      "管理员"
+    "roleList": [
+      {
+        "rolecode": "tp001",
+        "rolename": "投票成员"
+      },
+      {
+        "rolecode": "tp002",
+        "rolename": "投票管理员"
+      }
     ],
-    "defaultRole": "成员"
+    "defaultRole": "投票成员"
   },
   {
-    "appName": "收文",
-    "roleType": [
-      "内勤",
-      "局长"
+    "appcode": "002",
+    "appName": "收文办理",
+    "roleList": [
+      {
+        "rolecode": "sw001",
+        "rolename": "内勤人员"
+      },
+      {
+        "rolecode": "sw002",
+        "rolename": "办公室主任"
+      },
+      {
+        "rolecode": "sw003",
+        "rolename": "一处科员"
+      },
+      {
+        "rolecode": "sw004",
+        "rolename": "一处处长"
+      },
+      {
+        "rolecode": "sw005",
+        "rolename": "政治处处长"
+      },
+      {
+        "rolecode": "sw006",
+        "rolename": "副局长"
+      },
+      {
+        "rolecode": "sw007",
+        "rolename": "局长"
+      }
     ],
-    "defaultRole": "内勤"
+    "defaultRole": "内勤人员"
   }
 ]
