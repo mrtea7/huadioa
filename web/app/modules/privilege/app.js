@@ -137,6 +137,7 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
 
     .controller('ModalInstanceCtrl', ["$scope", "$modalInstance", "user",
         function ($scope, $modalInstance, user) {
+            //console.log($scope)
             $scope.user = user.data;
             $scope.ok = function () {
                 $modalInstance.close();
@@ -169,6 +170,7 @@ angular.module('privilegeModule', ['ui.router', 'ui.bootstrap', 'pasvaz.bindonce
             userService.userList().success(function (data, httpStatus) {
                 $timeout(function () {
                     $scope.userList = data;
+                    entityService.show(data[0]); // for temp test
                     entityService.initScope($scope)
                     entityService.startAutoHide()
                 }, 0)

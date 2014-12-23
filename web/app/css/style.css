@@ -11,7 +11,9 @@ body {
     -webkit-font-smoothing: antialiased
 }
 
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
 
 .h1, .h2, .h3, .h4, .h5, .h6 {
     margin: 0
@@ -329,7 +331,7 @@ a:hover .caret-white {
     border-radius: 2px
 }
 
-.panel.panel-no-l{
+.panel.panel-no-l {
     border-left-width: 0;
 }
 
@@ -3627,6 +3629,12 @@ a.close:hover {
     max-width: 100%
 }
 
+.img-gray{
+    -webkit-filter: grayscale(1);/* Webkit */
+    filter:gray;/* IE6-9 */
+    filter: grayscale(1);/* W3C */
+}
+
 .clear {
     display: block;
     overflow: hidden
@@ -4014,9 +4022,10 @@ dl.dl-xs dd {
 }
 
 @media (min-width: 768px) {
-    .modal-dialog{
+    .modal-dialog {
         width: 708px;
     }
+
     .help-inline {
         padding-left: 5px
     }
@@ -4124,6 +4133,15 @@ dl.dl-xs dd {
     height: 200px
 }
 
+.app-item.thumb {
+    width: 50px;
+    height: 55px;
+    padding: 0;
+    margin-left: 20px;
+    margin-bottom: 10px;
+
+}
+
 .app-item.center {
     height: 260px;
     text-align: left
@@ -4144,10 +4162,21 @@ dl.dl-xs dd {
     height: 130px
 }
 
+.app-item-img.thumb {
+    width: 36px;
+    height: 36px
+}
+
 .app-item-name {
     margin: 5px 0;
     font-size: 15px;
     width: 130px
+}
+
+.app-item-name.thumb {
+    margin: 3px 0;
+    font-size: 10px;
+    width: 36px
 }
 
 .app-item-count {
@@ -4609,7 +4638,7 @@ table td {
 
 /* 2014-11-29 ： */
 
-#userQuick{
+#userQuick {
     position: absolute;
     background-color: #fff;
     z-index: 990;
@@ -4618,7 +4647,7 @@ table td {
     display: none;
 }
 
-#userQuick .arrow.top{
+#userQuick .arrow.top {
     left: 50%;
     margin-left: -28px;
     border-top-width: 0;
@@ -4627,7 +4656,7 @@ table td {
     top: -8px;
 }
 
-.lineTop{
+.lineTop {
     font-size: 12px;
     /*margin-top: 9px;*/
     display: inline-block;
@@ -4636,7 +4665,7 @@ table td {
     /*color: #bbb;*/
 }
 
-ul.aaa{
+ul.aaa {
     width: 80px;
     text-align: left;
     border: 1px solid #ccc;
@@ -4644,7 +4673,7 @@ ul.aaa{
     padding-bottom: 5px;
 }
 
-#userQuickDropOpHtml{
+#userQuickDropOpHtml {
     width: 80px;
     text-align: left;
     border: 1px solid #ccc;
@@ -4667,25 +4696,25 @@ body, button, img, input, ol, textarea, ul {
     line-height: 1.5;
 }
 
-.boderRadAll_3{
+.boderRadAll_3 {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
 }
 
-.boxshadw5{
+.boxshadw5 {
     -moz-box-shadow: 0 0 9px #ccc;
     -webkit-box-shadow: 0 0 9px #ccc;
     box-shadow: 0 0 9px #ccc;
 }
 
-.grp-list-right{
+.grp-list-right {
     position: absolute;
     left: 368px;
     right: 0;
     height: 100%;
 }
 
-.role{
+.role {
     display: none;
 }
