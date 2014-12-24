@@ -4136,13 +4136,15 @@ dl.dl-xs dd {
 .app-item.thumb {
     width: 55px;
     height: 55px;
-    padding: 0;
+    padding: 1px;
     margin-left: 20px;
     margin-bottom: 10px;
 }
 
 .app-item.thumb.highlight {
     border: 1px solid #4cc0c1;
+    border-radius: 2px;
+
 }
 
 .app-item.center {
@@ -4179,7 +4181,7 @@ dl.dl-xs dd {
 .app-item-name.thumb {
     margin: 3px 0;
     font-size: 10px;
-    width: 36px
+    width: 40px;
 }
 
 .app-item-count {

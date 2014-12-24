@@ -67,59 +67,23 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
             },
             userDetail: function (userno) {
                 return doGetRequest(BACKEND_SERVER + 'userDetail_' + userno + '.json?callback=JSON_CALLBACK');
+            },
+            appList: function () {
+                return doGetRequest(BACKEND_SERVER + 'appList.json?callback=JSON_CALLBACK');
+            },
+            userRoleList: function (userno) {
+                return doGetRequest(BACKEND_SERVER + 'userRoleList_' + userno + '.json?callback=JSON_CALLBACK');
             }
         };
     }])
 
-    .factory('entityService', ['$http', '$rootScope', '$parse', 'requestService', '$document',
-        function ($http, $rootScope, $parse, requestService, $document) {
-            var $entity = $("#entity-panel"),
-                selectedAccessor = $parse("selected"),
-                userAccessor = $parse("$parent.$parent.user"),
-                userScope,
-                show = function (user) {
-                    requestService.userDetail(user.userno).success(function (data, httpStatus) {
-                        selectedAccessor.assign(userScope, user)
-                        userAccessor.assign(userScope, data)
-                        $entity.animate({right: "0"}, "fast");
-                    })
-                },
-                hide = function () {
-                    userAccessor.assign(userScope, "")
-                    selectedAccessor.assign(userScope, "")
-                    $entity.animate({right: "-35%"}, "fast");
-                    if (userScope.$root && userScope.$root.$$phase != '$apply'
-                        && userScope.$root.$$phase != '$digest') { // angular hack
-                        userScope.$apply(); // for document hide
-                    }
-                },
-                startAutoHide = function () {
-                    //!$document.attr("onmousedown") &&
-                    $document.mousedown(userScope, function (event) {
-                        var $target = $(event.target);
-                        if (!($target.parents("#entity-panel").length > 0
-                            || $target.parents("#userList").length > 0)) {
-                            hide(userScope)
-                        }
-                    })
-                },
-                stopAutoHide = function () {
-                    //console.log($document.attr("onmousedown"))
-                    //$document.attr("onmousedown") && startAutoHide();
-                    $document.unbind("mousedown")
-                }
-            return {
-                initScope: function (scope) {
-                    userScope = scope;
-                },
-                show: show,
-                hide: hide,
-                startAutoHide: startAutoHide,
-                stopAutoHide: stopAutoHide
-            };
+
+
+
+    .controller('PrivilegeCtrl', ['$scope', '$rootScope', '$state', 'requestService',
+        function ($scope, $rootScope, $state, requestService) {
+
         }])
-
-
 
     .controller('SidebarCtrl', ['$scope', '$rootScope', '$state', 'requestService',
         function ($scope, $rootScope, $state, requestService) {
@@ -154,51 +118,4 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
         }
     }])
 
-    .directive("myUserModal", ["$modal", "$document", "entityService",
-        function ($modal, $document, entityService) {
-            return {
-                restrict: 'A',
-                scope: {
-                    userno: "@"
-                },
-                link: function (scope, element) {
-                    element.click(function () {
-                        var modalInstance = $modal.open({
-                            backdrop: "static",
-                            keyboard: false,
-                            //size: "lg",
-                            templateUrl: "templates/userEdit.html", // scope is in ModalInstanceCtrl
-                            controller: 'UserEditCtrl' // 里面能访问到 userno ?
-                            /*,
-                            resolve: {
-                                user: function () {
-                                    var promise = userService.user(scope.userno);
-                                    promise.success(function (data, httpStatus) {
-                                        return {
-                                            data: data
-                                        };
-                                    })
-                                    return promise;
-                                }
-                            }*/
-                        })
 
-                        modalInstance.result.then(function () {
-                            entityService.startAutoHide();
-
-                        }, function () {
-                            //$document.bind("mousedown", scope,)
-                            //console.log($document)
-                            //event && event["mousedown"] && console.log(event["mousedown"])
-                            //console.log($document.attr("mousedown"))
-                            console.log('Modal dismissed at: ' + new Date());
-                            entityService.startAutoHide();
-                        });
-
-                        modalInstance.opened.then(function () {
-                            entityService.stopAutoHide();
-                        })
-                    })
-                }
-            }
-        }])

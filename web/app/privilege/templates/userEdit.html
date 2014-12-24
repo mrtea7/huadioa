@@ -84,24 +84,28 @@
             <label class="col-sm-2 control-label">用户角色</label>
 
             <div class="col-sm-9">
-                <div class="app-item thumb" bindonce ng-repeat="app in appList">
-                    <img class="app-item-img thumb" bo-alt="app.appName"
-                         bo-src-i="../../../../app/img/app/{{ app.iconName }}">
-
-                    <div class="app-item-name thumb js_entity_view">
+                <div class="app-item thumb " bindonce ng-repeat="app in appList" ng-click="showRoleList(app)"
+                     ng-class="isSelected(app)">
+                        <img class="app-item-img thumb" bo-alt="app.appName"
+                             bo-src-i="../../../assets/img/app/{{ app.iconName }}">
+                    <div class="app-item-name thumb">
                         <span bo-text="app.appName"></span>
                         <span class="pull-right text-muted" title="查看详情"></span>
                     </div>
                 </div>
-                <div style="width:300px; margin-top: 80px;" ng-show="appItemLoaded">
-                    <div class="panel panel-default" >
-                        <div class="panel-heading">点击应用，分配角色</div>
+                <div style="width:300px; margin-top: 80px;" ng-show="userRoleListLoaded">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" >点击应用，分配角色</div>
                         <!--<div class="panel-heading">
                             <h3 class="panel-title"></h3>
                         </div>-->
                         <div class="panel-body" style="height: 175px; overflow: auto">
-                            <div><input type="checkbox"/> 投票成员</div>
-                            <div><input type="checkbox"/> 投票管理员</div>
+                            <!--<div><input type="checkbox"/> 投票成员</div>
+                            <div><input type="checkbox"/> 投票管理员</div>-->
+                            <div ng-repeat="roleList in appRoleList">
+                                <input type="checkbox" value="{{ roleList.roleId }}"
+                                       ng-checked=true />{{ roleList.roleName }}
+                            </div>
                         </div>
                     </div>
                 </div>
