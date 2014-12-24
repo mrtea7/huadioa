@@ -52,7 +52,7 @@ privilege
             requestService.userList().success(function (data, httpStatus) {
                 $timeout(function () {
                     $scope.userList = data;
-                    entityService.show(data[0]); // for temp test
+                    //entityService.show(data[0]); // for temp test
                     entityService.initScope($scope)
                     entityService.startAutoHide()
                 }, 0)
@@ -76,40 +76,80 @@ privilege
             }
         }])
 
-    .controller('UserEditCtrl', ["$scope", "$modalInstance", "requestService", "user",
-        function ($scope, $modalInstance, requestService, user) {
-            requestService.userDetail(user.userno).success(function(data){
+    .controller('UserEditCtrl', ["$scope", "$modalInstance", "requestService", "user", "_",
+        function ($scope, $modalInstance, requestService, user, _) {
+            requestService.userDetail(user.userno).success(function (data) {
                 $scope.user = data;
             })
 
-            requestService.appList().success(function(data){
+            requestService.appList().success(function (data) {
                 $scope.appList = data;
-                requestService.userRoleList(user.userno).success(function(data){
+                requestService.userRoleList(user.userno).success(function (data) {
                     $scope.userRoleList = data;
                     $scope.userRoleListLoaded = true;
+                    initUserRoleCheckedStatus($scope.appList, $scope.userRoleList)
                 })
             })
 
-            $scope.showRoleList = function(app){
-                if($scope.selected === app){
-                    $scope.selected = "";
+            var initUserRoleCheckedStatus = function (appList, userRoleList) {
+                for (var i = 0; i < appList.length; i++) {
+                    var app = appList[i];
+                    var myApp = _.find(userRoleList, function (myApp) {
+                        return myApp.appId === app.appId;
+                    });
+                    if (!myApp) continue;
+                    var myAppRoleIdList = myApp.roleIdList;
+                    var appRoleList = app.roleList;
+                    for (var k = 0; k < myAppRoleIdList.length; k++) {
+                        var roleId = myAppRoleIdList[k]
+                        var appRole = _.find(appRoleList, function (appRole) {
+                            return appRole.roleId === roleId  // 闭包不会影响此处
+                        })
+                        if (appRole) {
+                            appRole.checked = true;
+                        }
+                    }
+                }
+                //console.log(appList)
+            }
+
+            $scope.toggleRoleList = function (app) {
+                if ($scope.selectedApp === app) {
+                    $scope.selectedApp = "";
                     $scope.appRoleList = "";
-                }else{
-                    $scope.selected = app;
-                    $scope.appRoleList = app.roleList;
+                } else {
+                    $scope.selectedApp = app;
+                    $scope.appRoleList = app.roleList; // 这个是要改动的
                 }
             }
 
-            $scope.isSelected = function(app){
-                return $scope.selected === app ? "js-app-item-selected highlight" : "";
+            $scope.toggleCheck = function (role) {
+                role.checked = !role.checked;
+                // 更新 userRoleList
+                var appId = $scope.selectedApp.appId,
+                    roleId = role.roleId,
+                    userRole = _.find($scope.userRoleList, function (userRole) {
+                        return userRole.appId === appId;
+                    }),
+                    userRoleIdList;
+                userRole.roleIdList && (userRoleIdList = userRole.roleIdList);
+                if (role.checked) {
+                    userRoleIdList.push(roleId)
+                } else {
+                    userRoleIdList.splice(_.indexOf(userRoleIdList, roleId), 1);
+                }
+                //console.log($scope.userRoleList)
             }
 
-            $scope.isChecked = function(){
-                return true;
+            $scope.isSelectedApp = function (app) {
+                return $scope.selectedApp === app ? "js-app-item-selected highlight" : "";
             }
 
-            $scope.ok = function () {
-                $modalInstance.close();
+            $scope.submit = function () {
+                // 自定义的异步提交
+                $scope.user.userRoleList = $scope.userRoleList;
+                requestService.saveUser("http://www.baidu.com", $scope.user)
+
             };
 
             $scope.cancel = function () {
@@ -132,9 +172,9 @@ privilege
                             //size: "lg",
                             templateUrl: "templates/userEdit.html", // scope is in ModalInstanceCtrl
                             controller: 'UserEditCtrl' // 里面能访问到 userno ?
-                            ,resolve: {
+                            , resolve: {
                                 user: function () {
-                                    return {"userno": scope.userno} ;
+                                    return {"userno": scope.userno};
                                 }
                             }
                         })
@@ -143,11 +183,6 @@ privilege
                             entityService.startAutoHide();
 
                         }, function () {
-                            //$document.bind("mousedown", scope,)
-                            //console.log($document)
-                            //event && event["mousedown"] && console.log(event["mousedown"])
-                            //console.log($document.attr("mousedown"))
-                            console.log('Modal dismissed at: ' + new Date());
                             entityService.startAutoHide();
                         });
 

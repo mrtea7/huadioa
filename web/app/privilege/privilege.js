@@ -50,14 +50,11 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
         var BACKEND_SERVER = $rootScope.BACKEND_SERVER;
         var doGetRequest = function (url) {
             //return $http.jsonp(url)  // 解决跨域问题
-            return $http({
-                method: 'GET',
-                url: url
-            });
+            return $http.get(url)
         };
-        //var doPostRequest = function () {
-        //
-        //};
+        var doPostRequest = function (url, data) {
+            return $http.post(url, data);
+        };
         return {
             menuList: function () {
                 return doGetRequest(BACKEND_SERVER + 'privilegeMenu.json?callback=JSON_CALLBACK');
@@ -73,7 +70,11 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
             },
             userRoleList: function (userno) {
                 return doGetRequest(BACKEND_SERVER + 'userRoleList_' + userno + '.json?callback=JSON_CALLBACK');
+            },
+            saveUser: function(url, data){
+                return doPostRequest(url, data);
             }
+
         };
     }])
 

@@ -5859,7 +5859,7 @@ input[type="checkbox"]:hover, .checkbox input[type="checkbox"]:hover, .checkbox-
 }
 
 input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked::after, .checkbox-inline input[type="checkbox"]:checked::after {
-    content: url(../images/element/checkmark.png);
+    content: url(../img/element/checkmark.png);
     display: block;
     position: absolute;
     top: -6px;

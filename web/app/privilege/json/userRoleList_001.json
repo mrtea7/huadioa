@@ -8,7 +8,7 @@
   },
   {
     "appId": "002",
-    "roleList": [
+    "roleIdList": [
       "sw001",
       "sw002"
     ]

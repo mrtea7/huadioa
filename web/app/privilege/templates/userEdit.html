@@ -1,6 +1,4 @@
-<form class="form-horizontal form-validate form-modal" method="post" action="">
-    <!--<div class="modal-dialog " >&lt;!&ndash;style="width:780px;"&ndash;&gt;-->
-    <!--<div class="modal-content">-->
+<form class="form-horizontal form-validate form-modal" method="post" action="" >
     <div class="modal-header">
         <button type="button" class="close" ng-click="cancel()">&times;</button>
         <h4 class="modal-title">修改用户</h4>
@@ -19,7 +17,7 @@
 
             <div class="col-sm-9">
                 <input type="text" class="form-control" data-rule-required="true"
-                       placeholder="成员唯一标识，设定后不可更改，不支持中文" name="bizmpid"
+                       placeholder="成员唯一标识，设定后不可更改，不支持中文" name="userno"
                        value='{{user.userno}}' readonly maxlength='120'
                         />
             </div>
@@ -29,7 +27,7 @@
 
             <div class="col-sm-9">
                 <input type="text" class="form-control " data-rule-required="true" data-toggle="tokeninputtree"
-                       name="department" data-path='wAddressList/getDepartment' data-selected="[23095]"
+                       name="deptname" data-path='wAddressList/getDepartment' data-selected="[23095]"
                        aria-required="true" style="display: none;"/>
             </div>
         </div>
@@ -37,7 +35,7 @@
             <label class="col-sm-2 control-label">岗位</label>
 
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="position" value="{{user.job}}" maxlength='600'/>
+                <input type="text" class="form-control" name="job" value="{{user.job}}" maxlength='600'/><!--position-->
             </div>
         </div>
         <div class="form-group">
@@ -52,15 +50,15 @@
             <label class="col-sm-2 control-label">手机号码</label>
 
             <div class="col-sm-9">
-                <input type="text" class="form-control js_partial_require" name="mobile" value='{{user.cellphone}}'
-                       maxlength='120'/>
+                <input type="text" class="form-control js_partial_require" name="cellphone" value='{{user.cellphone}}'
+                       maxlength='120'/><!--mobile-->
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">数据权限</label>
 
             <div class="col-sm-9">
-                <input type="text" class="form-control js_partial_require" name="mobile" value='{{user.datapriv}}'
+                <input type="text" class="form-control js_partial_require" name="datapriv" value='{{user.datapriv}}'
                        maxlength='120'/>
             </div>
         </div>
@@ -68,7 +66,7 @@
             <label class="col-sm-2 control-label">操作权限</label>
 
             <div class="col-sm-9">
-                <input type="text" class="form-control js_partial_require" name="email" value='{{user.operpriv}}'
+                <input type="text" class="form-control js_partial_require" name="operpriv" value='{{user.operpriv}}'
                        maxlength='220'/>
             </div>
         </div>
@@ -76,35 +74,38 @@
             <label class="col-sm-2 control-label">用户状态</label>
 
             <div class="col-sm-9">
-                <input type="text" class="form-control js_partial_require" name="weixinid" value='{{user.state}}'
+                <input type="text" class="form-control js_partial_require" name="state" value='{{user.state}}'
                        maxlength='120'/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">用户角色</label>
+            <label class="col-sm-2 control-label">所有应用</label>
 
             <div class="col-sm-9">
-                <div class="app-item thumb " bindonce ng-repeat="app in appList" ng-click="showRoleList(app)"
-                     ng-class="isSelected(app)">
-                        <img class="app-item-img thumb" bo-alt="app.appName"
-                             bo-src-i="../../../assets/img/app/{{ app.iconName }}">
+                <div class="app-item thumb " bindonce ng-repeat="app in appList" ng-click="toggleRoleList(app)"
+                     ng-class="isSelectedApp(app)">
+                    <img class="app-item-img thumb" bo-alt="app.appName"
+                         bo-src-i="../../../assets/img/app/{{ app.iconName }}">
+
                     <div class="app-item-name thumb">
                         <span bo-text="app.appName"></span>
                         <span class="pull-right text-muted" title="查看详情"></span>
                     </div>
                 </div>
-                <div style="width:300px; margin-top: 80px;" ng-show="userRoleListLoaded">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">分配角色</label>
+
+            <div class="col-sm-9">
+                <div ng-show="userRoleListLoaded">
                     <div class="panel panel-default">
-                        <div class="panel-heading" >点击应用，分配角色</div>
-                        <!--<div class="panel-heading">
-                            <h3 class="panel-title"></h3>
-                        </div>-->
+                        <div class="panel-heading">{{ selectedApp.appName || '点击应用，分配角色'}}</div>
                         <div class="panel-body" style="height: 175px; overflow: auto">
-                            <!--<div><input type="checkbox"/> 投票成员</div>
-                            <div><input type="checkbox"/> 投票管理员</div>-->
-                            <div ng-repeat="roleList in appRoleList">
-                                <input type="checkbox" value="{{ roleList.roleId }}"
-                                       ng-checked=true />{{ roleList.roleName }}
+                            <div ng-repeat="role in appRoleList" ng-click="toggleCheck(role)">
+                                <input type="checkbox" value="{{ role.roleId }}"
+                                       ng-checked="role.checked" style="vertical-align:middle; margin-top:-2px;"/>
+                                <label style="margin-left: 10px;">{{ role.roleName }}</label>
                             </div>
                         </div>
                     </div>
@@ -114,12 +115,8 @@
     </div>
 
     <div class="modal-footer">
-        <!--<input type='hidden' name='mysignstr' value="3b17aed51a87061444a64a6f441a09d9">-->
-        <!--<input type='hidden' name='type' value="edit">-->
-        <!--<input type="hidden" value="[]" name="selectId" id="selectId">-->
-        <button type="submit" class="btn btn-primary" data-loading-text="保存中..." disabled ng-click="ok()">保存</button>
+        <input type="hidden" name="userRoleList" value="{{ userRoleList }}">
+        <button type="button" class="btn btn-primary" data-loading-text="保存中..." ng-click="submit()" >保存</button><!--disabled-->
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">取消</button>
     </div>
-    <!--</div>-->
-    <!--</div>-->
 </form>
