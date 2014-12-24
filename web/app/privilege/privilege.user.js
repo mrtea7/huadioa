@@ -148,8 +148,8 @@ privilege
             $scope.submit = function () {
                 // 自定义的异步提交
                 $scope.user.userRoleList = $scope.userRoleList;
-                requestService.saveUser("http://www.baidu.com", $scope.user)
-
+                //requestService.saveUser("http://www.baidu.com", $scope.user)
+                console.log($scope.user)
             };
 
             $scope.cancel = function () {

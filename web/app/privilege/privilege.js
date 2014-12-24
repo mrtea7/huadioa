@@ -53,7 +53,15 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
             return $http.get(url)
         };
         var doPostRequest = function (url, data) {
-            return $http.post(url, data);
+            //return $http.post(url, data);
+            return $http({ // 跨域
+                url: url,
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: data
+            });
         };
         return {
             menuList: function () {
