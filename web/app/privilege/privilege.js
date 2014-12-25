@@ -42,7 +42,7 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
         function ($rootScope, $state, $stateParams) {
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
-            //$rootScope.BACKEND_SERVER = "http://192.168.2.115:8080/data/module/privilege/"
+            //$rootScope.BACKEND_SERVER = "http://192.168.2.117:8081/data/module/privilege/"
             $rootScope.BACKEND_SERVER = "json/"
         }])
 

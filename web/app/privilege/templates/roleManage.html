@@ -1,6 +1,6 @@
-<section class="vbox">
+<section class="vbox" ng-controller="RoleManageCtrl">
     <header class="header bg-white b-b clearfix">
-        <form class="talbe-search" method="post" action="../attendance/count/search?t=">
+        <form class="talbe-search" method="post" action="">
             <div class="row m-t-sm">
                 <div class="col-sm-8 m-b-xs">
                     <div class="btn-group">
@@ -29,67 +29,27 @@
     <section class="scrollable  wrapper">
         <section class="panel panel-default">
             <div class="table-responsive">
-                <table class="table table-hover m-b-none entity-view"
-                       data-path="../privilege/role-detail.html?1=1&id={0}">
+                <table class="table table-hover m-b-none entity-view">
                     <thead>
                     <tr>
-                        <!--<th class="with-checkbox">
-                        </th>-->
                         <th>序号</th>
                         <th>应用名称</th>
-                        <th>角色类型</th>
+                        <th>角色名称</th>
                         <th>是否默认</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <!--<td  colspan="8" class="nodata">暂无</td>-->
-                    <tr name="vote" class="js_app">
-                        <td class="col-md-3">001</td>
-                        <td class="col-md-3">投票</td>
-                        <td class="col-md-3">投票成员</td>
-                        <td class="col-md-3">默认</td>
+                    <tr ng-repeat-start="app in appList" ng-click="showRole()">
+                        <td><span ng-bind="app.appId"></span></td>
+                        <td><span ng-bind="app.appName"></span></td>
+                        <td>...</td>
+                        <td>...</td>
                     </tr>
-                    <tr name="vote_role" class="role">
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3">投票成员</td>
-                        <td class="col-md-3">默认</td>
-                    </tr>
-                    <tr name="vote_role" class="role">
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3">投票管理员</td>
-                        <td class="col-md-3"></td>
-                    </tr>
-                    <tr name="vote_role" class="role">
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3"><i class="fa fa-plus-square"></i> 新增</td>
-                        <td class="col-md-3"></td>
-                    </tr>
-                    <tr name="shouwen" class="js_app">
-                        <td class="col-md-3">002</td>
-                        <td class="col-md-3">收文</td>
-                        <td class="col-md-3">内勤人员</td>
-                        <td class="col-md-3">默认</td>
-                    </tr>
-                    <tr name="shouwen_role" class="role">
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3">内勤人员</td>
-                        <td class="col-md-3">默认</td>
-                    </tr>
-                    <tr name="shouwen_role" class="role">
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3">处长</td>
-                        <td class="col-md-3"></td>
-                    </tr>
-                    <tr name="shouwen_role" class="role">
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3"> </td>
-                        <td class="col-md-3"><i class="fa fa-plus-square"></i> 新增</td>
-                        <td class="col-md-3"></td>
+                    <tr ng-repeat="role in app.roleList" ng-repeat-end >
+                        <td></td>
+                        <td></td>
+                        <td><span ng-bind="role.roleName"></span></td>
+                        <td>...</td>
                     </tr>
                     </tbody>
                 </table>
@@ -109,16 +69,16 @@
     </footer>
 </section>
 <script type="text/javascript">
-    $(".js_app").click(function(){
-        var $app = $(this), roleName;
-        roleName = $app.attr("name") + "_role";
-        if( $app.hasClass("js_open") ){
-            $("[name="+ roleName + "]").hide();
-            $app.removeClass("js_open")
-        }else{
-            $("[name="+ roleName + "]").show();
-            $app.addClass("js_open")
-        }
+    /* $(".js_app").click(function () {
+     var $app = $(this), roleName;
+     roleName = $app.attr("name") + "_role";
+     if ($app.hasClass("js_open")) {
+     $("[name=" + roleName + "]").hide();
+     $app.removeClass("js_open")
+     } else {
+     $("[name=" + roleName + "]").show();
+     $app.addClass("js_open")
+     }
 
-    })
+     })*/
 </script>
