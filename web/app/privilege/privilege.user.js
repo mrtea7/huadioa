@@ -76,20 +76,51 @@ privilege
             }
         }])
 
-    .controller('UserEditCtrl', ["$scope", "$modalInstance", "requestService", "user", "_",
+    .controller('MyUserModalCtrl', ["$scope", "$modalInstance", "requestService", "user", "_",
         function ($scope, $modalInstance, requestService, user, _) {
-            requestService.userDetail(user.userno).success(function (data) {
-                $scope.user = data;
-            })
+            // 区分新增与修改 1/2
+            $scope.isNewUser = !user.userno;
+            if ($scope.isNewUser ) {
+                $scope.user = {isNewUser: true};
+                //user.username
+                $scope.modal = {title: "新增用户"};
+            } else {
+                requestService.userDetail(user.userno).success(function (data) {
+                    $scope.user = data;
+                }).error(function () {
+                    console.log("获取用户信息失败")
+                })
+            }
 
+            // 区分新增与修改 1/2
             requestService.appList().success(function (data) {
                 $scope.appList = data;
-                requestService.userRoleList(user.userno).success(function (data) {
-                    $scope.userRoleList = data;
+                if ($scope.isNewUser) {
+                    // 设置用户默认角色
+                    initUserDefaultRole($scope.appList);
                     $scope.userRoleListLoaded = true;
                     initUserRoleCheckedStatus($scope.appList, $scope.userRoleList)
-                })
+                } else {
+                    requestService.userRoleList(user.userno).success(function (data) {
+                        $scope.userRoleList = data;
+                        $scope.userRoleListLoaded = true;
+                        initUserRoleCheckedStatus($scope.appList, $scope.userRoleList)
+                    })
+                }
             })
+
+            var initUserDefaultRole = function (appList) {
+                $scope.userRoleList = [];
+                for (var i = 0; i < appList.length; i++) {
+                    var app = appList[i], userRole;
+                    userRole = {
+                        "appId": app.appId,
+                        "roleIdList": app.defaultRoleId
+                    }
+                    $scope.userRoleList.push(userRole)
+                }
+
+            }
 
             var initUserRoleCheckedStatus = function (appList, userRoleList) {
                 for (var i = 0; i < appList.length; i++) {
@@ -141,7 +172,7 @@ privilege
                 //console.log($scope.userRoleList)
             }
 
-            function findUserRoleByAppId( appId ){
+            function findUserRoleByAppId(appId) {
                 var userRole = _.find($scope.userRoleList, function (userRole) {
                     return userRole.appId === appId;
                 })
@@ -150,12 +181,12 @@ privilege
 
 
             $scope.isSelectedApp = function (app) {
-                if(!app) return ;
+                if (!app) return;
                 var userRole = findUserRoleByAppId(app.appId);
-                if(!userRole) return;
-                if( userRole.roleIdList && userRole.roleIdList.length === 0 ){
+                if (!userRole) return;
+                if (userRole.roleIdList && userRole.roleIdList.length === 0) {
                     return "img-gray"
-                }else{
+                } else {
                     return $scope.selectedApp === app ? "js-app-item-selected highlight" : "";
                 }
             }
@@ -177,26 +208,25 @@ privilege
             return {
                 restrict: 'A',
                 scope: {
-                    userno: "@"
+                    /*userno: "@"*/
                 },
-                link: function (scope, element) {
+                link: function (scope, element, attr) {
                     element.click(function () {
                         var modalInstance = $modal.open({
                             backdrop: "static",
                             keyboard: false,
                             //size: "lg",
-                            templateUrl: "templates/userEdit.html", // scope is in ModalInstanceCtrl
-                            controller: 'UserEditCtrl' // 里面能访问到 userno ?
+                            templateUrl: attr.template, // scope is in ModalInstanceCtrl
+                            controller: 'MyUserModalCtrl'  // 指令内部控制器
                             , resolve: {
                                 user: function () {
-                                    return {"userno": scope.userno};
+                                    return {"userno": attr.userno};
                                 }
                             }
                         })
 
                         modalInstance.result.then(function () {
                             entityService.startAutoHide();
-
                         }, function () {
                             entityService.startAutoHide();
                         });

@@ -13,7 +13,7 @@
         "roleName": "投票管理员"
       }
     ],
-    "defaultRoleId": "tp001"
+    "defaultRoleId": ["tp001"]
   },
   {
     "appId": "002",
@@ -49,6 +49,6 @@
         "roleName": "局长"
       }
     ],
-    "defaultRoleId": "sw003"
+    "defaultRoleId": ["sw003"]
   }
 ]
