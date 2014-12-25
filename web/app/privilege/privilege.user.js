@@ -141,8 +141,23 @@ privilege
                 //console.log($scope.userRoleList)
             }
 
+            function findUserRoleByAppId( appId ){
+                var userRole = _.find($scope.userRoleList, function (userRole) {
+                    return userRole.appId === appId;
+                })
+                return userRole;
+            }
+
+
             $scope.isSelectedApp = function (app) {
-                return $scope.selectedApp === app ? "js-app-item-selected highlight" : "";
+                if(!app) return ;
+                var userRole = findUserRoleByAppId(app.appId);
+                if(!userRole) return;
+                if( userRole.roleIdList && userRole.roleIdList.length === 0 ){
+                    return "img-gray"
+                }else{
+                    return $scope.selectedApp === app ? "js-app-item-selected highlight" : "";
+                }
             }
 
             $scope.submit = function () {
