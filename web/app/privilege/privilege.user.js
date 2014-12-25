@@ -74,6 +74,30 @@ privilege
                 // 自执行，传递 user，与 selected 比较
                 return $scope.selected === user ? "js_entity_selected active" : "";
             }
+
+            $scope.selectAllCheckbox = {isChecked: false};
+            $scope.selectAllUser = function(){
+                var bool = $scope.selectAllCheckbox.isChecked;
+                _.each($scope.userList, function(user){ user.selected = bool });
+            }
+
+            $scope.selectUser = function($event){
+                $event.stopPropagation();
+            }
+
+            $scope.batchIsActived = function(){
+                var found = _.find($scope.userList, function(user){ return user.selected === true });
+                return found;
+            }
+
+            $scope.deleteUsers = function(){
+                var selectedUsers = _.filter($scope.userList, function(user){ return user.selected === true });
+                requestService.deleteUsers(selectedUsers).success(function (data, httpStatus) {
+
+                })
+                //console.log(selectedUsers)
+            }
+
         }])
 
     .controller('MyUserModalCtrl', ["$scope", "$modalInstance", "requestService", "user", "_",

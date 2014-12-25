@@ -1,19 +1,22 @@
-<section class="vbox">
+<section class="vbox" ng-controller="ListCtrl">
     <header class="header bg-white b-b clearfix">
         <form class="talbe-search" method="post" action="">
             <div class="row m-t-sm">
                 <div class="col-sm-7 m-b-xs">
                     <div class="btn-group">
                         <my-btn-refulsh></my-btn-refulsh>
+                        <button type="button" class="btn btn-sm btn-default" title="删除" data-toggle="batch"
+                                ng-disabled="!batchIsActived()" ng-click="deleteUsers()">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
                     </div>
-
-                    <div class="btn-group" dropdown >
-                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" dropdown-toggle >
+                    <div class="btn-group" dropdown>
+                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" dropdown-toggle>
                             <i class="fa fa-plus  m-l-xs m-r-xs"></i>
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="javascript:;" my-user-modal data-template="templates/userEdit.html" >新增成员</a>
+                                <a href="javascript:;" my-user-modal data-template="templates/userEdit.html">新增成员</a>
                             </li>
                             <li>
                                 <a href="javascript:;"
@@ -33,11 +36,11 @@
                     <div class="input-group">
                         <input type="text" class="form-control input-sm" id="employeeTxt" value=""
                                name="employee" placeholder="请输入员工"/>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-sm btn-default" type="submit" title="搜索" id="sousuoBut">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
+                        <span class="input-group-btn">
+                            <button class="btn btn-sm btn-default" type="submit" title="搜索" id="sousuoBut">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -61,11 +64,14 @@
     <section class="scrollable  wrapper">
         <section class="panel panel-default">
             <div class="table-responsive">
-                <table id="userList" class="table table-hover m-b-none entity-view" ng-controller="ListCtrl">
+                <table id="userList" class="table table-hover m-b-none entity-view">
                     <thead>
                     <tr>
-                        <th>用户账号</th>
+                        <th class="with-checkbox">
+                            <input type="checkbox" ng-model="selectAllCheckbox.isChecked" ng-click="selectAllUser()">
+                        </th>
                         <th>用户姓名</th>
+                        <th>用户账号</th>
                         <th>所属部门</th>
                         <th>岗位</th>
                         <th>状态</th>
@@ -73,9 +79,12 @@
                     </thead>
                     <tbody>
                     <tr bindonce ng-repeat="user in userList" ng-class="isSelected(user)"
-                        ng-click="toggle(user, $event)" >
-                        <td><span bo-text="user.userno"></span></td>
+                        ng-click="toggle(user, $event)">
+                        <td>
+                            <input type="checkbox" ng-model="user.selected" ng-checked="user.selected" ng-click="selectUser($event)">
+                        </td>
                         <td><span bo-text="user.username"></span></td>
+                        <td><span bo-text="user.userno"></span></td>
                         <td><span bo-text="user.deptname"></span></td>
                         <td><span bo-text="user.job"></span></td>
                         <td><span bo-text="user.userstate"></span></td>

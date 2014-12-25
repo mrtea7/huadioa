@@ -81,6 +81,9 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
             },
             saveUser: function(url, data){
                 return doPostRequest(url, data);
+            },
+            deleteUsers: function(){
+                return doPostRequest(url, data);
             }
 
         };
@@ -98,8 +101,8 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
         function ($scope, $rootScope, $state, requestService) {
             requestService.menuList().success(function (data, httpStatus) {
                 $scope.menu = data; // 注：原来叫 content 会覆盖掉对象原有的属性
-                $state.transitionTo(data[0].menucode);
-                $scope.selected = data[0];
+                $state.transitionTo(data[2].menucode); // for temp test
+                $scope.selected = data[2]; // for temp test
             })
             $scope.setPage = function (menu) {
                 $state.transitionTo(menu.menucode);
