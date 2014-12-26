@@ -11,8 +11,7 @@
     <link href="../../assets/css/font-awesome.css" rel="stylesheet">
     <link href="../../assets/css/iconfont.css" rel="stylesheet">
     <link href="../../assets/css/style.css" rel="stylesheet">
-    <link href="../../assets/css/module/privilege.css" rel="stylesheet">
-
+    <link href="privilege.css" rel="stylesheet">
 </head>
 <body ng-app="myApp.privilege" ng-controller="PrivilegeCtrl">
 <section class="hbox stretch">
@@ -28,7 +27,8 @@
     </aside>
     <aside ui-view="content"></aside>
 </section>
-<section id="entity-panel" class="entity-panel" my-user-entity></section>
+<section id="role-entity-panel" class="entity-panel" my-role-entity></section>
+
 </body>
 <script src="../../assets/framework/jquery/1.11.1/jquery.js"></script>
 <script src="../../assets/framework/underscore/1.7.0/underscore.js"></script>

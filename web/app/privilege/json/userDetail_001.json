@@ -1,12 +1,12 @@
 {
-  "userno":"001",
+  "userno": "001",
   "username": "张雷",
   "deptname": "销售部",
-  "job": "售前经理",
-  "userstate": "有权"
-,"canumber":"zej003821"
-,"landline":"0571-88886666"
-,"cellphone":"135-7576-0974"
-,"datapriv":"系统级"
-,"operpriv":"有权"
+  "position": "售前经理",
+  "userstate": "有权",
+  "canumber": "zej003821",
+  "landline": "0571-88886666",
+  "cellphone": "135-7576-0974",
+  "datapriv": "系统级",
+  "operpriv": "有权"
 }

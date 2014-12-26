@@ -1,0 +1,27 @@
+[
+  {
+    "menucode": "new",
+    "menuname": "发起投票",
+    "menuchild":[
+      {
+        "menucode": "type1",
+        "menuname": "投票类型1"
+      },{
+        "menucode": "type2",
+        "menuname": "投票类型2"
+      }
+    ]
+  },
+  {
+    "menucode": "invole",
+    "menuname": "参与投票"
+  },
+  {
+    "menucode": "review",
+    "menuname": "投票统计"
+  },
+  {
+    "menucode": "manage",
+    "menuname": "投票管理"
+  }
+]

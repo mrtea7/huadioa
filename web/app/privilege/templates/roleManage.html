@@ -11,8 +11,8 @@
                 </div>
                 <div class="col-sm-4 m-b-xs">
                     <div class="input-group">
-                        <input type="text" class="form-control input-sm" id="employeeTxt" value=""
-                               name="employee" placeholder="请输入角色名称"/>
+                        <input type="text" class="form-control input-sm" id="employeeTxt" value="" name="employee"
+                               placeholder="请输入角色名称"/>
                                     <span class="input-group-btn">
                                         <button class="btn btn-sm btn-default" type="submit" title="搜索" id="sousuoBut">
                                             <i class="fa fa-search"></i>
@@ -32,24 +32,25 @@
                 <table class="table table-hover m-b-none entity-view">
                     <thead>
                     <tr>
-                        <th>序号</th>
-                        <th>应用名称</th>
-                        <th>角色名称</th>
-                        <th>是否默认</th>
+                        <th style="width: 10%;">序号</th>
+                        <th style="width: 15%;">应用名称</th>
+                        <th style="width: 20%;">角色名称</th>
+                        <th style="width: 40%;">默认角色</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat-start="app in appList" ng-click="showRole()">
-                        <td><span ng-bind="app.appId"></span></td>
-                        <td><span ng-bind="app.appName"></span></td>
-                        <td>...</td>
-                        <td>...</td>
+                    <tr ng-repeat-start="app in appList" ng-click="toggleRoleList(app)" ng-class="isSelected(app)">
+                        <td><span ng-bind="app['appid']"></span></td>
+                        <td><span ng-bind="app['appname']"></span></td>
+                        <td>{{ !app.shown ? '...' : '' }}</td>
+                        <td>{{ !app.shown ? '...' : ''}}</td>
                     </tr>
-                    <tr ng-repeat="role in app.roleList" ng-repeat-end >
+                    <tr ng-if="role.shown" class="animate-if" ng-repeat="role in app['rolelist']" ng-repeat-end
+                        ng-click="toggleRole(role)" ng-class="isSelected(role)">
                         <td></td>
                         <td></td>
-                        <td><span ng-bind="role.roleName"></span></td>
-                        <td>...</td>
+                        <td><span ng-bind="role['rolename']"></span></td>
+                        <td>{{ role.isDefault ? '是' : '' }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -68,17 +69,4 @@
         </div>
     </footer>
 </section>
-<script type="text/javascript">
-    /* $(".js_app").click(function () {
-     var $app = $(this), roleName;
-     roleName = $app.attr("name") + "_role";
-     if ($app.hasClass("js_open")) {
-     $("[name=" + roleName + "]").hide();
-     $app.removeClass("js_open")
-     } else {
-     $("[name=" + roleName + "]").show();
-     $app.addClass("js_open")
-     }
 
-     })*/
-</script>

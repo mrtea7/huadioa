@@ -1,0 +1,54 @@
+[
+  {
+    "appid": "001",
+    "appname": "投票",
+    "iconname": "tou_piao.png",
+    "rolelist": [
+      {
+        "roleid": "tp001",
+        "rolename": "投票成员"
+      },
+      {
+        "roleid": "tp002",
+        "rolename": "投票管理员"
+      }
+    ],
+    "default_roleid_list": ["tp001"]
+  },
+  {
+    "appid": "002",
+    "appname": "收文办理",
+    "iconname": "shou_wen.png",
+    "rolelist": [
+      {
+        "roleid": "sw001",
+        "rolename": "内勤人员"
+      },
+      {
+        "roleid": "sw002",
+        "rolename": "办公室主任"
+      },
+      {
+        "roleid": "sw003",
+        "rolename": "科员"
+      },
+      {
+        "roleid": "sw004",
+        "rolename": "处长"
+      },
+      {
+        "roleid": "sw005",
+        "rolename": "处长（政治处）"
+      },
+      {
+        "roleid": "sw006",
+        "rolename": "副局长"
+      },
+      {
+        "roleid": "sw007",
+        "rolename": "局长"
+      }
+    ],
+    "default_roleid_list": ["sw003"]
+  }
+]

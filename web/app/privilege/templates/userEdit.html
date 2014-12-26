@@ -35,7 +35,7 @@
             <label class="col-sm-2 control-label">岗位</label>
 
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="job" ng-model="user.job" maxlength='600'/><!--position-->
+                <input type="text" class="form-control" name="job" ng-model="user.position" maxlength='600'/><!--position-->
             </div>
         </div>
         <div class="form-group">
@@ -84,11 +84,11 @@
             <div class="col-sm-9">
                 <div class="app-item thumb " bindonce ng-repeat="app in appList" ng-click="toggleRoleList(app)"
                      ng-class="isSelectedApp(app)">
-                    <img class="app-item-img thumb" bo-alt="app.appName"
+                    <img class="app-item-img thumb" bo-alt="app.appname"
                          bo-src-i="../../../assets/img/app/{{ app.iconName }}">
 
                     <div class="app-item-name thumb">
-                        <span bo-text="app.appName"></span>
+                        <span bo-text="app.appname"></span>
                         <span class="pull-right text-muted" title="查看详情"></span>
                     </div>
                 </div>
@@ -100,10 +100,10 @@
             <div class="col-sm-9">
                 <div ng-show="userRoleListLoaded">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ selectedApp.appName || '点击应用，分配角色'}}</div>
+                        <div class="panel-heading">{{ selectedApp.appname || '点击应用，分配角色'}}</div>
                         <div class="panel-body" style="height: 175px; overflow: auto">
                             <div ng-repeat="role in appRoleList" ng-click="toggleCheck(role)">
-                                <input type="checkbox" value="{{ role.roleId }}"
+                                <input type="checkbox" value="{{ role.roleid }}"
                                        ng-checked="role.checked" style="vertical-align:middle; margin-top:-2px;"/>
                                 <label style="margin-left: 10px;">{{ role.roleName }}</label>
                             </div>

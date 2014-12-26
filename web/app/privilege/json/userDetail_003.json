@@ -1,12 +1,12 @@
 {
-  "userno":"003",
+  "userno": "003",
   "username": "李超",
   "deptname": "技术部",
-  "job": "前端工程师",
-  "userstate": "有效"
-  ,"canumber":"zej003821"
-  ,"landline":"0571-88886666"
-  ,"cellphone":"135-7576-0974"
-  ,"datapriv":"系统级"
-  ,"operpriv":"有权"
+  "position": "前端工程师",
+  "userstate": "有效",
+  "canumber": "zej003821",
+  "landline": "0571-88886666",
+  "cellphone": "135-7576-0974",
+  "datapriv": "系统级",
+  "operpriv": "有权"
 }

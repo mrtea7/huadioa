@@ -1,18 +1,34 @@
 privilege
     .factory('entityService', ['$http', '$rootScope', '$parse', 'requestService', '$document',
         function ($http, $rootScope, $parse, requestService, $document) {
-            var $entity = $("#entity-panel"),
+            console.log("entityService")
+
+            var $entity = $("#user-entity-panel"),
                 selectedAccessor = $parse("selected"),
                 userAccessor = $parse("$parent.$parent.user"),
-                userScope,
-                show = function (user) {
+                userScope;
+            $entity.on("click", function(){
+                console.log("click")
+                $entity.animate({right: "0"}, "fast");
+            })
+            var show = function (user) {
                     requestService.userDetail(user.userno).success(function (data, httpStatus) {
                         selectedAccessor.assign(userScope, user)
+                        //console.log(userScope.selected);
                         userAccessor.assign(userScope, data)
-                        $entity.animate({right: "0"}, "fast");
+                        //console.log(userAccessor.assign(userScope, data));
+                        //console.log($entity)
+                        console.log($entity.length)
+
+                        $entity.trigger("click")
+
+                        //[, "fast"]
+                        //console.log("show")
                     })
                 },
                 hide = function () {
+                    //console.log("hide")
+
                     userAccessor.assign(userScope, "")
                     selectedAccessor.assign(userScope, "")
                     $entity.animate({right: "-35%"}, "fast");
@@ -22,19 +38,18 @@ privilege
                     }
                 },
                 startAutoHide = function () {
-                    //!$document.attr("onmousedown") &&
                     $document.mousedown(userScope, function (event) {
                         var $target = $(event.target);
-                        if (!($target.parents("#entity-panel").length > 0
+                        if (!($target.parents("#user-entity-panel").length > 0
                             || $target.parents("#userList").length > 0)) {
                             hide(userScope)
                         }
                     })
                 },
                 stopAutoHide = function () {
-                    //console.log($document.attr("onmousedown"))
-                    //$document.attr("onmousedown") && startAutoHide();
                     $document.unbind("mousedown")
+                    //console.log("stopAutoHide")
+
                 }
             return {
                 initScope: function (scope) {
@@ -47,8 +62,9 @@ privilege
             };
         }])
 
-    .controller("ListCtrl", ["$scope", 'requestService', 'entityService', '$timeout',
+    .controller("UserManageCtrl", ["$scope", 'requestService', 'entityService', '$timeout',
         function ($scope, requestService, entityService, $timeout) {
+            console.log("UserManageCtrl")
             requestService.userList().success(function (data, httpStatus) {
                 $timeout(function () {
                     $scope.userList = data;
@@ -138,8 +154,8 @@ privilege
                 for (var i = 0; i < appList.length; i++) {
                     var app = appList[i], userRole;
                     userRole = {
-                        "appId": app.appId,
-                        "roleIdList": app.defaultRoleId
+                        "appid": app.appid,
+                        "roleid_list": app.defaultroleid
                     }
                     $scope.userRoleList.push(userRole)
                 }
@@ -150,15 +166,15 @@ privilege
                 for (var i = 0; i < appList.length; i++) {
                     var app = appList[i];
                     var myApp = _.find(userRoleList, function (myApp) {
-                        return myApp.appId === app.appId;
+                        return myApp.appid === app.appid;
                     });
                     if (!myApp) continue;
-                    var myAppRoleIdList = myApp.roleIdList;
+                    var myApproleid_list = myApp.roleid_list;
                     var appRoleList = app.roleList;
-                    for (var k = 0; k < myAppRoleIdList.length; k++) {
-                        var roleId = myAppRoleIdList[k]
+                    for (var k = 0; k < myApproleid_list.length; k++) {
+                        var roleid = myApproleid_list[k]
                         var appRole = _.find(appRoleList, function (appRole) {
-                            return appRole.roleId === roleId  // 闭包不会影响此处
+                            return appRole.roleid === roleid  // 闭包不会影响此处
                         })
                         if (appRole) {
                             appRole.checked = true;
@@ -181,24 +197,24 @@ privilege
             $scope.toggleCheck = function (role) {
                 role.checked = !role.checked;
                 // 更新 userRoleList
-                var appId = $scope.selectedApp.appId,
-                    roleId = role.roleId,
+                var appid = $scope.selectedApp.appid,
+                    roleid = role.roleid,
                     userRole = _.find($scope.userRoleList, function (userRole) {
-                        return userRole.appId === appId;
+                        return userRole.appid === appid;
                     }),
-                    userRoleIdList;
-                userRole.roleIdList && (userRoleIdList = userRole.roleIdList);
+                    userroleid_list;
+                userRole.roleid_list && (userroleid_list = userRole.roleid_list);
                 if (role.checked) {
-                    userRoleIdList.push(roleId)
+                    userroleid_list.push(roleid)
                 } else {
-                    userRoleIdList.splice(_.indexOf(userRoleIdList, roleId), 1);
+                    userroleid_list.splice(_.indexOf(userroleid_list, roleid), 1);
                 }
                 //console.log($scope.userRoleList)
             }
 
-            function findUserRoleByAppId(appId) {
+            function findUserRoleByappid(appid) {
                 var userRole = _.find($scope.userRoleList, function (userRole) {
-                    return userRole.appId === appId;
+                    return userRole.appid === appid;
                 })
                 return userRole;
             }
@@ -206,9 +222,9 @@ privilege
 
             $scope.isSelectedApp = function (app) {
                 if (!app) return;
-                var userRole = findUserRoleByAppId(app.appId);
+                var userRole = findUserRoleByappid(app.appid);
                 if (!userRole) return;
-                if (userRole.roleIdList && userRole.roleIdList.length === 0) {
+                if (userRole.roleid_list && userRole.roleid_list.length === 0) {
                     return "img-gray"
                 } else {
                     return $scope.selectedApp === app ? "js-app-item-selected highlight" : "";
@@ -269,6 +285,7 @@ privilege
                 restrict: 'A',
                 templateUrl: 'templates/userEntity.html',
                 link: function (scope) {
+                    //console.log("directive")
                     scope.colseEntity = function () {
                         entityService.hide();
                     }

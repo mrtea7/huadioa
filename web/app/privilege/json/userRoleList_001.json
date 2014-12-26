@@ -1,14 +1,14 @@
 [
   {
-    "appId": "001",
-    "roleIdList": [
+    "appid": "001",
+    "roleid_list": [
       "tp001",
       "tp002"
     ]
   },
   {
-    "appId": "002",
-    "roleIdList": [
+    "appid": "002",
+    "roleid_list": [
       "sw001",
       "sw002"
     ]

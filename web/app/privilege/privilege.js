@@ -73,8 +73,8 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
             userDetail: function (userno) {
                 return doGetRequest(BACKEND_SERVER + 'userDetail_' + userno + '.json?callback=JSON_CALLBACK');
             },
-            appList: function () {
-                return doGetRequest(BACKEND_SERVER + 'appList.json?callback=JSON_CALLBACK');
+            appRoleList: function () {
+                return doGetRequest(BACKEND_SERVER + 'appRoleList.json?callback=JSON_CALLBACK');
             },
             userRoleList: function (userno) {
                 return doGetRequest(BACKEND_SERVER + 'userRoleList_' + userno + '.json?callback=JSON_CALLBACK');
@@ -84,8 +84,17 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
             },
             deleteUsers: function(){
                 return doPostRequest(url, data);
+            },
+            roleDetail: function (roleid) {
+                var jsonName = "";
+                // for test
+                if( roleid == "tp001" ){
+                    jsonName = "voteMember.json"
+                }else{
+                    jsonName = "voteManager.json"
+                }
+                return doGetRequest(BACKEND_SERVER + jsonName +'?callback=JSON_CALLBACK');
             }
-
         };
     }])
 
@@ -100,20 +109,18 @@ var privilege = angular.module('myApp.privilege', ['ui.router', 'ui.bootstrap', 
     .controller('SidebarCtrl', ['$scope', '$rootScope', '$state', 'requestService',
         function ($scope, $rootScope, $state, requestService) {
             requestService.menuList().success(function (data, httpStatus) {
-                $scope.menu = data; // 注：原来叫 content 会覆盖掉对象原有的属性
-                $state.transitionTo(data[2].menucode); // for temp test
-                $scope.selected = data[2]; // for temp test
+                $scope.menu = data; // 注：content 属性是保留字
+                $state.transitionTo(data[0]['menucode']);
+                $scope.selected = data[0];
             })
             $scope.setPage = function (menu) {
-                $state.transitionTo(menu.menucode);
+                $state.transitionTo(menu['menucode']);
                 $scope.selected = menu;
             };
             $scope.isSelected = function (menu) {
-                //console.log(" isSelected")
                 return $scope.selected === menu ? 'open' : '';
             };
         }])
-
 
     .directive("myBtnRefulsh", [function () {
         return {

@@ -1,4 +1,4 @@
-<section class="vbox" ng-controller="ListCtrl">
+<section class="vbox" ng-controller="UserManageCtrl">
     <header class="header bg-white b-b clearfix">
         <form class="talbe-search" method="post" action="">
             <div class="row m-t-sm">
@@ -81,12 +81,13 @@
                     <tr bindonce ng-repeat="user in userList" ng-class="isSelected(user)"
                         ng-click="toggle(user, $event)">
                         <td>
-                            <input type="checkbox" ng-model="user.selected" ng-checked="user.selected" ng-click="selectUser($event)">
+                            <input type="checkbox" ng-model="user.selected" ng-checked="user.selected"
+                                   ng-click="selectUser($event)">
                         </td>
                         <td><span bo-text="user.username"></span></td>
                         <td><span bo-text="user.userno"></span></td>
                         <td><span bo-text="user.deptname"></span></td>
-                        <td><span bo-text="user.job"></span></td>
+                        <td><span bo-text="user.position"></span></td>
                         <td><span bo-text="user.userstate"></span></td>
                     </tr>
                     </tbody>
@@ -105,4 +106,5 @@
             </div>
         </div>
     </footer>
+    <section id="user-entity-panel" class="entity-panel" my-user-entity></section>
 </section>
