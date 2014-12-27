@@ -106,5 +106,153 @@
             </div>
         </div>
     </footer>
-    <section id="user-entity-panel" class="entity-panel" my-user-entity></section>
+    <section id="user-entity-panel" class="entity-panel" my-user-entity user="user" ></section>
 </section>
+<script type="text/ng-template" id="entityContent.html">
+    <section class="entity-panel-wrapper">
+        <header class="entity-panel-header header">
+            <p>成员资料</p>
+            <button type="button" class="close m-t" ng-click="colseEntity()">&times;</button><!--data-dismiss="entity"-->
+        </header>
+        <div class="entity-panel-body form-horizontal">
+            <div class="col-sm-offset-1  m-t-sm m-b-sm">
+                <div class="media m-xs">
+                    <span class="pull-left thumb-md">
+                    </span>
+
+                    <div class="pull-right">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="m-t-none"><b>{{user.username}}</b></h3>
+
+                        <p>{{user.userno}}</p>
+
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">CA 卡号</label>
+
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{user.canumber}}</p>
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">工作电话</label>
+
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{user.landline}}</p>
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">手机</label>
+
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{user.cellphone}}</p>
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">部门</label>
+
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{user.deptname}}</p>
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">岗位</label>
+
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{user.position}}</p>
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">数据权限</label>
+
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{user.datapriv}}</p>
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">操作权限</label>
+
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{user.operpriv}}</p>
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">用户状态</label>
+
+                <div class="col-sm-9">
+                    <p class="form-control-static">{{user.state}}</p>
+                </div>
+            </div>
+            <!--<div class="container">
+                <table class="table treegrid-instance table-hover table-striped table-condensed" style="width: 50%">
+                    <tr class="treegrid-1">
+                        <td>投票</td>
+                    </tr>
+                    <tr class="treegrid-2 treegrid-parent-1">
+                        <td>投票成员</td>
+                    </tr>
+                    <tr class="treegrid-3 treegrid-parent-1">
+                        <td>投票管理员</td>
+                    </tr>
+                    <tr class="treegrid-4 treegrid-parent-2">
+                        <td>投票</td>
+                    </tr>
+                    <tr class="treegrid-5 treegrid-parent-3">
+                        <td>发起投票</td>
+                    </tr>
+                    <tr class="treegrid-6 treegrid-parent-3">
+                        <td>结束投票</td>
+                    </tr>
+                    <tr class="treegrid-7">
+                        <td>收文办理</td>
+                    </tr>
+                    <tr class="treegrid-8 treegrid-parent-7">
+                        <td>内勤</td>
+                    </tr>
+                    <tr class="treegrid-9 treegrid-parent-7">
+                        <td>处长</td>
+                    </tr>
+                    <tr class="treegrid-10 treegrid-parent-7">
+                        <td>副局长</td>
+                    </tr>
+                    <tr class="treegrid-11 treegrid-parent-7">
+                        <td>局长</td>
+                    </tr>
+                    <tr class="treegrid-12 treegrid-parent-8">
+                        <td>收文登记</td>
+                    </tr>
+                    <tr class="treegrid-13 treegrid-parent-8">
+                        <td>拟文</td>
+                    </tr>
+                    <tr class="treegrid-15 treegrid-parent-9">
+                        <td>拟文</td>
+                    </tr>
+                    <tr class="treegrid-16 treegrid-parent-10">
+                        <td>批示</td>
+                    </tr>
+                    <tr class="treegrid-17 treegrid-parent-11">
+                        <td>批示</td>
+                    </tr>
+                </table>
+            </div>-->
+        </div>
+        <footer class="entity-panel-footer footer  text-right">
+            <!-- 修改详情 -->
+            <!--<my-btn-modal></>-->
+            <button type="button" class="btn btn-default"  my-user-modal data-userno="{{ user.userno }}" data-template="templates/userEdit.html">修改</button>
+        </footer>
+    </section>
+
+</script>
+

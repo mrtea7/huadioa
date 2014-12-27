@@ -1709,7 +1709,7 @@ function setupModuleLoader(window) {
      * var myModule = angular.module('myModule', []);
      *
      * // register a new service
-     * myModule.value('appName', 'MyCoolApp');
+     * myModule.value('appname', 'MyCoolApp');
      *
      * // configure existing services inside initialization blocks.
      * myModule.config(['$locationProvider', function($locationProvider) {

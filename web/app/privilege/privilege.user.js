@@ -285,7 +285,6 @@ privilege
                 restrict: 'A',
                 templateUrl: 'templates/userEntity.html',
                 link: function (scope) {
-                    //console.log("directive")
                     scope.colseEntity = function () {
                         entityService.hide();
                     }
