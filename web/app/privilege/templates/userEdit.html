@@ -82,11 +82,10 @@
             <label class="col-sm-2 control-label">所有应用</label>
 
             <div class="col-sm-9">
-                <div class="app-item thumb " bindonce ng-repeat="app in appList" ng-click="toggleRoleList(app)"
+                <div class="app-item thumb " bindonce ng-repeat="app in appRoleList" ng-click="toggleRoleList(app)"
                      ng-class="isSelectedApp(app)">
-                    <img class="app-item-img thumb" bo-alt="app.appname"
-                         bo-src-i="../../../assets/img/app/{{ app.iconName }}">
-
+                    <img class="app-item-img thumb" bo-alt="app['appname']"
+                         bo-src-i="../../../assets/img/app/{{ app['iconname'] }}">
                     <div class="app-item-name thumb">
                         <span bo-text="app.appname"></span>
                         <span class="pull-right text-muted" title="查看详情"></span>
@@ -100,12 +99,12 @@
             <div class="col-sm-9">
                 <div ng-show="userRoleListLoaded">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ selectedApp.appname || '点击应用，分配角色'}}</div>
+                        <div class="panel-heading">{{ selectedApp['appname'] || '点击应用，分配角色'}}</div>
                         <div class="panel-body" style="height: 175px; overflow: auto">
-                            <div ng-repeat="role in appRoleList" ng-click="toggleCheck(role)">
-                                <input type="checkbox" value="{{ role.roleid }}"
+                            <div ng-repeat="role in selectedApp['rolelist']" ng-click="toggleCheck(role)">
+                                <input type="checkbox" value="{{ role['roleid'] }}"
                                        ng-checked="role.checked" style="vertical-align:middle; margin-top:-2px;"/>
-                                <label style="margin-left: 10px;">{{ role.roleName }}</label>
+                                <label style="margin-left: 10px;">{{ role['rolename'] }}</label>
                             </div>
                         </div>
                     </div>
@@ -113,9 +112,8 @@
             </div>
         </div>
     </div>
-
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-loading-text="保存中..." ng-click="submit()" >保存</button><!--disabled-->
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">取消</button>
+        <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
     </div>
 </form>
