@@ -57,8 +57,8 @@ var privilege = angular.module('myApp.privilege', [
         function ($scope, $rootScope, $state, requestService) {
             requestService.privilegeMenuList().success(function (data, httpStatus) {
                 $scope.menu = data; // 注：content 属性是保留字
-                $state.transitionTo(data[0]['menucode']);
-                $scope.selected = data[0];
+                $state.transitionTo(data[2]['menucode']);
+                $scope.selected = data[2];
             })
             $scope.setPage = function (menu) {
                 $state.transitionTo(menu['menucode']);
