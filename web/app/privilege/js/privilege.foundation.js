@@ -44,7 +44,10 @@ privilege.config(function ($stateProvider, $urlRouterProvider) {
 privilege.config(['ngToastProvider', function (ngToast) {
     ngToast.configure({
         verticalPosition: 'top',
-        horizontalPosition: 'center'
+        horizontalPosition: 'center',
+        //dismissButton: true,
+        dismissOnClick: true,
+        timeout: 4000
     });
 }])
 

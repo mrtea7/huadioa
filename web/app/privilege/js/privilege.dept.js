@@ -1,4 +1,4 @@
-privilege.controller("DeptManageCtrl", function ($scope, requestService, $log) {
+privilege.controller("DeptManageCtrl", function ($scope, requestService, ngToast) {
     requestService.deptList().success(function (data) {
         $scope.treeData = data;
         $scope.treeConfig = {
@@ -27,6 +27,7 @@ privilege.controller("DeptManageCtrl", function ($scope, requestService, $log) {
     })
 
     function customMenu() {
+
         var items = $.jstree.defaults.contextmenu.items();
         items.create.label = "添加子部门"
         items.create.action = function (obj) {
