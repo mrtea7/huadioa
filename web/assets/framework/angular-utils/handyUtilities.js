@@ -1,6 +1,3 @@
-angular.module('underscore', []).factory('_', function () {
-    return window._;
-});
 
 angular.module("handyUtilities", []).constant("util", {
     parseURL: function (url) {
