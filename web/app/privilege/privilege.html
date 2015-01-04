@@ -7,11 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/css/animate/angular/animate.css" rel="stylesheet">
+    <link href="../../assets/css/angular/animate.css" rel="stylesheet">
     <link href="../../assets/css/font-awesome.css" rel="stylesheet">
     <link href="../../assets/css/iconfont.css" rel="stylesheet">
+    <link href="../../assets/css/plugins/jstree/jstree.css" rel="stylesheet"/>
+    <link href="../../assets/css/angular/ngToast.css" rel="stylesheet"/>
     <link href="../../assets/css/style.css" rel="stylesheet">
     <link href="../../assets/css/app/privilege.css" rel="stylesheet">
+
 </head>
 <body ng-app="myApp.privilege" ng-controller="PrivilegeCtrl">
 <section class="hbox stretch">
@@ -28,19 +31,25 @@
     <aside ui-view="content"></aside>
 </section>
 </body>
-<script src="../../assets/framework/jquery/1.11.1/jquery.js"></script>
+<script src="../../assets/framework/jquery/jquery/1.11.1/jquery.js"></script>
+<script src="../../assets/framework/jquery/jstree/3.0.8/jstree.js"></script>
+<script src="../../assets/framework/jquery/bootstrap/3.3.0/bootstrap.js"></script>
 <script src="../../assets/framework/underscore/1.7.0/underscore.js"></script>
-<script src="../../assets/framework/angularjs/1.3.6/angular.js"></script>
-<script src="../../assets/framework/angularjs/1.3.6/angular-animate.js"></script>
-<script src="../../assets/framework/angularui/ui-router/0.2.13/angular-ui-router.js"></script>
-<script src="../../assets/framework/angularui/ui-bootstrap/0.12.0/ui-bootstrap-tpls.js"></script>
-<script src="../../assets/framework/angular-utils/underscore.js"></script>
-<script src="../../assets/framework/angular-utils/handyUtilities.js"></script>
-<script src="../../assets/framework/angular-utils/bindonce.js"></script>
+<script src="../../assets/framework/angularjs/angularjs/1.3.6/angular.js"></script>
+<script src="../../assets/framework/angularjs/angularjs/1.3.6/angular-animate.js"></script>
+<script src="../../assets/framework/angularjs/angularui/ui-router/0.2.13/angular-ui-router.js"></script>
+<script src="../../assets/framework/angularjs/angularui/ui-bootstrap/0.12.0/ui-bootstrap-tpls.js"></script>
+<script src="../../assets/framework/angularjs/modules/underscore.js"></script>
+<script src="../../assets/framework/angularjs/modules/handyUtilities.js"></script>
+<script src="../../assets/framework/angularjs/modules/bindonce.js"></script>
+<script src="../../assets/framework/angularjs/modules/ngJsTree.js"></script>
+<script src="../../assets/framework/angularjs/modules/sanitize.js"></script>
+<script src="../../assets/framework/angularjs/modules/ngToast.js"></script>
 <script src="../../common/request.js"></script>
 <script src="../../common/slider.js"></script>
 <script src="js/privilege.foundation.js"></script>
 <script src="js/privilege.user.js"></script>
+<script src="js/privilege.dept.js"></script>
 <script src="js/privilege.role.js"></script>
 </html>
 

@@ -48,7 +48,12 @@ angular.module("request", []).factory('requestService', function ($http, $rootSc
         privilegeMenuList = function () {
             return doGetRequest('privilegeMenu.json');
         },
-        roleDetail = function(){}
+        roleDetail = function(){
+
+        },
+        deptList = function(){
+            return doGetRequest('deptList.json');
+        }
     //BACKEND_SERVER = "http://192.168.2.117:8081/data/module/privilege/"
     BACKEND_SERVER = "/json/" // absolute for test
     return {
@@ -61,6 +66,7 @@ angular.module("request", []).factory('requestService', function ($http, $rootSc
         saveUser: saveUser,
         deleteUsers: deleteUsers,
         privilegeMenuList: privilegeMenuList,
-        roleDetail: roleDetail
+        roleDetail: roleDetail,
+        deptList: deptList
     }
 })

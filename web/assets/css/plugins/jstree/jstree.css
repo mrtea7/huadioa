@@ -1,5 +1,5 @@
 .jstree-default > .jstree-no-dots .jstree-open > .jstree-ocl {
-    background: url(../../../images/plugins/jstree/dropdown_arrow_down_13f126d1.png) 50% 50% no-repeat;
+    background: url(../../../img/plugins/jstree/dropdown_arrow_down_13f126d1.png) 50% 50% no-repeat;
     width: 20px;
     margin-left: 5px;
     height: 20px;
@@ -9,7 +9,7 @@
 }
 
 .jstree-default > .jstree-no-dots .jstree-closed > .jstree-ocl {
-    background: url(../../../images/plugins/jstree/dropdown_arrow_left_a82d1e7e.png) 50% 50% no-repeat;
+    background: url(../../../img/plugins/jstree/dropdown_arrow_left_a82d1e7e.png) 50% 50% no-repeat;
     width: 20px;
     margin-left: 5px;
     height: 20px;
@@ -130,7 +130,7 @@
     }
 
     .jstree-default-responsive .jstree-checkbox, .jstree-default-responsive .jstree-icon, .jstree-default-responsive .jstree-node, .jstree-default-responsive .jstree-node > .jstree-ocl, .jstree-default-responsive .jstree-themeicon {
-        background-image: url(../../../images/plugins/jstree/40px_6c538e82.png);
+        background-image: url(../../../img/plugins/jstree/40px_6c538e82.png);
         background-size: 120px 200px
     }
 
@@ -158,23 +158,23 @@
     }
 
     .jstree-default-responsive .jstree-file {
-        background: url(../../../images/plugins/jstree/40px_6c538e82.png) 0 -160px no-repeat;
+        background: url(../../../img/plugins/jstree/40px_6c538e82.png) 0 -160px no-repeat;
         background-size: 120px 200px
     }
 
     .jstree-default-responsive .jstree-folder {
-        background: url(../../../images/plugins/jstree/40px_6c538e82.png) -40px -40px no-repeat;
+        background: url(../../../img/plugins/jstree/40px_6c538e82.png) -40px -40px no-repeat;
         background-size: 120px 200px
     }
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
     .jstree-default > .jstree-no-dots .jstree-open > .jstree-ocl {
-        background-image: -webkit-image-set(url(../../../images/plugins/jstree/dropdown_arrow_down_13f126d1.png) 1x, url(../../../images/plugins/jstree/dropdown_arrow_down_2x_9801696d.png) 2x)
+        background-image: -webkit-image-set(url(../../../img/plugins/jstree/dropdown_arrow_down_13f126d1.png) 1x, url(../../../img/plugins/jstree/dropdown_arrow_down_2x_9801696d.png) 2x)
     }
 
     .jstree-default > .jstree-no-dots .jstree-closed > .jstree-ocl {
-        background-image: -webkit-image-set(url(../../../images/plugins/jstree/dropdown_arrow_left_a82d1e7e.png) 1x, url(../../../images/plugins/jstree/dropdown_arrow_left_2x_d7b71152.png) 2x)
+        background-image: -webkit-image-set(url(../../../img/plugins/jstree/dropdown_arrow_left_a82d1e7e.png) 1x, url(../../../img/plugins/jstree/dropdown_arrow_left_2x_d7b71152.png) 2x)
     }
 }
 
@@ -558,7 +558,7 @@
 }
 
 #jstree-dnd.jstree-default .jstree-er, #jstree-dnd.jstree-default .jstree-ok {
-    background-image: url(../../../images/plugins/jstree/32px_795f7758.png);
+    background-image: url(../../../img/plugins/jstree/32px_795f7758.png);
     background-repeat: no-repeat;
     background-color: transparent
 }
@@ -620,7 +620,7 @@
 }
 
 .jstree-default .jstree-icon, .jstree-default .jstree-node {
-    background-image: url(../../../images/plugins/jstree/32px_795f7758.png)
+    background-image: url(../../../img/plugins/jstree/32px_795f7758.png)
 }
 
 .jstree-default .jstree-node {
@@ -724,15 +724,15 @@
 }
 
 .jstree-default > .jstree-container-ul .jstree-loading > .jstree-ocl {
-    background: url(../../../images/plugins/jstree/throbber_01595def.gif) center center no-repeat
+    background: url(../../../img/plugins/jstree/throbber_01595def.gif) center center no-repeat
 }
 
 .jstree-default .jstree-file {
-    background: url(../../../images/plugins/jstree/32px_795f7758.png) -100px -68px no-repeat
+    background: url(../../../img/plugins/jstree/32px_795f7758.png) -100px -68px no-repeat
 }
 
 .jstree-default .jstree-folder {
-    background: url(../../../images/plugins/jstree/32px_795f7758.png) -260px -4px no-repeat
+    background: url(../../../img/plugins/jstree/32px_795f7758.png) -260px -4px no-repeat
 }
 
 .jstree-default.jstree-rtl .jstree-node {
@@ -770,7 +770,7 @@
 }
 
 .jstree-default-small .jstree-icon, .jstree-default-small .jstree-node {
-    background-image: url(../../../images/plugins/jstree/32px_795f7758.png)
+    background-image: url(../../../img/plugins/jstree/32px_795f7758.png)
 }
 
 .jstree-default-small .jstree-node {
@@ -882,15 +882,15 @@
 }
 
 .jstree-default-small > .jstree-container-ul .jstree-loading > .jstree-ocl {
-    background: url(../../../images/plugins/jstree/throbber_01595def.gif) center center no-repeat
+    background: url(../../../img/plugins/jstree/throbber_01595def.gif) center center no-repeat
 }
 
 .jstree-default-small .jstree-file {
-    background: url(../../../images/plugins/jstree/32px_795f7758.png) -103px -71px no-repeat
+    background: url(../../../img/plugins/jstree/32px_795f7758.png) -103px -71px no-repeat
 }
 
 .jstree-default-small .jstree-folder {
-    background: url(../../../images/plugins/jstree/32px_795f7758.png) -263px -7px no-repeat
+    background: url(../../../img/plugins/jstree/32px_795f7758.png) -263px -7px no-repeat
 }
 
 .jstree-default-small.jstree-rtl .jstree-node {
@@ -928,7 +928,7 @@
 }
 
 .jstree-default-large .jstree-icon, .jstree-default-large .jstree-node {
-    background-image: url(../../../images/plugins/jstree/32px_795f7758.png)
+    background-image: url(../../../img/plugins/jstree/32px_795f7758.png)
 }
 
 .jstree-default-large .jstree-node {
@@ -1040,15 +1040,15 @@
 }
 
 .jstree-default-large > .jstree-container-ul .jstree-loading > .jstree-ocl {
-    background: url(../../../images/plugins/jstree/throbber_01595def.gif) center center no-repeat
+    background: url(../../../img/plugins/jstree/throbber_01595def.gif) center center no-repeat
 }
 
 .jstree-default-large .jstree-file {
-    background: url(../../../images/plugins/jstree/32px_795f7758.png) -96px -64px no-repeat
+    background: url(../../../img/plugins/jstree/32px_795f7758.png) -96px -64px no-repeat
 }
 
 .jstree-default-large .jstree-folder {
-    background: url(../../../images/plugins/jstree/32px_795f7758.png) -256px 0 no-repeat
+    background: url(../../../img/plugins/jstree/32px_795f7758.png) -256px 0 no-repeat
 }
 
 .jstree-default-large.jstree-rtl .jstree-node {
@@ -1171,7 +1171,7 @@
     }
 
     .jstree-default-responsive .jstree-checkbox, .jstree-default-responsive .jstree-icon, .jstree-default-responsive .jstree-node, .jstree-default-responsive .jstree-node > .jstree-ocl, .jstree-default-responsive .jstree-themeicon {
-        background-image: url(../../../images/plugins/jstree/40px_6c538e82.png);
+        background-image: url(../../../img/plugins/jstree/40px_6c538e82.png);
         background-size: 120px 200px
     }
 
@@ -1199,12 +1199,12 @@
     }
 
     .jstree-default-responsive .jstree-file {
-        background: url(../../../images/plugins/jstree/40px_6c538e82.png) 0 -160px no-repeat;
+        background: url(../../../img/plugins/jstree/40px_6c538e82.png) 0 -160px no-repeat;
         background-size: 120px 200px
     }
 
     .jstree-default-responsive .jstree-folder {
-        background: url(../../../images/plugins/jstree/40px_6c538e82.png) -40px -40px no-repeat;
+        background: url(../../../img/plugins/jstree/40px_6c538e82.png) -40px -40px no-repeat;
         background-size: 120px 200px
     }
 }
@@ -1223,7 +1223,7 @@
     display: inline-block;
     width: 24px;
     height: 24px;
-    background-image: url(../../../images/dev/icon_main_efa6f7de.png) !important;
+    background-image: url(../../../img/dev/icon_main_efa6f7de.png) !important;
     background-repeat: no-repeat !important
 }
 

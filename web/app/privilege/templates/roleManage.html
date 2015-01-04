@@ -35,23 +35,18 @@
                         <th style="width: 10%;">序号</th>
                         <th style="width: 20%;">角色名称</th>
                         <th style="width: 15%;">应用名称</th>
-                        <th style="width: 40%;">默认角色</th>
+                        <!--<th style="width: 40%;">默认角色</th>-->
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat-start="app in appList" ng-click="toggleRoleList(app)" ng-class="isSelected(app)">
+                    <!--ng-click="toggleRoleList(app)" ng-class="isSelected(app)"-->
+                    <tr ng-repeat-start="app in appRoleList" ng-repeat="role in app['rolelist']"  ng-repeat-end>
                         <td><span ng-bind="app['appid']"></span></td>
-                        <td><span ng-bind="app['appname']"></span></td>
-                        <td>{{ !app.shown ? '...' : '' }}</td>
-                        <td>{{ !app.shown ? '...' : ''}}</td>
-                    </tr>
-                    <tr ng-if="role.shown" class="animate-if" ng-repeat="role in app['rolelist']" ng-repeat-end
-                        ng-click="toggleRole(role)" ng-class="isSelected(role)">
-                        <td></td>
-                        <td></td>
                         <td><span ng-bind="role['rolename']"></span></td>
-                        <td>{{ role.isDefault ? '是' : '' }}</td>
+                        <td><span ng-bind="app['appname']"></span></td>
+                        <!--<td>{{ !app.shown ? '...' : ''}}</td>-->
                     </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -69,4 +64,10 @@
         </div>
     </footer>
 </section>
-
+<!--<tr ng-if="!role.shown" class="animate-if"
+                        ng-click="toggleRole(role)" ng-class="isSelected(role)">
+                        <td></td>
+                        <td><span ng-bind="role['rolename']"></span></td>
+                        <td></td>
+                        &lt;!&ndash;<td>{{ role.isDefault ? '是' : '' }}</td>&ndash;&gt;
+                    </tr>-->

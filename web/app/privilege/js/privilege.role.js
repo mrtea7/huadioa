@@ -47,16 +47,16 @@
 privilege.controller("RoleManageCtrl",
     function ($scope, requestService) {
         requestService.appRoleList().success(function (data) {
-            $scope.appList = data;
+            $scope.appRoleList = data;
             initDefaultRole();
             //roleEntityService.initScope($scope)
             //roleEntityService.startAutoHide() // 角色面板不自动隐藏 ？
         })
 
         var initDefaultRole = function () {
-            var appList = $scope.appList;
-            for (var i = 0; i < appList.length; i++) {
-                var app = appList[i],
+            var appRoleList = $scope.appRoleList;
+            for (var i = 0; i < appRoleList.length; i++) {
+                var app = appRoleList[i],
                     roleList = app["rolelist"],
                     defaultRoleIdList = app["default_roleid_list"];
                 for (var k = 0; k < defaultRoleIdList.length; k++) {
