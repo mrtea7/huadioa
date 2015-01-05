@@ -4645,6 +4645,7 @@ body, button, img, input, ol, textarea, ul {
 .grp-list-right {
     position: absolute;
     left: 368px;
+    top: -1px;
     right: 0;
     height: 100%;
 }
