@@ -4903,10 +4903,12 @@ button.close {
         -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
         box-shadow: 0 5px 15px rgba(0, 0, 0, .5)
     }
+
     .modal-body {
         max-height: 460px;
         overflow: auto;
     }
+
     .modal-sm {
         width: 300px
     }
@@ -4916,7 +4918,8 @@ button.close {
     .modal-lg {
         width: 860px;
     }
-    .modal-lg-780{
+
+    .modal-lg-780 {
         width: 780px;
     }
 }

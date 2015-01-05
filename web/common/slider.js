@@ -43,7 +43,9 @@ angular.module("slider", []).factory('sliderService', function ($rootScope, requ
             $document.mousedown(function (event) {
                 var $target = $(event.target);
                 if (!($target.parents("[my-slider-show]").length > 0
-                    || $target.parents("tr").length > 0)) {
+                    || $target.parents("tr").length > 0
+                    || $target.parents("ul").length > 0
+                    || $target.parents("ol").length > 0 )) {
                     hide()
                     $rootScope.$emit("row.clearSelected") // 接口，供调用者实现
                 }

@@ -19,8 +19,9 @@
                 <section class="panel panel-default">
                     <div class="panel-body" style="height: 300px; overflow-y: auto;">
                         <ul class="list-group">
-                            <li class="hover list-group-item " ng-repeat="role in selectedApp['rolelist']" >
-                                <span class="badge" ng-if="role.isDefault" >默认</span>
+                            <li class="hover list-group-item " ng-repeat="role in selectedApp['rolelist']"
+                                ng-click="mySliderToggle(role)" ng-class="isSelectedRole(role)">
+                                <span class="badge" ng-if="role.isDefault">默认</span>
                                 {{ role['rolename'] }}
                             </li>
                         </ul>
@@ -33,5 +34,104 @@
         <div class="row text-center-xs">
         </div>
     </footer>
+    <div my-slider-show slider_width="40%" class="entity-panel-container">
+        <div ng-show="true" ng-include="'roleEntityPanel.html'"></div>
+    </div>
 </section>
+<script type="text/ng-template" id="roleEntityPanel.html">
+    <section class="entity-panel">
+        <!--my-entity-panel-->
+        <section class="entity-panel-wrapper">
+            <header class="entity-panel-header header">
+                <p>成员资料</p>
+                <button type="button" class="close m-t" ng-click="colseEntity()">&times;</button>
+                <!--data-dismiss="entity"-->
+            </header>
+            <div class="entity-panel-body form-horizontal">
+                <div class="col-sm-offset-1  m-t-sm m-b-sm">
+                    <div class="media m-xs">
+                    <span class="pull-left thumb-md">
+                    </span>
 
+                        <div class="pull-right">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="m-t-none"><b>{{user.username}}</b></h3>
+
+                            <p>{{user.userno}}</p>
+
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">CA 卡号</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{user.canumber}}</p>
+                    </div>
+                </div>
+                <div class="line line-dashed line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">工作电话</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{user.landline}}</p>
+                    </div>
+                </div>
+                <div class="line line-dashed line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">手机</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{user.cellphone}}</p>
+                    </div>
+                </div>
+                <div class="line line-dashed line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">部门</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{user.deptname}}</p>
+                    </div>
+                </div>
+                <div class="line line-dashed line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">岗位</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{user.position}}</p>
+                    </div>
+                </div>
+                <div class="line line-dashed line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">数据权限</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{user.datapriv}}</p>
+                    </div>
+                </div>
+                <div class="line line-dashed line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">操作权限</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{user.operpriv}}</p>
+                    </div>
+                </div>
+                <div class="line line-dashed line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">用户状态</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{user.state}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="entity-panel-footer footer  text-right">
+                <button type="button" class="btn btn-default" my-user-modal data-template="templates/userEdit.html">修改
+                </button>
+            </footer>
+        </section>
+    </section>
+</script>
