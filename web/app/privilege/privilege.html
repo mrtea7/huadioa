@@ -6,14 +6,14 @@
     <base target="mainFrame">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap/3.3.0/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/angular/animate.css" rel="stylesheet">
     <link href="../../assets/css/font-awesome.css" rel="stylesheet">
     <link href="../../assets/css/iconfont.css" rel="stylesheet">
     <link href="../../assets/css/plugins/jstree/jstree.css" rel="stylesheet"/>
     <link href="../../assets/css/angular/ngToast.css" rel="stylesheet"/>
     <link href="../../assets/css/style.css" rel="stylesheet">
-    <link href="../../assets/css/app/privilege.css" rel="stylesheet">
+    <link href="../../assets/css/app/privilege.less" rel="stylesheet/less"> <!-- note rel  -->
 
 </head>
 <body ng-app="myApp.privilege" ng-controller="PrivilegeCtrl">
@@ -32,6 +32,7 @@
     <aside ui-view="content"></aside>
 </section>
 </body>
+<script src="../../assets/framework/less/1.7.0/less.js"></script>
 <script src="../../assets/framework/jquery/jquery/1.11.1/jquery.js"></script>
 <script src="../../assets/framework/jquery/jstree/3.0.8/jstree.js"></script>
 <script src="../../assets/framework/jquery/bootstrap/3.3.0/bootstrap.js"></script>

@@ -4,8 +4,10 @@ html {
 }
 
 body {
+    /*font-family:  Verdana, Arial, san-serif;*/
     font-family: Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
     font-size: 13px;
+    /*font-size: 62.5%;*/
     color: #717171;
     background-color: transparent;
     -webkit-font-smoothing: antialiased
@@ -4623,12 +4625,12 @@ ol, ul {
     list-style-type: none;
 }
 
-body, button, img, input, ol, textarea, ul {
-    font-size: 12px;
+/*body, button, img, input, ol, textarea, ul {
+    font-size: 13px;
     font-family: Helvetica Neue, Tahoma, Arial, "微软雅黑", "宋体", "黑体";
     color: #333;
     line-height: 1.5;
-}
+}*/
 
 .boderRadAll_3 {
     -moz-border-radius: 3px;
@@ -4642,13 +4644,13 @@ body, button, img, input, ol, textarea, ul {
     box-shadow: 0 0 9px #ccc;
 }
 
-.grp-list-right {
+/*.grp-list-right {
     position: absolute;
     left: 368px;
     top: -1px;
     right: 0;
     height: 100%;
-}
+}*/
 
 .role {
     display: none;

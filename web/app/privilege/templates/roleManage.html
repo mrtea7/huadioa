@@ -1,73 +1,16 @@
 <section class="vbox" ng-controller="RoleManageCtrl">
     <header class="header bg-white b-b clearfix">
-        <form class="talbe-search" method="post" action="">
-            <div class="row m-t-sm">
-                <div class="col-sm-8 m-b-xs">
-                    <div class="btn-group">
-                        <button type="button" data-toggle="refresh" class="btn btn-sm btn-default" title="刷新">
-                            <i class="fa fa-refresh"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-sm-4 m-b-xs">
-                    <div class="input-group">
-                        <input type="text" class="form-control input-sm" id="employeeTxt" value="" name="employee"
-                               placeholder="请输入角色名称"/>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-sm btn-default" type="submit" title="搜索" id="sousuoBut">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                    </div>
-                </div>
-            </div>
-            <input type="hidden" name="pageNumber" id="pageNumber" value="1"/>
-            <input type="hidden" name="orderBy" id="orderBy" value="desc"/>
-            <input type="hidden" name="order" id="order" value="time"/>
-        </form>
     </header>
     <section class="scrollable  wrapper">
         <section class="panel panel-default">
-            <div class="table-responsive">
-                <table class="table table-hover m-b-none entity-view">
-                    <thead>
-                    <tr>
-                        <th style="width: 10%;">序号</th>
-                        <th style="width: 20%;">角色名称</th>
-                        <th style="width: 15%;">应用名称</th>
-                        <!--<th style="width: 40%;">默认角色</th>-->
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!--ng-click="toggleRoleList(app)" ng-class="isSelected(app)"-->
-                    <tr ng-repeat-start="app in appRoleList" ng-repeat="role in app['rolelist']"  ng-repeat-end>
-                        <td><span ng-bind="app['appid']"></span></td>
-                        <td><span ng-bind="role['rolename']"></span></td>
-                        <td><span ng-bind="app['appname']"></span></td>
-                        <!--<td>{{ !app.shown ? '...' : ''}}</td>-->
-                    </tr>
-
-                    </tbody>
-                </table>
+            <div class="panel-body">
+                Basic panel example
             </div>
         </section>
     </section>
     <footer class="footer bg-white b-t">
         <div class="row text-center-xs">
-            <div class="col-md-6 hidden-sm">
-                <p class="text-muted m-t"></p>
-            </div>
-            <div class="col-md-6 col-sm-12 text-right text-center-xs">
-                <ul class="pagination pagination-sm m-t-sm m-b-none" data-pages-total=""
-                    data-page-current=""></ul>
-            </div>
         </div>
     </footer>
 </section>
-<!--<tr ng-if="!role.shown" class="animate-if"
-                        ng-click="toggleRole(role)" ng-class="isSelected(role)">
-                        <td></td>
-                        <td><span ng-bind="role['rolename']"></span></td>
-                        <td></td>
-                        &lt;!&ndash;<td>{{ role.isDefault ? '是' : '' }}</td>&ndash;&gt;
-                    </tr>-->
+
