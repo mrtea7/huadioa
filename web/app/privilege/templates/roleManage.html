@@ -19,7 +19,7 @@
                 <section class="panel panel-default">
                     <div class="panel-body" style="height: 300px; overflow-y: auto;">
                         <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="role in selectedApp['rolelist']" >
+                            <li class="hover list-group-item " ng-repeat="role in selectedApp['rolelist']" >
                                 <span class="badge" ng-if="role.isDefault" >默认</span>
                                 {{ role['rolename'] }}
                             </li>
