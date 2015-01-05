@@ -4,7 +4,28 @@
     <section class="scrollable  wrapper">
         <section class="panel panel-default">
             <div class="panel-body">
-                Basic panel example
+                <div class="app-item thumb " bindonce ng-repeat="app in appRoleList" ng-click="toggleRoleList(app)"
+                     ng-class="isSelectedApp(app)">
+                    <img class="app-item-img thumb" bo-alt="app['appname']"
+                         bo-src-i="../../../assets/img/app/{{ app['iconname'] }}">
+
+                    <div class="app-item-name thumb">
+                        <span bo-text="app.appname"></span>
+                        <span class="pull-right text-muted" title="查看详情"></span>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class=" line line-dashed line-lg "></div>
+                <section class="panel panel-default">
+                    <div class="panel-body" style="height: 300px; overflow-y: auto;">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="role in selectedApp['rolelist']" >
+                                <span class="badge" ng-if="role.isDefault" >默认</span>
+                                {{ role['rolename'] }}
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </div>
         </section>
     </section>
