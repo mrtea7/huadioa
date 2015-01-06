@@ -19,6 +19,12 @@
                 <div class=" line line-dashed line-lg "></div>
                 <section class="panel panel-default">
                     <div class="panel-body" style="height: 300px; overflow-y: auto;">
+                        <div style=" margin-bottom: 10px;" ng-if="selectedApp">
+                            <button type="button" class="btn btn-default btn-sm" style="padding: 2px;"
+                                    my-role-modal data-template="templates/roleEdit.html" >
+                                <i class="fa fa-plus  m-l-xs m-r-xs"></i>
+                            </button>
+                        </div>
                         <ul class="list-group">
                             <li class="hover list-group-item " ng-repeat="role in selectedApp['rolelist']"
                                 ng-click="mySliderToggle(role)" ng-class="isSelectedRole(role)">
@@ -51,6 +57,7 @@
                     <div class="media m-xs">
                     <span class="pull-left thumb-md">
                     </span>
+
                         <div class="pull-right">
                         </div>
                         <div class="media-body">
@@ -64,6 +71,7 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">角色类型</label>
+
                     <div class="col-sm-9">
                         <p class="form-control-static"></p>
                     </div>
@@ -79,13 +87,30 @@
                 <div class="line line-dashed line-lg pull-in"></div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">功能菜单</label>
+
                     <div class="col-sm-9">
-                        <p class="form-control-static"></p>
+                        <div class="treeview">
+                            <ul style="padding-left: 0;">
+                                <li>
+                                    <span style="background-color: #ececec">{{ selectedRole.rolename }}角色</span>
+                                    <ul>
+                                        <li bindonce ng-repeat="menu in selectedMenuList">
+                                            <span bo-text="menu['text']"></span>
+                                            <ul ng-if="menu['children'].length > 0">
+                                                <li bindonce ng-repeat="menu in menu['children']">
+                                                    <span bo-text="menu['text']"></span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
             <footer class="entity-panel-footer footer  text-right">
-                <button type="button" class="btn btn-default" my-user-modal data-template="templates/userEdit.html">修改
+                <button type="button" class="btn btn-default" my-role-modal data-template="templates/roleEdit.html">修改
                 </button>
             </footer>
         </section>
