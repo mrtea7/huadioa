@@ -27,7 +27,7 @@ privilege.controller("RoleManageCtrl",
             $scope.selectedApp === app ? $scope.selectedApp = "" : $scope.selectedApp = app;
         }
 
-        sliderService.initPath("userDetail.json"); // be mock
+        sliderService.initPath("roleDetail.json"); // be mock
         $scope.mySliderToggle = function (role) {
             sliderService.setParams({roleid: role.roleid})
             if (!$scope.selectedRole) {
@@ -46,8 +46,8 @@ privilege.controller("RoleManageCtrl",
             $scope.selectedRole = "";
             $scope.$apply();
         })
-        $rootScope.$on("entity.update", function (event, role) {
-            $scope.role = role;
+        $rootScope.$on("entity.update", function (event, menuList) {
+            $scope.menuList = menuList;
         })
 
         $scope.isSelectedRole = function (role) {
