@@ -4072,11 +4072,29 @@ dl.dl-xs dd {
     padding: 1px;
     margin-left: 20px;
     margin-bottom: 10px;
+
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    outline:none;
 }
 
 .app-item.thumb.highlight {
     border: 1px solid #4cc0c1;
     border-radius: 2px;
+}
+
+.app-item.thumb.highlight.focus {
+   /*box-shadow: -2px 2px 3px #3c3c3c;*/
+    /*-webkit-box-shadow: -2px 2px 3px #3c3c3c;*/
+
+    /*border-color: rgba(76, 192, 193, 0.4)*/
+    /*border-width: 2px;*/
+
+    border:#35a5e5 1px solid;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    -webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    -moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 }
 
 .app-item.center {

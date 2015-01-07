@@ -56,7 +56,7 @@ privilege.controller("RoleManageCtrl",
 
         $scope.isSelectedApp = function (app) {
             if (!app) return;
-            return $scope.selectedApp === app ? "js-app-item-selected highlight" : "";
+            return $scope.selectedApp === app ? "js-app-item-selected highlight focus" : "";
         }
     })
 
@@ -71,13 +71,13 @@ privilege.controller('RoleModalCtrl',
             $scope.treeConfig = {
                 core: {
                     strings : {'Loading ...' : '拼命加载中！'},
-                    multiple : false,
+                    multiple : true, // 多选
                     check_callback: true,
                     themes: {
                         name: false,
                         url: false,
                         dir: false,
-                        icons: true,
+                        //icons: true,
                         variant: false,
                         stripes: false,
                         responsive: true,
