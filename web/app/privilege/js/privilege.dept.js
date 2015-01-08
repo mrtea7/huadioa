@@ -3,7 +3,7 @@ privilege.controller("DeptManageCtrl", function ($scope, requestService, ngToast
         $scope.treeData = data;
         $scope.treeConfig = {
             core: {
-                strings : {'Loading ...' : '拼命加载中！'},
+                strings : {'Loading ...' : '玩命加载中！'},
                 multiple : false,
                 check_callback: true,
                 themes: {
