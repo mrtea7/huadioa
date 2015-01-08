@@ -20,18 +20,17 @@
 <section class="hbox stretch">
     <aside class="aside-sm bg-white b-r" id="subNav">
         <div class="wrapper b-b header"><b>系统管理</b></div>
-        <div class="affix" style="width: 150px;" ng-controller="SidebarCtrl">
+        <div class="affix" style="width: 150px;" >
             <ul class="nav" style='overflow-y:auto; height:100%'>
-                <li bindonce class="b-b b-light" ng-repeat="menuItem in menu" ng-class="isSelected(menuItem)" >
+                <li bindonce class="b-b b-light" ng-repeat="menuItem in menuList" ng-class="isSelectedMenu(menuItem)" >
                     <a ng-click="setPage(menuItem)"><span bo-text="menuItem.menuname"></span></a>
                 </li>
             </ul>
         </div>
     </aside>
-    <aside ui-view="content"></aside>
+    <aside ng-include="menuTemplateUrl"></aside>
 </section>
 </body>
-<!--<script src="../../assets/framework/less/1.7.0/less.js"></script>-->
 <script src="../../assets/js/jquery/jquery/1.11.1/jquery.js"></script>
 <script src="../../assets/js/jquery/jstree/3.0.8/jstree.js"></script>
 <script src="../../assets/js/bootstrap/bootstrap/3.3.0/bootstrap.js"></script>

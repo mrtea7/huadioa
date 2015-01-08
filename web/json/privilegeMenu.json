@@ -1,14 +1,17 @@
 [
   {
     "menucode": "userManage",
-    "menuname": "用户管理"
+    "menuname": "用户管理",
+    "templateurl": "templates/userManage.html"
   },
   {
     "menucode": "deptManage",
-    "menuname": "部门管理"
+    "menuname": "部门管理",
+    "templateurl": "templates/deptManage.html"
   },
   {
     "menucode": "roleManage",
-    "menuname": "角色管理"
+    "menuname": "角色管理",
+    "templateurl": "templates/roleManage.html"
   }
 ]
