@@ -1,23 +1,3 @@
-/*
-privilege.directive("myEntityPanel", ["requestService",
-    function (requestService) {
-        return {
-            restrict: 'A',
-            templateUrl: 'entityContent.html',
-            link: function (scope, element, attr) {
-                scope.$on("entityPanel.show", function (event, args) {
-                    requestService.doGetRequest(args.path).success(function (data, httpStatus) {
-                        element.animate({right: "0"}, "fast");
-                    })
-                })
-                scope.$on("entityPanel.hide", function (event, args) {
-                    element.animate({right: "-35%"}, "fast");
-                })
-            }
-        }
-    }])
-*/
-
 privilege.directive("myBtnRefulsh", [function () {
     return {
         restrict: 'E',
