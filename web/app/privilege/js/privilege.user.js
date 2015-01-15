@@ -1,5 +1,5 @@
 privilege.controller("UserManageCtrl",
-    function ($scope, $timeout, $state, $stateParams, $rootScope, sliderService, requestService) {
+    function ($scope, $timeout, $state, $stateParams, $rootScope, sliderService, requestService, $document) {
         requestService.userList().success(function (data, httpStatus) {
             $timeout(function () {
                 $scope.userList = data;
@@ -56,8 +56,6 @@ privilege.controller("UserManageCtrl",
                 return user.selected === true
             });
             console.log(selectedUsers)
-            //requestService.deleteUsers("url", selectedUsers)
-
         }
     })
 

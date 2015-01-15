@@ -1,0 +1,108 @@
+[
+  {
+    "menucode": "fw01",
+    "menuname": "拟稿",
+    "templateurl": "templates/niGao.html"
+  },
+  {
+    "menucode": "fw02",
+    "menuname": "发文审批",
+    "children":[
+      {
+        "menucode": "fw0201",
+        "menuname": "拟稿",
+        "templateurl": "templates/faWenShenPi_niGao.html"
+      },{
+        "menucode": "fw0202",
+        "menuname": "审稿",
+        "templateurl": "templates/faWenShenPi_shenGao.html"
+      },{
+        "menucode": "fw0203",
+        "menuname": "核稿",
+        "templateurl": "templates/faWenShenPi_heGao.html"
+      },{
+        "menucode": "fw0204",
+        "menuname": "签发",
+        "templateurl": "templates/faWenShenPi_qianFa.html"
+      },{
+        "menucode": "fw0205",
+        "menuname": "发文",
+        "templateurl": "templates/faWenShenPi_faWen.html"
+      }
+    ]
+  },
+  {
+    "menucode": "fw03",
+    "menuname": "纸质审批",
+    "templateurl": "templates/zhiZhiShenPi.html"
+  },
+  {
+    "menucode": "fw04",
+    "menuname": "在办查询",
+    "templateurl": "templates/zaiBanChaXun.html"
+  },
+  {
+    "menucode": "fw05",
+    "menuname": "办结查询",
+    "templateurl": "templates/banJieChaXun.html"
+  },
+  {
+    "menucode": "fw06",
+    "menuname": "发文登记簿",
+    "children":[
+      {
+        "menucode": "fw0601",
+        "menuname": "衢国安",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0602",
+        "menuname": "衢国安委",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0603",
+        "menuname": "衢国安办",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0604",
+        "menuname": "衢国安纪",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0605",
+        "menuname": "衢国安政",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0606",
+        "menuname": "衢国安一",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0607",
+        "menuname": "衢国安二",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0608",
+        "menuname": "衢国安三",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0609",
+        "menuname": "衢国安四",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0610",
+        "menuname": "衢国安五",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0611",
+        "menuname": "国安简报",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0612",
+        "menuname": "国安信息",
+        "templateurl": "templates/faWenDengJiBu.html"
+      },{
+        "menucode": "fw0613",
+        "menuname": "衢州情报",
+        "templateurl": "templates/faWenDengJiBu.html"
+      }
+    ]
+  }
+]

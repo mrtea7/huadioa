@@ -1175,6 +1175,8 @@
     }
 }
 
+
+
 .fadeInDown.ng-enter-active {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -3126,8 +3128,6 @@
     position: absolute;
 }
 
-
-
 .animated.ng-enter, .animated.ng-leave {
     position: absolute;
     top: 0;
@@ -3135,3 +3135,25 @@
     right: 0;
     z-index: 10;
 }
+
+
+/*
+ * ngShow
+ */
+/*
+
+.showMenuChild.ng-hide-remove{
+    -webkit-animation-name: bounceInDown;
+    animation-name: bounceInDown;
+}
+
+.hideMenuChild.ng-hide-add {
+    -webkit-animation-name: fadeOutUp;
+    animation-name: fadeOutUp;
+}
+
+@keyframes showMenuChild{
+
+}
+*/
+

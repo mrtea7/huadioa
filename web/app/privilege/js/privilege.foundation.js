@@ -9,7 +9,8 @@ var privilege = angular.module('myApp.privilege', [
     "slider",
     "ngJsTree",
     'ngSanitize',
-    'ngToast'
+    'ngToast',
+    'changeNotification'
 
 ])
 
@@ -32,8 +33,8 @@ privilege.controller('PrivilegeCtrl', ['$scope', '$rootScope', '$state', 'reques
     function ($scope, $rootScope, $state, requestService) {
         requestService.privilegeMenuList().success(function (menuList, httpStatus) {
             $scope.menuList = menuList;
-            $scope.menuTemplateUrl = menuList[2]['templateurl']
-            $scope.selectedMenu = menuList[2];
+            $scope.menuTemplateUrl = menuList[1]['templateurl']
+            $scope.selectedMenu = menuList[1];
         })
         $scope.setPage = function (menu) {
             $scope.menuTemplateUrl = menu['templateurl']

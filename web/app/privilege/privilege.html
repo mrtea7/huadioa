@@ -22,8 +22,8 @@
         <div class="wrapper b-b header"><b>系统管理</b></div>
         <div class="affix" style="width: 150px;" >
             <ul class="nav" style='overflow-y:auto; height:100%'>
-                <li bindonce class="b-b b-light" ng-repeat="menuItem in menuList" ng-class="isSelectedMenu(menuItem)" >
-                    <a ng-click="setPage(menuItem)"><span bo-text="menuItem.menuname"></span></a>
+                <li bindonce class="b-b b-light" ng-repeat="menu in menuList" ng-class="isSelectedMenu(menu)" >
+                    <a ng-click="setPage(menu)"><span bo-text="menu.menuname"></span></a>
                 </li>
             </ul>
         </div>
@@ -45,8 +45,9 @@
 <script src="../../assets/js/angularjs/modules/ngJsTree.js"></script>
 <script src="../../assets/js/angularjs/modules/sanitize.js"></script>
 <script src="../../assets/js/angularjs/modules/ngToast.js"></script>
-<script src="../../common/request.js"></script>
-<script src="../../common/slider.js"></script>
+<script src="../../assets/js/angularjs/common/request.js"></script>
+<script src="../../assets/js/angularjs/common/slider.js"></script>
+<script src="../../assets/js/angularjs/common/changeNotification.js"></script>
 <script src="js/privilege.foundation.js"></script>
 <script src="js/privilege.user.js"></script>
 <script src="js/privilege.dept.js"></script>

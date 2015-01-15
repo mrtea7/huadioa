@@ -1,4 +1,6 @@
-angular.module("request", []).factory('requestService', function ($http, $rootScope, util) {
+angular.module("request", []).factory('requestService', function ($http, $rootScope, util, $document) {
+
+
   var BACKEND_SERVER,
       url,
       doGetRequest = function (path) {
@@ -48,6 +50,9 @@ angular.module("request", []).factory('requestService', function ($http, $rootSc
       privilegeMenuList = function () {
         return doGetRequest('privilegeMenu.json');
       },
+      faWenMenuList = function () {
+        return doGetRequest('faWenMenu.json');
+      },
       roleDetail = function () {
 
       },
@@ -56,6 +61,9 @@ angular.module("request", []).factory('requestService', function ($http, $rootSc
       },
       menuList = function () {
         return doGetRequest('voteMenuList.json');
+      },
+      faWenList = function(){
+        return doGetRequest('faWen.niGao.json');
       }
   //BACKEND_SERVER = "http://192.168.2.117:8081/data/module/privilege/"
   BACKEND_SERVER = "/json/" // absolute for test
@@ -69,9 +77,11 @@ angular.module("request", []).factory('requestService', function ($http, $rootSc
     saveUser: saveUser,
     deleteUsers: deleteUsers,
     privilegeMenuList: privilegeMenuList,
+    faWenMenuList: faWenMenuList,
     roleDetail: roleDetail,
     deptList: deptList,
-    menuList: menuList
+    menuList: menuList,
+    faWenList: faWenList
   }
 })
 
