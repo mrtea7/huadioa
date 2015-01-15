@@ -7,6 +7,7 @@
   {
     "menucode": "fw02",
     "menuname": "发文审批",
+    "expanded": "true",
     "children":[
       {
         "menucode": "fw0201",

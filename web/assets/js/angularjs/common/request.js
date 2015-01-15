@@ -51,7 +51,7 @@ angular.module("request", []).factory('requestService', function ($http, $rootSc
         return doGetRequest('privilegeMenu.json');
       },
       faWenMenuList = function () {
-        return doGetRequest('faWenMenu.json');
+        return doGetRequest('faWen.menu.json');
       },
       roleDetail = function () {
 
