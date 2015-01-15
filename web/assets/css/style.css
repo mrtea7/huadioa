@@ -5097,7 +5097,7 @@ ul {
     bottom: 0;
     left: 0;
     right: 0;
-    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);
+    /*box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);*/
 }
 
 .entity-panel .entity-panel-header {
@@ -5133,6 +5133,7 @@ ul {
     bottom: 0;
     top: 0;
     width: 0;
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);
 }
 
 /**
