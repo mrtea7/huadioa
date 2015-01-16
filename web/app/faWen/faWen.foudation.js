@@ -51,14 +51,8 @@ faWen.controller('FaWenCtrl', ['$scope', '$rootScope', '$state', 'requestService
     $scope.toggleSelectMenu = function(menu){
       if( !$scope.selectedMenu || $scope.selectedMenu !== menu ){
         $scope.selectedMenu = menu;
-        //console.log("aaaaaa")
-        //console.log(menu.expanded )
-        //console.log("menu.children",!!menu.children)
-        //console.log("menu.children.length",!!menu.children.length)
-
         if(menu.children && menu.children.length && menu.expanded){
           $scope.selectedMenu = ""
-          //console.log("hello")
         }
       }else {
         $scope.selectedMenu = ""

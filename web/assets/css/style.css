@@ -5225,3 +5225,19 @@ ul {
 
 .green-tooltip + .tooltip > .tooltip-inner {background-color: #71dad2;}
 .green-tooltip + .tooltip > .tooltip-arrow { border-bottom-color:#71dad2; }
+
+
+/* 应用边栏菜单 */
+/*
+.menu-link.selected
+{
+    border-left: 4px solid #13c4a5;
+    background-color: #fff;
+}
+
+.menu-link:hover{
+    border-left: 2px solid #13c4a5;
+
+}
+*/
+

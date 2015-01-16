@@ -22,20 +22,20 @@
     <div class="wrapper b-b header"><b>发文</b></div>
     <div class="nano" style="width: 150px; position: absolute; top: 50px; bottom: 0;"><!--height: 400px;-->
       <ul class="nav nano-content" style="">
-        <li bindonce class="b-b b-light" ng-repeat="menu in menuList" ng-class="isSelectedMenu(menu)">
-          <a ng-click="hasMenuChildren(menu) ? '' : setPage(menu); toggleSelectMenu(menu)"
-             slide-toggle slide-expanded="menu.expanded">
+        <li bindonce class="b-b b-light menu-item" ng-repeat="menu in menuList" ng-class="isSelectedMenu(menu)" >
+          <a  ng-click="hasMenuChildren(menu) ? '' : setPage(menu); toggleSelectMenu(menu)"
+             slide-toggle slide-expanded="menu.expanded" >
             <i ng-if="hasMenuChildren(menu)" class="fa  pull-right m-t-xs text-xs icon-muted"
                ng-class="menu.expanded ? 'fa-chevron-down' : 'fa-chevron-right' "></i>
             <span bo-text="menu.menuname"></span>
           </a>
           <!-- FIXME：slide 的初始化高度是通过 slide-toggle 计算出来的，因为 slide 初始化动画效果（从展开到收拢）必须使用 px 单位 -->
           <div ng-if="hasMenuChildren(menu)" ng-class="menu.expanded ? 'b-t' : ''"
-               slideable init-slide-expanded="menu.expanded" data-height="160px" >
+               slideable init-slide-expanded="menu.expanded"  ><!--data-height="160px"-->
             <ul class="nav" style="padding-left: 28px;">
-              <li bindonce class="b-b b-l b-light" ng-repeat="childMenu in menu.children"
+              <li bindonce class="b-b b-l b-light " ng-repeat="childMenu in menu.children"
                   ng-click="setPage(childMenu); toggleSelectMenu(childMenu)" ng-class="isSelectedMenu(childMenu)">
-                <a class="menu-child-link" ng-click="setPage(childMenu)"><span bo-text="childMenu.menuname"></span></a>
+                <a class="menu-child-link " ng-click="setPage(childMenu)"><span bo-text="childMenu.menuname"></span></a>
               </li>
             </ul>
           </div>
@@ -69,8 +69,8 @@
 <script src="../../assets/js/jquery/jquery.hotkeys.js"></script>
 <script src="../../assets/js/angularjs/common/hotkeys.js"></script>
 
-<script src="mutate.events.js"></script>
-<script src="mutate.min.js"></script>
+<script src="../../assets/js/jquery/mutate.events.js"></script>
+<script src="../../assets/js/jquery/mutate.min.js"></script>
 
 <script src="faWen.foudation.js"></script>
 <script src="faWen.new.js"></script>
