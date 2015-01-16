@@ -5222,3 +5222,6 @@ ul {
     display: block;
     padding: 5px 10px
 }
+
+.green-tooltip + .tooltip > .tooltip-inner {background-color: #71dad2;}
+.green-tooltip + .tooltip > .tooltip-arrow { border-bottom-color:#71dad2; }

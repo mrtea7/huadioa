@@ -31,6 +31,8 @@ faWen.config(['ngToastProvider', '$tooltipProvider', function (ngToastProvider, 
 faWen.run(['$rootScope', '$state', '$stateParams',
   function ($rootScope, $state, $stateParams) {
     console.clear();
+
+
   }])
 
 faWen.controller('FaWenCtrl', ['$scope', '$rootScope', '$state', 'requestService',
@@ -49,8 +51,14 @@ faWen.controller('FaWenCtrl', ['$scope', '$rootScope', '$state', 'requestService
     $scope.toggleSelectMenu = function(menu){
       if( !$scope.selectedMenu || $scope.selectedMenu !== menu ){
         $scope.selectedMenu = menu;
-        if(menu.children && menu.children.length && menu.slideExpanded == false){
+        //console.log("aaaaaa")
+        //console.log(menu.expanded )
+        //console.log("menu.children",!!menu.children)
+        //console.log("menu.children.length",!!menu.children.length)
+
+        if(menu.children && menu.children.length && menu.expanded){
           $scope.selectedMenu = ""
+          //console.log("hello")
         }
       }else {
         $scope.selectedMenu = ""
@@ -64,6 +72,7 @@ faWen.controller('FaWenCtrl', ['$scope', '$rootScope', '$state', 'requestService
 
     $scope.hasMenuChildren = function (menu) {
       if(menu.children && menu.children.length > 0) {
+        //console.log("menu", menu.menuname)
         return true
       }
     }

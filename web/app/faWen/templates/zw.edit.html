@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    /*body {
+        height: 1000px;
+    }*/
+  </style>
+  <script type="text/javascript" src="../../middleware/ntko/myOfficeControl/OfficeContorlFunctions.js"></script>
+</head>
+<body   onload='load();' >
+<form id="form1" action="../../middleware/ntko/myOfficeControl/upLoadOfficeFile.jsp?<%=para%>" enctype="multipart/form-data"
+      style="width:100%;padding:0px;margin:0px;">
+  <input type="hidden" name="fileId" id="fileId" value="<%=fileId%>"/>
+  <input name="title" id="title" type="hidden" value="<%=XMMC%>"/>
+  <input name="XMID" id="XMID" type="hidden" value="<%=XMID%>"/>
+  <input name="filename" id="filename" type="hidden" value="noname.doc"/>
+  <input id="fileUrl" type="hidden" value="<%=fileUrl%>"/>
+
+  <div id="editmain" class="editmain"
+       style="margin-top: 0px;width:100%;vertical-align: middle; text-align: center;overflow: hidden;">
+    <div id="editmain_right" class="editmain_right" style="width:100%; margin-top: 0px;overflow: hidden;">
+      <div id="officecontrol" style="width:100%;height:100%;margin:0 auto; overflow: hidden;">
+        <%--<object id="TANGER_OCX" classid="clsid:C9BC4DFF-4248-4a3c-8A49-63A7D317F404" codebase="OfficeControl.cab#version=5,0,2,1" width="100%" height="100%">
+        <param name="MakerCaption" value="xxxx">
+        <param name="MakerKey" value="xxxx">
+        <param name="ProductCaption" value="杭州市萧山区发展和改革局">
+        <param name="ProductKey" value="7F71BEEE2769B5570BED5E832E0840C35D3900CB">
+        <param name="Toolbars" value="-1">
+        <param name="BorderStyle" value="1">
+        <param name="Titlebar" value="0">
+        <param name="TitlebarColor" value="42768">
+        <param name="TitlebarTextColor" value="0">
+        <param name="Menubar" value="-1">
+        <param name="MenubarColor" value="14402205">
+        <param name="BorderColor"  value="14402205">
+        <PARAM NAME="MenuButtonColor" VALUE="16180947">
+        <param name="MenuBarStyle" value="3">
+        <param name="MenuButtonStyle" value="7">
+        <SPAN STYLE="color:red">不能装载文档控件。请在检查浏览器的选项中检查浏览器的安全设置。</SPAN>
+      </object>--%>
+        <script type="text/javascript"
+                src="../../middleware/ntko/myOfficeControl/ntkoofficecontrol.js"  ></script>
+        <div id=statusBar style="height:0px;width:100%;background-color:#c0c0c0;font-size:12px;"></div>
+        <script language="JScript" for=TANGER_OCX
+                event="OnDocumentClosed()">setFileOpenedOrClosed(false);</script>
+        <script language="JScript" for=TANGER_OCX event="OnDocumentOpened(TANGER_OCX_str, TANGER_OCX_obj)">
+          var nodebh = "<%=nodebh%>";
+          var wkna = "<%=wkna%>";
+          fileType = "Word.Document";
+          fileTypeSimple = "wrod";
+          setFileOpenedOrClosed(true);
+          ScrollBar();
+          OFFICE_CONTROL_OBJ.FileClose = false;//禁止关闭
+          OFFICE_CONTROL_OBJ.WebUserName = wkna;//鼠标悬停在痕迹提示框上
+          if( nodebh != "F01" || nodebh != "" ){
+            // 保留痕迹，拟稿除外
+            SetReviewMode(true);
+          }
+          setShowRevisions(false);//隐藏痕迹
+          //OFFICE_CONTROL_OBJ.activeDocument.saved=true;//当为saved=true时，通过saveFileToUrl方法也不会真的保存文档
+          //保持将 saved 属性的判断放在“打开事件”的最后一行，否则其他语句会影响saved属性。
+        </script>
+        <script language="JScript" for=TANGER_OCX
+                event="BeforeOriginalMenuCommand(TANGER_OCX_str,TANGER_OCX_obj)">
+          //alert("BeforeOriginalMenuCommand事件被触发");
+          //alert(menuTitle);// 显示用户点击的菜单命令
+          //CancelLastCommand = true;	//设置true，可以在此处取消用户的操作
+          //不包括“文件”菜单命令
+        </script>
+        <script language="JScript" for=TANGER_OCX event="OnFileCommand(TANGER_OCX_str,TANGER_OCX_obj)">
+          if (TANGER_OCX_str == 3) {
+            //save();
+            CancelLastCommand = true;
+          } else if (TANGER_OCX_str == 5) {//打印
+            //获取书签红头
+            //alert(this.ActiveDocument);
+            var remark1 = '红头';
+            var remark2 = '红线';
+            var TANGER_OCX = document.getElementById("TANGER_OCX");
+            //this.ActiveDocument.BookMarks(remark).Range.Text="hello world";//替换书签处的文本，保留书签的位置
+
+            TANGER_OCX.ActiveDocument.Bookmarks(remark1).Range.Font.Color = 16777215;//设置书签中文本颜色为白色，这样打印就不会打印出来了 .
+            //TANGER_OCX.ActiveDocument.Bookmarks(remark2).Range.Font.Color = 16777215;//设置书签中文本颜色为白色，这样打印就不会打印出来了 .
+            //TANGER_OCX.ActiveDocument.Range.ShapeRange(1).Line.ForeColor.RGB = 16777215;//设置文档中第一个线条颜色为白色 (即图中的红线).
+            TANGER_OCX.ActiveDocument.bookmarks(remark2).range.ShapeRange(1).Line.ForeColor.RGB = 16777215;
+            //改变红头为白色
+            //打印
+            //document.all("TANGER_OCX").CancelLastCommand = true;//禁止打印
+            PrintOut();
+            TANGER_OCX.activedocument.undo(2);
+            //恢复红头
+            CancelLastCommand = true;
+          }
+        </script>
+        <script language="JScript" for=TANGER_OCX event="AfterPublishAsPDFToURL(result,code)">
+          result = trim(result);
+          alert(result);
+          document.all("statusBar").innerHTML = "服务器返回信息:" + result;
+          if (result == "文档保存成功。") {
+            window.close();
+          }
+        </script>
+        <script language="JScript" for=TANGER_OCX
+                event="OnCustomMenuCmd2(menuPos,submenuPos,subsubmenuPos,menuCaption,menuID)">
+          alert("第" + menuPos + "," + submenuPos + "," + subsubmenuPos + "个菜单项,menuID=" + menuID + ",菜单标题为\"" + menuCaption + "\"的命令被执行.");
+        </script>
+      </div>
+    </div>
+  </div>
+</form>
+</body>
+<script type="text/javascript" src="ng_office.js"></script>
+</html>
+

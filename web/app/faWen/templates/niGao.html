@@ -12,7 +12,7 @@
           </div>
           <div class="btn-group" >
             <button type="button" class="btn btn-default btn-sm" style="padding: 5px 7px;" >
-              <i class="fa fa-plus  m-l-xs m-r-xs" tooltip-placement="right" tooltip="新增（ctrl+n）"></i>
+              <i class="fa fa-plus  m-l-xs m-r-xs green-tooltip " tooltip-placement="right" tooltip="新增（ctrl+n）"></i>
             </button>
           </div>
         </div>
@@ -54,7 +54,7 @@
               <input type="checkbox" ng-model="selectAllCheckbox.isChecked" ng-click="selectAllItem()">
             </th>
             <th style="width:60px">序号</th>
-            <th style="width:50%">标题</th>
+            <th style="width:50%">文件标题</th>
             <th>发起人</th>
             <th>发起时间</th>
           </tr>
@@ -87,10 +87,10 @@
     </div>
   </footer>
   <div my-slider-show slider_width="60%" class="entity-panel-container">
-    <div ng-show="true" ng-include="'userEntityPanel.html'"></div>
+    <div ng-show="true" ng-include="'itemEntityPanel.html'"></div>
   </div>
 </section>
-<script type="text/ng-template" id="userEntityPanel.html">
+<script type="text/ng-template" id="itemEntityPanel.html">
   <section class="entity-panel">
     <section class="entity-panel-wrapper">
       <header class="entity-panel-header header">
@@ -180,7 +180,7 @@
         </div>
       </div>
       <footer class="entity-panel-footer footer  text-right">
-        <button type="button" class="btn btn-default" my-user-modal data-template="templates/userEdit.html">修改</button>
+        <button type="button" class="btn btn-default" my-user-modal data-template="templates/userEdit.html">办理</button>
       </footer>
     </section>
   </section>
