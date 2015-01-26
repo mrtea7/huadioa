@@ -5081,60 +5081,7 @@ ul {
     display: none;
 }
 
-.entity-panel {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    background-color: #f8f8f8;
-    z-index: 1010;
-}
 
-.entity-panel .entity-panel-wrapper {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /*box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);*/
-}
-
-.entity-panel .entity-panel-header {
-    position: relative;
-    border-bottom: 1px solid #cfcfcf;
-    background-color: #fff;
-    color: #717171;
-}
-
-.entity-panel .entity-panel-body {
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: absolute;
-    top: 65px;
-    left: 0;
-    right: 0;
-    bottom: 45px;
-    padding-left: 7px;
-}
-
-.entity-panel .entity-panel-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #fff;
-    color: #717171;
-    border-top: 1px solid #cfcfcf;
-}
-
-.entity-panel-container {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    width: 0;
-    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);
-}
 
 /**
  * 第一次引入是在 角色管理的 角色详情中，作为功能菜单的树状显示

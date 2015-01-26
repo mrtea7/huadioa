@@ -1,0 +1,85 @@
+/*  声明 entity-panel 在页面上的位置；
+    修饰 container 本身*/
+.entity-panel-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 60%;
+    z-index: 1000;
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2); /* 为 container 添加阴影 */
+    /*background-color: #ffe9a3; *//* 临时值 */
+    /*background-clip: content-box;*/
+}
+
+/*  声明 entity-panel 在 container 中的大小和位置；
+    作为内部元素的参照对象
+*/
+.entity-panel {
+    z-index: 1001;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    /*background-clip: content-box;*/
+    background-color: #f8f8f8;
+    /*background-color: #dac1ff;*/
+}
+
+/*.entity-panel .entity-panel-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    *//*box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);*//*
+}*/
+
+/* 高度值参照左侧的列表区 */
+.entity-panel-header {
+    /*position: absolute;*/
+    height: 50px;
+    border-bottom: 1px solid #cfcfcf;
+    background-color: #fff;
+    color: #717171;
+    /*box-sizing: border-box;*/
+}
+
+.entity-panel-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 50px; /* 65 = 50 + 15 */
+    left: 0;
+    right: 0;
+    bottom: 49px;
+    padding-left: 7px;
+    /*box-sizing: border-box; */
+
+    /*background-color: #5488ff;*/
+}
+
+.entity-panel-footer {
+    position: absolute;
+    bottom: 0;
+    height: 50px; /* +4? */
+    width: 100%;
+    background-color: #fff;
+    color: #717171;
+    border-top: 1px solid #cfcfcf;
+    /*box-sizing: border-box;*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

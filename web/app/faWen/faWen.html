@@ -6,7 +6,8 @@
   <base target="mainFrame">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <link href="../../assets/css/bootstrap/3.3.0/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/bootstrap/3.3.0/bootstrap-offical.css" rel="stylesheet">
+  <!--<link href="../../assets/css/bootstrap/3.3.0/bootstrap.css" rel="stylesheet">-->
   <link href="../../assets/css/angular/animate.css" rel="stylesheet">
   <link href="../../assets/css/font-awesome.css" rel="stylesheet">
   <link href="../../assets/css/iconfont.css" rel="stylesheet">
@@ -14,12 +15,14 @@
   <link href="../../assets/css/angular/ngToast.css" rel="stylesheet"/>
   <link href="../../assets/css/plugins/nanoscroller.css" rel="stylesheet"/>
   <link href="../../assets/css/style.css" rel="stylesheet">
+  <link href="../../assets/css/slide.css" rel="stylesheet">
+  <link href="../../assets/css/app/faWen.css" rel="stylesheet">
 </head>
 <body ng-app="myApp.faWen" ng-controller="FaWenCtrl">
 <toast></toast>
 <section class="hbox stretch">
   <aside class="aside-sm bg-white b-r" id="subNav">
-    <div class="wrapper b-b header"><b>发文</b></div>
+    <div class="wrapper b-b header"><b>发文应用</b></div>
     <div class="nano" style="width: 150px; position: absolute; top: 50px; bottom: 0;"><!--height: 400px;-->
       <ul class="nav nano-content" style="">
         <li bindonce class="b-b b-light menu-item" ng-repeat="menu in menuList" ng-class="isSelectedMenu(menu)" >
@@ -33,7 +36,7 @@
           <div ng-if="hasMenuChildren(menu)" ng-class="menu.expanded ? 'b-t' : ''"
                slideable init-slide-expanded="menu.expanded"  ><!--data-height="160px"-->
             <ul class="nav" style="padding-left: 28px;">
-              <li bindonce class="b-b b-l b-light " ng-repeat="childMenu in menu.children"
+              <li bindonce class="b-b b-light " ng-repeat="childMenu in menu.children"
                   ng-click="setPage(childMenu); toggleSelectMenu(childMenu)" ng-class="isSelectedMenu(childMenu)">
                 <a class="menu-child-link " ng-click="setPage(childMenu)"><span bo-text="childMenu.menuname"></span></a>
               </li>
