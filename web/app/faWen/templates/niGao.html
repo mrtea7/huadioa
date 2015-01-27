@@ -90,22 +90,33 @@
     </div>
   </footer>
   <div my-slider-show slider_width="60%" class="entity-panel-container">
-    <div ng-show="true" ng-include="'itemEntityPanel.html'"></div>
+    <div ng-show="true" ng-include="'itemEntityPanel.html'" ng-controller="EntityPanelCtrl"></div>
   </div>
 </section>
 <script type="text/ng-template" id="itemEntityPanel.html">
   <section class="entity-panel">
     <section class="entity-panel-header">
-      标题
+      <div class="tabset-wrapper">
+        <tabset>
+          <tab select="selectSPD()">
+            <tab-heading>
+              <i class="glyphicon glyphicon-bell"></i> 审批单
+            </tab-heading>
+            <!-- 标签内容移至 entity-panel-body -->
+          </tab>
+          <tab select="selectZW()">
+            <tab-heading>
+              <i class="glyphicon glyphicon-bell"></i> 正文
+            </tab-heading>
+          </tab>
+        </tabset>
+      </div>
     </section>
     <section class="entity-panel-body">
-      内容
+      <div ng-include="tab.content"></div>
     </section>
     <section class="entity-panel-footer">
       页脚
     </section>
-    <!--<section class="entity-panel-wrapper">
-asdfasdfsadfasdf
-    </section>-->
   </section>
 </script>

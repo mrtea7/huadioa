@@ -210,3 +210,17 @@ faWen.controller('ZwModalCtrl',
             $modalInstance.dismiss('cancel');
         };
     })
+
+faWen.controller('EntityPanelCtrl',function($scope){
+    $scope.selectSPD = function(){
+        $scope.tab = {content: "templates/spd_detail.html"}
+    }
+    $scope.selectZW = function(){
+        $scope.tab = {content: "templates/zw_detail.html"}
+    }
+})
+
+
+
+
+

@@ -5866,7 +5866,7 @@ input[type="checkbox"]:hover, .checkbox input[type="checkbox"]:hover, .checkbox-
 }
 
 input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked::after, .checkbox-inline input[type="checkbox"]:checked::after {
-    content: url(../../../img/element/checkmark.png);
+    content: url(../../img/element/checkmark.png);
     display: block;
     position: absolute;
     top: -6px;
@@ -6410,9 +6410,10 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     color: #999
 }
 
+/* 左上角和右上角是圆弧*/
 .nav-tabs > li > a {
     border-radius: 4px 4px 0 0;
-    color: #666
+    /*color: #666*/
 }
 
 .nav-tabs > li > a:hover {
