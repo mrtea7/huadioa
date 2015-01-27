@@ -63,7 +63,7 @@ faWen.controller("NiGaoCtrl",
                 backdrop: "static",
                 keyboard: false,
                 size: "lg",
-                templateUrl: 'templates/zw_edit.html', // scope is in ModalInstanceCtrl
+                templateUrl: 'templates/body-edit.html', // scope is in ModalInstanceCtrl
                 //templateUrl: attr.template, // scope is in ModalInstanceCtrl
                 controller: 'ZwModalCtrl'
                 /*, resolve: {

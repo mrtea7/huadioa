@@ -2,7 +2,7 @@
   {
     "menucode": "fw01",
     "menuname": "拟稿",
-    "templateurl": "templates/niGao.html"
+    "templateurl": "templates/draft.html"
   },
   {
     "menucode": "fw02",
