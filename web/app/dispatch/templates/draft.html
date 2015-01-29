@@ -1,4 +1,4 @@
-<section class="vbox" ng-controller="NiGaoCtrl"
+<section class="vbox" ng-controller="DraftCtrl"
          on-document-hotkeys="{type:'keydown', key:'ctrl+n', handler:openModal}" >
   <header class="header bg-white b-b clearfix">
     <form class="talbe-search" method="post" action="">
@@ -88,22 +88,22 @@
       </div>
     </div>
   </footer>
-  <div my-slider-show slider_width="60%" class="entity-panel-container">
-    <div ng-show="true" ng-include="'itemEntityPanel.html'" ng-controller="EntityPanelCtrl"></div>
+  <div my-slider-show slider_width="60%" class="entity-panel-wrapper" >
+    <div ng-show="true" ng-include="'entityPanel.html'" ng-controller="EntityPanelCtrl"></div>
   </div>
 </section>
-<script type="text/ng-template" id="itemEntityPanel.html">
+<script type="text/ng-template" id="entityPanel.html">
   <section class="entity-panel">
     <section class="entity-panel-header">
       <div class="tabset-wrapper">
         <tabset>
-          <tab select="selectSPD()">
+          <tab select="selectApprovalForm()">
             <tab-heading>
               <i class="fa fa-file-text"></i> 审批单
             </tab-heading>
             <!-- 标签内容移至 entity-panel-body -->
           </tab>
-          <tab select="selectZW()">
+          <tab select="selectBody()">
             <tab-heading>
               <i class="fa fa-file-text"></i> 正文
             </tab-heading>
@@ -115,7 +115,7 @@
       <div ng-include="tab.content"></div>
     </section>
     <section class="entity-panel-footer">
-      页脚
+      <div ng-include="tab.operator"></div>
     </section>
   </section>
 </script>

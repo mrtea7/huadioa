@@ -1,4 +1,4 @@
-var faWen = angular.module('myApp.faWen', [
+var dispatch = angular.module('myApp.dispatch', [
   'ui.router',
   'ui.bootstrap',
   'pasvaz.bindonce',
@@ -15,7 +15,7 @@ var faWen = angular.module('myApp.faWen', [
   'hotkeys'
 ])
 
-faWen.config(['ngToastProvider', '$tooltipProvider', function (ngToastProvider, $tooltipProvider) {
+dispatch.config(['ngToastProvider', '$tooltipProvider', function (ngToastProvider, $tooltipProvider) {
   ngToastProvider.configure({
     verticalPosition: 'top',
     horizontalPosition: 'center',
@@ -28,14 +28,14 @@ faWen.config(['ngToastProvider', '$tooltipProvider', function (ngToastProvider, 
   });
 }])
 
-faWen.run(['$rootScope', '$state', '$stateParams',
+dispatch.run(['$rootScope', '$state', '$stateParams',
   function ($rootScope, $state, $stateParams) {
     console.clear();
 
 
   }])
 
-faWen.controller('FaWenCtrl', ['$scope', '$rootScope', '$state', 'requestService',
+dispatch.controller('FaWenCtrl', ['$scope', '$rootScope', '$state', 'requestService',
   function ($scope, $rootScope, $state, requestService) {
     requestService.faWenMenuList().success(function (menuList, httpStatus) {
       $scope.menuList = menuList;

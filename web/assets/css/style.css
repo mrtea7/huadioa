@@ -3409,9 +3409,10 @@ fieldset[disabled] .btn-gplus.active {
 }
 
 .line {
-    *width: 100%;
+    /**width: 100%;*/
     height: 2px;
-    margin: 10px 0;
+    /*width: 90%;*/
+    margin: 10px auto;
     font-size: 0;
     overflow: hidden;
     background-color: transparent;
@@ -4869,10 +4870,7 @@ th {
     padding-left: 40px;
 }
 
-.form-control-static {
-    -ms-word-break: break-all;
-    word-break: break-all;
-}
+
 
 table td {
     -ms-word-break: break-all !important;

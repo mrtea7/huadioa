@@ -1,6 +1,6 @@
 /*  声明 entity-panel 在页面上的位置；
     修饰 container 本身*/
-.entity-panel-container {
+.entity-panel-wrapper {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -19,7 +19,8 @@
     top: 0;
     bottom: 0;
     width: 100%;
-    background-color: #f8f8f8;
+    /*background-color: #f8f8f8;*/
+    background-color: #fff;
 }
 
 /* 高度值需要参照左侧的列表区 */
@@ -49,6 +50,7 @@
     bottom: 0;
     height: 50px;
     width: 100%;
+    /*background-color: red;*/
     background-color: #fff;
     color: #717171;
     border-top: 1px solid #cfcfcf;
@@ -68,9 +70,20 @@
     font-weight: 600;
 }
 
+.entity-content{
+    padding-top: 15px;
+    font-size: 14px;
+}
 
-
-
+.entity-operator{
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: right;
+    /* todo: 绝对定位导致滑动消失后仍然留在页面上 */
+    /*position: absolute;*/
+    /*right: 15px;*/
+    /*bottom: 5px;*/
+}
 
 
 

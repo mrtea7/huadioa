@@ -1,8 +1,13 @@
 /* extend 用于覆盖 bootstrap-official 的特性
     */
 
+.form-group {
+    overflow: hidden;
+}
 
-
-
+.form-control-static {
+    /*-ms-word-break: break-all;*/
+    /*word-break: break-all;*/
+}
 
 
