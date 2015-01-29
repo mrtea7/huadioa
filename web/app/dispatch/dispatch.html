@@ -19,10 +19,10 @@
   <link href="../../assets/css/slide.css" rel="stylesheet">
   <link href="css/dispatch.css" rel="stylesheet">
 </head>
-<body ng-app="myApp.dispatch" ng-controller="FaWenCtrl">
+<body ng-app="myApp.dispatch" ng-controller="DispatchCtrl">
 <toast></toast>
 <section class="hbox stretch">
-  <aside class="aside-sm bg-white b-r" id="subNav">
+  <aside class="aside-sm bg-white b-r" id="subNav" style="overflow-y: auto;">
     <div class="wrapper b-b header"><b>发文应用</b></div>
     <div class="nano" style="width: 150px; position: absolute; top: 50px; bottom: 0;"><!--height: 400px;-->
       <ul class="nav nano-content" style="">
@@ -79,6 +79,8 @@
 
 <script src="js/dispatch.foudation.js"></script>
 <script src="js/dispatch.core.js"></script>
+
+
 <script>
 
   // 这个插件能够使得 scrollHeight 立马更新

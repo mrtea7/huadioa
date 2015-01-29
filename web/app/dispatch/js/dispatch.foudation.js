@@ -35,7 +35,7 @@ dispatch.run(['$rootScope', '$state', '$stateParams',
 
   }])
 
-dispatch.controller('FaWenCtrl', ['$scope', '$rootScope', '$state', 'requestService',
+dispatch.controller('DispatchCtrl', ['$scope', '$rootScope', '$state', 'requestService',
   function ($scope, $rootScope, $state, requestService) {
     requestService.faWenMenuList().success(function (menuList, httpStatus) {
       $scope.menuList = menuList;
