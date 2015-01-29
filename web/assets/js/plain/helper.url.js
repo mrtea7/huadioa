@@ -1,3 +1,10 @@
+/**
+ *
+ * @param url
+ * @returns {{source: *, protocol: *, host: (string|urlResolve.hostname|*|Ba.hostname), port: *, query: *, params, file: (string|*), hash: *, path: string, relative: *, segments: Array}}
+ */
+
+
 function parseURL(url) {
   var a = document.createElement('a');
   a.href = url;

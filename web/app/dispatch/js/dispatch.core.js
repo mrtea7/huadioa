@@ -85,6 +85,10 @@ dispatch.controller("DraftCtrl",
     })
 
 dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) {
+  $scope.param = {
+    "hello": "hello333"
+  }
+
   $scope.selectApprovalForm = function () {
     $scope.tab = {
       content: "templates/approval-form-content-detail.html",
@@ -123,6 +127,33 @@ dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) 
       sliderService.stopAutoHide();
     })
   }
+
+  $scope.fullscreenBody = function(){
+    var modalInstance = $modal.open({
+      backdrop: "static",
+      keyboard: false,
+      size: "lg",
+      templateUrl: 'templates/body-detail.html',
+      controller: 'ApprovalFormCtrl'
+      /*, resolve: {
+       user: function () {
+       return scope.user // 指令内部控制器，不能访问到外部 scope
+       }
+       }*/
+    })
+
+    modalInstance.result.then(function () {
+      sliderService.startAutoHide();
+    }, function () {
+      sliderService.startAutoHide();
+    });
+
+    modalInstance.opened.then(function () {
+      sliderService.stopAutoHide();
+    })
+  }
+
+
 
 })
 
