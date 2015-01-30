@@ -11,10 +11,12 @@
     height: 100%;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 .modal-fullscreen .modal-content {
     height: 100%;
     border-radius: 0;
+    overflow: hidden;
 }
 

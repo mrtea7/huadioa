@@ -9,10 +9,8 @@ privilege.controller('IndexCtrl',
     function ($scope, $modal, sliderService) {
       $scope.openModal = function (opts) {
         var modalInstance = $modal.open({
-          backdrop: false,
-          //backdrop: opts.backdrop || "static",
-          keyboard: true,
-          //keyboard: opts.keyboard || false,
+          backdrop: "static",
+          keyboard: (!!opts.keyboard) ? opts.keyboard : false,
           size: opts.size || "lg",
           templateUrl: opts.templateUrl
         })

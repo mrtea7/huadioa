@@ -18,7 +18,8 @@ var mozL10n = document.mozL10n || document.webL10n;
 
 
 var CSS_UNITS = 96.0 / 72.0;
-var DEFAULT_SCALE = 0.8;
+/* 适合 OA 滑动层宽度 */
+//var DEFAULT_SCALE = 0.7;
 //var DEFAULT_SCALE = 'auto';
 var UNKNOWN_SCALE = 0;
 var MAX_AUTO_SCALE = 1.25;
@@ -5407,16 +5408,14 @@ var PDFViewerApplication = {
       this.setScale(scale, true);
       this.page = 1;
     }*/
-    //this.pdfViewer.currentScale
 
-    this.setScale(0.7, true);
+    //this.setScale(0.7, true);
 
-/*
     if (this.pdfViewer.currentScale === UNKNOWN_SCALE) {
       // Scale was not initialized: invalid bookmark or scale was not specified.
       // Setting the default one.
       this.setScale(DEFAULT_SCALE, true);
-    }*/
+    }
   },
 
   cleanup: function pdfViewCleanup() {
