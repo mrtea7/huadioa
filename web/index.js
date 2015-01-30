@@ -1,14 +1,15 @@
-var privilege = angular.module('myApp.index', [
+var index = angular.module('myApp.index', [
   "handyUtilities",
   "slider",
   "request",
   'ui.bootstrap'
 ])
 
-privilege.controller('IndexCtrl',
+index.controller('IndexCtrl',
     function ($scope, $modal, sliderService) {
+      var modalInstance;
       $scope.openModal = function (opts) {
-        var modalInstance = $modal.open({
+        modalInstance = $modal.open({
           backdrop: "static",
           keyboard: (!!opts.keyboard) ? opts.keyboard : false,
           size: opts.size || "lg",
@@ -25,6 +26,11 @@ privilege.controller('IndexCtrl',
           sliderService.stopAutoHide();
         })
       }
+
+      $scope.closeModal = function(){
+        modalInstance.dismiss('cancel')
+      }
+      
     })
 
 
