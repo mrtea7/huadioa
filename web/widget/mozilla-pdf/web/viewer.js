@@ -6157,7 +6157,7 @@ var DocumentAttachmentsView = function documentAttachmentsView(options) {
 function webViewerLoad(evt) {
   PDFViewerApplication.initialize().then(webViewerInitialized);
 }
-
+//webViewerInitialized
 function webViewerInitialized() {
   var queryString = document.location.search.substring(1);
   var params = PDFViewerApplication.parseQueryString(queryString);

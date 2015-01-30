@@ -30,9 +30,7 @@ dispatch.config(['ngToastProvider', '$tooltipProvider', function (ngToastProvide
 
 dispatch.run(['$rootScope', '$state', '$stateParams',
   function ($rootScope, $state, $stateParams) {
-    console.clear();
-
-
+    //console.clear();
   }])
 
 dispatch.controller('DispatchCtrl', ['$scope', '$rootScope', '$state', 'requestService',

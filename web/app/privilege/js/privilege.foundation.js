@@ -26,7 +26,7 @@ privilege.config(['ngToastProvider', function (ngToast) {
 
 privilege.run(['$rootScope', '$state', '$stateParams',
     function ($rootScope, $state, $stateParams) {
-        console.clear();
+        //console.clear();
     }])
 
 privilege.controller('PrivilegeCtrl', ['$scope', '$rootScope', '$state', 'requestService',
