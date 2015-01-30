@@ -20,3 +20,11 @@
     overflow: hidden;
 }
 
+/* 增加 modal 宽度类型 */
+@media (min-width: 768px){
+    .modal-middle.modal-dialog{
+        width: 500px;
+    }
+
+}
+

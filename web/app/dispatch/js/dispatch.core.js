@@ -133,11 +133,18 @@ dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) 
     $indexScope.openModal({
       templateUrl: 'app/dispatch/templates/body-detail-fullscreen.html',
       size: 'fullscreen',
-      keyboard: false
+      keyboard: true
     })
   }
 
-
+  $scope.submit = function(){
+    var $indexScope = parent.angular.element('#indexMain').scope();
+    $indexScope.openModal({
+      templateUrl: 'app/dispatch/templates/submit.html',
+      size: 'middle',
+      keyboard: true
+    })
+  }
 })
 
 dispatch.controller('ApprovalFormCtrl', function ($scope, $modalInstance, requestService) {
