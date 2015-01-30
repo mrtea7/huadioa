@@ -131,7 +131,8 @@ dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) 
   $scope.fullscreenBody = function(){
     var $indexScope = parent.angular.element('#indexMain').scope();
     $indexScope.openModal({
-      templateUrl: 'app/dispatch/templates/body-detail-fullscreen.html'
+      templateUrl: 'app/dispatch/templates/body-detail-fullscreen.html',
+      size: 'fullscreen'
     })
   }
 
