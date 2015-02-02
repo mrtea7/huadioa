@@ -85,17 +85,13 @@ dispatch.controller("DraftCtrl",
     })
 
 dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) {
-  $scope.param = {
-    "hello": "hello333"
-  }
-
   $scope.selectApprovalForm = function () {
     $scope.tab = {
       content: "templates/approval-form-content-detail.html",
       operator: "templates/approval-form-operator.html"
     }
-
   }
+
   $scope.selectBody = function () {
     $scope.tab = {
       content: "templates/body-detail.html",
@@ -128,7 +124,7 @@ dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) 
     })
   }
 
-  $scope.fullscreenBody = function(){
+  $scope.fullscreenBody = function () {
     var $indexScope = parent.angular.element('#indexMain').scope();
     $indexScope.openModal({
       templateUrl: 'app/dispatch/templates/body-detail-fullscreen.html',
@@ -137,12 +133,23 @@ dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) 
     })
   }
 
-  $scope.submit = function(){
-    var $indexScope = parent.angular.element('#indexMain').scope();
-    $indexScope.openModal({
-      templateUrl: 'app/dispatch/templates/submit.html',
+  $scope.submitItem = function () {
+    var modalInstance = $modal.open({
+      backdrop: "static",
+      templateUrl: 'templates/submit.html',
       size: 'middle',
-      keyboard: true
+      keyboard: true,
+      controller: 'SubmitCtrl'
+    })
+
+    modalInstance.result.then(function () {
+      sliderService.startAutoHide();
+    }, function () {
+      sliderService.startAutoHide();
+    });
+
+    modalInstance.opened.then(function () {
+      sliderService.stopAutoHide();
     })
   }
 })
@@ -156,6 +163,18 @@ dispatch.controller('ApprovalFormCtrl', function ($scope, $modalInstance, reques
     $modalInstance.dismiss('cancel');
   };
 })
+
+dispatch.controller('SubmitCtrl', function ($scope, $modalInstance, requestService) {
+  $scope.submit = function () {
+    console.log("submit")
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+})
+
+
 
 dispatch.controller('BodyCtrl', function ($scope, $modalInstance, requestService) {
 
