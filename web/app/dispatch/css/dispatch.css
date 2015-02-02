@@ -3,7 +3,9 @@
     -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.3);
 }
 
-
+ul.nav ul.nav > li:last-child{
+    border-bottom: 0;
+}
 
 
 .control-label-detail{
