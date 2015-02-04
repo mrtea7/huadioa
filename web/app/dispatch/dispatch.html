@@ -33,7 +33,7 @@
                ng-class="menu.expanded ? 'fa-chevron-down' : 'fa-chevron-right' "></i>
             <span bo-text="menu.menuname"></span>
           </a>
-          <!-- FIXME：slide 的初始化高度是通过 slide-toggle 计算出来的，因为 slide 初始化动画效果（从展开到收拢）必须使用 px 单位 -->
+           <!--FIXME：slide 的初始化高度是通过 slide-toggle 计算出来的，因为 slide 初始化动画效果（从展开到收拢）必须使用 px 单位 -->
           <div ng-if="hasMenuChildren(menu)" ng-class="menu.expanded ? 'b-t' : ''"
                slideable init-slide-expanded="menu.expanded"  ><!--data-height="160px"-->
             <ul class="nav" style="padding-left: 28px;">
@@ -47,7 +47,6 @@
       </ul>
     </div>
   </aside>
-
   <aside ng-include="menuTemplateUrl"></aside>
 </section>
 </body>
