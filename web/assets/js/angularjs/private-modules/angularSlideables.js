@@ -1,3 +1,8 @@
+/*
+*
+* 实际应用场景：发文应用，折叠显示/隐藏子菜单
+* * */
+
 angular.module('angularSlideables', [])
     .directive('slideToggle', function () {
       return {
