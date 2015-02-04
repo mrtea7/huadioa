@@ -41,78 +41,9 @@
         <div class="row text-center-xs">
         </div>
     </footer>
-    <div my-slider-show slider_width="40%" class="entity-panel-container">
-        <div ng-show="true" ng-include="'roleEntityPanel.html'"></div>
+    <div my-slider-show slider_width="40%" class="entity-panel-wrapper">
+        <div ng-show="true" ng-include="'templates/roleEntityPanel.html'"></div>
     </div>
 </section>
-<script type="text/ng-template" id="roleEntityPanel.html">
-    <section class="entity-panel">
-        <section class="entity-panel-wrapper">
-            <header class="entity-panel-header header">
-                <p>角色详情</p>
-                <button type="button" class="close m-t" ng-click="colseEntity()">&times;</button>
-            </header>
-            <div class="entity-panel-body form-horizontal">
-                <div class="col-sm-offset-1  m-t-sm m-b-sm">
-                    <div class="media m-xs">
-                    <span class="pull-left thumb-md">
-                    </span>
 
-                        <div class="pull-right">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="m-t-none"><b>{{selectedRole.rolename}}</b></h3>
-
-                            <p>{{selectedRole.roleid}}</p>
-
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">角色类型</label>
-
-                    <div class="col-sm-9">
-                        <p class="form-control-static"></p>
-                    </div>
-                </div>
-                <div class="line line-dashed line-lg pull-in"></div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">默认角色</label>
-
-                    <div class="col-sm-9">
-                        <p class="form-control-static" ng-if="selectedRole.isDefault">是</p>
-                    </div>
-                </div>
-                <div class="line line-dashed line-lg pull-in"></div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">功能菜单</label>
-
-                    <div class="col-sm-9">
-                        <div class="treeview">
-                            <ul style="padding-left: 0;">
-                                <li>
-                                    <span style="background-color: #ececec">{{ selectedRole.rolename }}角色</span>
-                                    <ul>
-                                        <li bindonce ng-repeat="menu in selectedMenuList">
-                                            <span bo-text="menu['text']"></span>
-                                            <ul ng-if="menu['children'].length > 0">
-                                                <li bindonce ng-repeat="menu in menu['children']">
-                                                    <span bo-text="menu['text']"></span>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <footer class="entity-panel-footer footer  text-right">
-                <button type="button" class="btn btn-default" my-role-modal data-template="templates/roleEdit.html">修改
-                </button>
-            </footer>
-        </section>
-    </section>
-</script>
+<!--<script type="text/ng-template" id="roleEntityPanel.html"></script>-->

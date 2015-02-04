@@ -1,6 +1,4 @@
 angular.module("request", []).factory('requestService', function ($http, $rootScope, util, $document) {
-
-
   var BACKEND_SERVER,
       url,
       doGetRequest = function (path) {
