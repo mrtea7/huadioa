@@ -31,10 +31,8 @@ OA 命名规范
 1.   正文：body
 *    审批单：approval-form
 
-
 #### 纸质审批
 纸质审批    paper-approval
-
 
 ### 收文应用相关词汇
 *    收文：receipt
