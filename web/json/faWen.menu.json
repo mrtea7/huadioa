@@ -16,7 +16,7 @@
       },{
         "menucode": "fw0202",
         "menuname": "审稿",
-        "templateurl": "templates/faWenShenPi_shenGao.html"
+        "templateurl": "templates/online-approval-review.html"
       },{
         "menucode": "fw0203",
         "menuname": "核稿",
