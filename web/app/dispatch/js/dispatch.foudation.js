@@ -43,7 +43,7 @@ dispatch.controller('DispatchCtrl',
 
       // for menu and menuChild
       $scope.setPage = function (menu) {
-        //$scope.menuTemplateUrl = menu['templateurl']
+        $scope.menuTemplateUrl = menu['templateurl']
       };
 
       $scope.toggleSelectMenu = function (menu) {
