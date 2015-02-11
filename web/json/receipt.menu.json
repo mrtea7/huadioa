@@ -1,0 +1,78 @@
+[
+  {
+    "menucode": "rec01",
+    "menuname": "收文登记",
+    "templateurl": "templates/online-approval-draft.html"
+  },
+  {
+    "menucode": "rec02",
+    "menuname": "文件拟办",
+    "templateurl": "templates/online-approval-draft.html"
+  },
+  {
+    "menucode": "rec03",
+    "menuname": "文件批示",
+    "templateurl": ""
+  },
+  {
+    "menucode": "rec04",
+    "menuname": "文件传阅",
+    "templateurl": ""
+  },
+  {
+    "menucode": "rec05",
+    "menuname": "经办领导批示",
+    "templateurl": ""
+  },
+  {
+    "menucode": "rec06",
+    "menuname": "办理结果",
+    "templateurl": ""
+  },
+  {
+    "menucode": "rec07",
+    "menuname": "阅者签名",
+    "templateurl": ""
+  },
+  {
+    "menucode": "rec08",
+    "menuname": "督察督办",
+    "templateurl": ""
+  },
+  {
+    "menucode": "rec09",
+    "menuname": "办理反馈",
+    "templateurl": ""
+  },
+  {
+    "menucode": "rec10",
+    "menuname": "在办查询",
+    "templateurl": ""
+  },
+  {
+    "menucode": "rec11",
+    "menuname": "办理查询",
+    "templateurl": ""
+  },
+  {
+    "menucode": "rec12",
+    "menuname": "收文簿管理",
+    "children":[
+      {
+        "menucode": "rec1201",
+        "menuname": "系统内",
+        "templateurl": "templates/online-approval-draft.html"
+      },
+      {
+        "menucode": "rec1202",
+        "menuname": "系统外",
+        "templateurl": "templates/online-approval-review.html"
+      },
+      {
+        "menucode": "rec1203",
+        "menuname": "其他收文",
+        "templateurl": "templates/faWenShenPi_heGao.html"
+      }
+    ]
+  }
+]

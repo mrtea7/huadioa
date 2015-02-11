@@ -51,6 +51,9 @@ angular.module("request", []).factory('requestService', function ($http, $rootSc
       faWenMenuList = function () {
         return doGetRequest('faWen.menu.json');
       },
+      receiptMenuList = function () {
+        return doGetRequest('receipt.menu.json');
+      },
       roleDetail = function () {
 
       },
@@ -79,7 +82,8 @@ angular.module("request", []).factory('requestService', function ($http, $rootSc
     roleDetail: roleDetail,
     deptList: deptList,
     menuList: menuList,
-    faWenList: faWenList
+    faWenList: faWenList,
+    receiptMenuList:receiptMenuList
   }
 })
 
