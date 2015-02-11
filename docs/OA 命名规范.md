@@ -25,7 +25,7 @@ OA 命名规范
 *    发文：dispatch （应用名）
 *    在办查询：query-in-process
 *    办结查询：query-finish
-*    登记簿：register
+*    登记簿：register-list
 
 #### 材料（名词）
 1.   正文：body
@@ -35,8 +35,24 @@ OA 命名规范
 纸质审批    paper-approval
 
 ### 收文应用相关词汇
-*    收文：receipt
 
+#### 收文应用
+*    收文：receipt
+*    收文登记：receipt-register
+*    文件拟办：file-to-run
+*    文件批示：file-instructions
+*    文件传阅：file-circulated
+*    经办领导批示:instructions
+*    办理结果：result
+*    阅者签名：sign
+*    督察督办：inspection
+*    办理反馈：feedback
+*    在办查询：query-ing
+*    办结查询：query-ed
+*    收文簿管理：receipt-list
+*    系统内：list-in
+*    系统外：list-out
+*    其他收文：list-other
 
 
 

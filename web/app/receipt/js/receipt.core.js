@@ -1,12 +1,12 @@
 dispatch.controller("DraftCtrl",
     function ($scope, $timeout, $state, $stateParams, $rootScope, sliderService, requestService, $modal) {
-      requestService.faWenList().success(function (data, httpStatus) {
+      requestService.receiptRegisterList().success(function (data, httpStatus) {
         $timeout(function () {
           $scope.itemList = data;
         }, 0)
       });
 
-      sliderService.initPath("dispatch.itemDetail.json"); // be mock
+      sliderService.initPath("receipt.itemDetail.json"); // be mock
       $scope.mySliderToggle = function (item) {
         sliderService.setParams({flowinstid: item.flowinstid})
         if(!$scope.selected) {
@@ -87,8 +87,8 @@ dispatch.controller("DraftCtrl",
 dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) {
   $scope.selectApprovalForm = function () {
     $scope.tab = {
-      content: "templates/approval-form-content-detail.html",
-      operator: "templates/approval-form-operator.html"
+      content: "templates/receipt-form-content-detail.html",
+      operator: "templates/receipt-form-operator.html"
     }
   }
 
@@ -104,7 +104,7 @@ dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) 
       backdrop: "static",
       keyboard: false,
       size: "lg",
-      templateUrl: 'templates/approval-form-content-edit.html',
+      templateUrl: 'templates/receipt-form-content-edit.html',
       controller: 'ApprovalFormCtrl'
       /*, resolve: {
        user: function () {
@@ -127,7 +127,7 @@ dispatch.controller('EntityPanelCtrl', function ($scope, $modal, sliderService) 
   $scope.fullscreenBody = function () {
     var $indexScope = parent.angular.element('#indexMain').scope();
     $indexScope.openModal({
-      templateUrl: 'app/dispatch/templates/body-detail-fullscreen.html',
+      templateUrl: 'app/receipt/templates/body-detail-fullscreen.html',
       size: 'fullscreen',
       keyboard: true
     })

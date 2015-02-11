@@ -2,57 +2,57 @@
   {
     "menucode": "rec01",
     "menuname": "收文登记",
-    "templateurl": "templates/online-approval-draft.html"
+    "templateurl": "templates/receipt-register.html"
   },
   {
     "menucode": "rec02",
     "menuname": "文件拟办",
-    "templateurl": "templates/online-approval-draft.html"
+    "templateurl": "templates/file-to-run.html"
   },
   {
     "menucode": "rec03",
     "menuname": "文件批示",
-    "templateurl": ""
+    "templateurl": "templates/file-instructions.html"
   },
   {
     "menucode": "rec04",
     "menuname": "文件传阅",
-    "templateurl": ""
+    "templateurl": "templates/file-circulated.html"
   },
   {
     "menucode": "rec05",
     "menuname": "经办领导批示",
-    "templateurl": ""
+    "templateurl": "templates/instructions.html"
   },
   {
     "menucode": "rec06",
     "menuname": "办理结果",
-    "templateurl": ""
+    "templateurl": "templates/result.html"
   },
   {
     "menucode": "rec07",
     "menuname": "阅者签名",
-    "templateurl": ""
+    "templateurl": "templates/sign.html"
   },
   {
     "menucode": "rec08",
     "menuname": "督察督办",
-    "templateurl": ""
+    "templateurl": "templates/inspection.html"
   },
   {
     "menucode": "rec09",
     "menuname": "办理反馈",
-    "templateurl": ""
+    "templateurl": "templates/feedback.html"
   },
   {
     "menucode": "rec10",
     "menuname": "在办查询",
-    "templateurl": ""
+    "templateurl": "templates/query-ing.html"
   },
   {
     "menucode": "rec11",
     "menuname": "办理查询",
-    "templateurl": ""
+    "templateurl": "templates/query-ed.html"
   },
   {
     "menucode": "rec12",
@@ -61,17 +61,17 @@
       {
         "menucode": "rec1201",
         "menuname": "系统内",
-        "templateurl": "templates/online-approval-draft.html"
+        "templateurl": "templates/list-in.html"
       },
       {
         "menucode": "rec1202",
         "menuname": "系统外",
-        "templateurl": "templates/online-approval-review.html"
+        "templateurl": "templates/list-out.html"
       },
       {
         "menucode": "rec1203",
         "menuname": "其他收文",
-        "templateurl": "templates/faWenShenPi_heGao.html"
+        "templateurl": "templates/list-other.html"
       }
     ]
   }
